@@ -86,8 +86,6 @@ async function main() {
     speciesNames,
     typeNames,
     pokemonTypes,
-    abilityNames,
-    pokemonAbilities,
     flavorText,
   ] = await Promise.all([
     fetchCsv("pokemon.csv"),
@@ -96,8 +94,6 @@ async function main() {
     fetchCsv("pokemon_species_names.csv"),
     fetchCsv("type_names.csv"),
     fetchCsv("pokemon_types.csv"),
-    fetchCsv("ability_names.csv"),
-    fetchCsv("pokemon_abilities.csv"),
     fetchCsv("pokemon_species_flavor_text.csv"),
   ]);
 
@@ -105,11 +101,6 @@ async function main() {
     typeNames
       .filter((t) => t.local_language_id === ENGLISH_LANGUAGE_ID)
       .map((t) => [t.type_id, t.name])
-  );
-  const abilityNameById = new Map(
-    abilityNames
-      .filter((a) => a.local_language_id === ENGLISH_LANGUAGE_ID)
-      .map((a) => [a.ability_id, a.name])
   );
   const speciesNameById = new Map(
     speciesNames
@@ -144,17 +135,6 @@ async function main() {
     });
   }
 
-  const abilitiesByPokemon = new Map();
-  for (const row of pokemonAbilities) {
-    if (!abilitiesByPokemon.has(row.pokemon_id))
-      abilitiesByPokemon.set(row.pokemon_id, []);
-    abilitiesByPokemon.get(row.pokemon_id).push({
-      slot: Number(row.slot),
-      is_hidden: row.is_hidden === "1",
-      name: abilityNameById.get(row.ability_id),
-    });
-  }
-
   const results = [];
   for (const p of pokemon) {
     const id = Number(p.id);
@@ -176,9 +156,6 @@ async function main() {
       types: (typesByPokemon.get(p.id) || [])
         .sort((a, b) => a.slot - b.slot)
         .map((t) => t.name),
-      abilities: (abilitiesByPokemon.get(p.id) || [])
-        .sort((a, b) => a.slot - b.slot)
-        .map((a) => ({ name: a.name, is_hidden: a.is_hidden })),
       stats: {
         hp: stats.hp ?? null,
         attack: stats.attack ?? null,

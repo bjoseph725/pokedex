@@ -159,7 +159,6 @@ function openModal(p) {
     <dl class="info-grid">
       <dt>Height</dt><dd>${p.height_m} m</dd>
       <dt>Weight</dt><dd>${p.weight_kg} kg</dd>
-      <dt>Abilities</dt><dd>${p.abilities.map((a) => a.name + (a.is_hidden ? " (Hidden)" : "")).join(", ")}</dd>
       <dt>Capture Rate</dt><dd>${p.capture_rate ?? "—"}</dd>
     </dl>
 

@@ -9,16 +9,6 @@
       "Grass",
       "Poison"
     ],
-    "abilities": [
-      {
-        "name": "Overgrow",
-        "is_hidden": false
-      },
-      {
-        "name": "Chlorophyll",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 45,
       "attack": 49,
@@ -46,16 +36,6 @@
     "types": [
       "Grass",
       "Poison"
-    ],
-    "abilities": [
-      {
-        "name": "Overgrow",
-        "is_hidden": false
-      },
-      {
-        "name": "Chlorophyll",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 60,
@@ -85,16 +65,6 @@
       "Grass",
       "Poison"
     ],
-    "abilities": [
-      {
-        "name": "Overgrow",
-        "is_hidden": false
-      },
-      {
-        "name": "Chlorophyll",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 80,
       "attack": 82,
@@ -122,16 +92,6 @@
     "types": [
       "Fire"
     ],
-    "abilities": [
-      {
-        "name": "Blaze",
-        "is_hidden": false
-      },
-      {
-        "name": "Solar Power",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 39,
       "attack": 52,
@@ -158,16 +118,6 @@
     "weight_kg": 19,
     "types": [
       "Fire"
-    ],
-    "abilities": [
-      {
-        "name": "Blaze",
-        "is_hidden": false
-      },
-      {
-        "name": "Solar Power",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 58,
@@ -197,16 +147,6 @@
       "Fire",
       "Flying"
     ],
-    "abilities": [
-      {
-        "name": "Blaze",
-        "is_hidden": false
-      },
-      {
-        "name": "Solar Power",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 78,
       "attack": 84,
@@ -233,16 +173,6 @@
     "weight_kg": 9,
     "types": [
       "Water"
-    ],
-    "abilities": [
-      {
-        "name": "Torrent",
-        "is_hidden": false
-      },
-      {
-        "name": "Rain Dish",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 44,
@@ -271,16 +201,6 @@
     "types": [
       "Water"
     ],
-    "abilities": [
-      {
-        "name": "Torrent",
-        "is_hidden": false
-      },
-      {
-        "name": "Rain Dish",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 59,
       "attack": 63,
@@ -307,16 +227,6 @@
     "weight_kg": 85.5,
     "types": [
       "Water"
-    ],
-    "abilities": [
-      {
-        "name": "Torrent",
-        "is_hidden": false
-      },
-      {
-        "name": "Rain Dish",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 79,
@@ -345,16 +255,6 @@
     "types": [
       "Bug"
     ],
-    "abilities": [
-      {
-        "name": "Shield Dust",
-        "is_hidden": false
-      },
-      {
-        "name": "Run Away",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 45,
       "attack": 30,
@@ -381,12 +281,6 @@
     "weight_kg": 9.9,
     "types": [
       "Bug"
-    ],
-    "abilities": [
-      {
-        "name": "Shed Skin",
-        "is_hidden": false
-      }
     ],
     "stats": {
       "hp": 50,
@@ -416,16 +310,6 @@
       "Bug",
       "Flying"
     ],
-    "abilities": [
-      {
-        "name": "Compound Eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "Tinted Lens",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 60,
       "attack": 45,
@@ -453,16 +337,6 @@
     "types": [
       "Bug",
       "Poison"
-    ],
-    "abilities": [
-      {
-        "name": "Shield Dust",
-        "is_hidden": false
-      },
-      {
-        "name": "Run Away",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 40,
@@ -492,12 +366,6 @@
       "Bug",
       "Poison"
     ],
-    "abilities": [
-      {
-        "name": "Shed Skin",
-        "is_hidden": false
-      }
-    ],
     "stats": {
       "hp": 45,
       "attack": 25,
@@ -525,16 +393,6 @@
     "types": [
       "Bug",
       "Poison"
-    ],
-    "abilities": [
-      {
-        "name": "Swarm",
-        "is_hidden": false
-      },
-      {
-        "name": "Sniper",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 65,
@@ -564,20 +422,6 @@
       "Normal",
       "Flying"
     ],
-    "abilities": [
-      {
-        "name": "Keen Eye",
-        "is_hidden": false
-      },
-      {
-        "name": "Tangled Feet",
-        "is_hidden": false
-      },
-      {
-        "name": "Big Pecks",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 40,
       "attack": 45,
@@ -605,20 +449,6 @@
     "types": [
       "Normal",
       "Flying"
-    ],
-    "abilities": [
-      {
-        "name": "Keen Eye",
-        "is_hidden": false
-      },
-      {
-        "name": "Tangled Feet",
-        "is_hidden": false
-      },
-      {
-        "name": "Big Pecks",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 63,
@@ -648,20 +478,6 @@
       "Normal",
       "Flying"
     ],
-    "abilities": [
-      {
-        "name": "Keen Eye",
-        "is_hidden": false
-      },
-      {
-        "name": "Tangled Feet",
-        "is_hidden": false
-      },
-      {
-        "name": "Big Pecks",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 83,
       "attack": 80,
@@ -689,20 +505,6 @@
     "types": [
       "Normal"
     ],
-    "abilities": [
-      {
-        "name": "Run Away",
-        "is_hidden": false
-      },
-      {
-        "name": "Guts",
-        "is_hidden": false
-      },
-      {
-        "name": "Hustle",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 30,
       "attack": 56,
@@ -729,20 +531,6 @@
     "weight_kg": 18.5,
     "types": [
       "Normal"
-    ],
-    "abilities": [
-      {
-        "name": "Run Away",
-        "is_hidden": false
-      },
-      {
-        "name": "Guts",
-        "is_hidden": false
-      },
-      {
-        "name": "Hustle",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 55,
@@ -772,16 +560,6 @@
       "Normal",
       "Flying"
     ],
-    "abilities": [
-      {
-        "name": "Keen Eye",
-        "is_hidden": false
-      },
-      {
-        "name": "Sniper",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 40,
       "attack": 60,
@@ -810,16 +588,6 @@
       "Normal",
       "Flying"
     ],
-    "abilities": [
-      {
-        "name": "Keen Eye",
-        "is_hidden": false
-      },
-      {
-        "name": "Sniper",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 65,
       "attack": 90,
@@ -846,20 +614,6 @@
     "weight_kg": 6.9,
     "types": [
       "Poison"
-    ],
-    "abilities": [
-      {
-        "name": "Intimidate",
-        "is_hidden": false
-      },
-      {
-        "name": "Shed Skin",
-        "is_hidden": false
-      },
-      {
-        "name": "Unnerve",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 35,
@@ -888,20 +642,6 @@
     "types": [
       "Poison"
     ],
-    "abilities": [
-      {
-        "name": "Intimidate",
-        "is_hidden": false
-      },
-      {
-        "name": "Shed Skin",
-        "is_hidden": false
-      },
-      {
-        "name": "Unnerve",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 60,
       "attack": 95,
@@ -928,16 +668,6 @@
     "weight_kg": 6,
     "types": [
       "Electric"
-    ],
-    "abilities": [
-      {
-        "name": "Static",
-        "is_hidden": false
-      },
-      {
-        "name": "Lightning Rod",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 35,
@@ -966,16 +696,6 @@
     "types": [
       "Electric"
     ],
-    "abilities": [
-      {
-        "name": "Static",
-        "is_hidden": false
-      },
-      {
-        "name": "Lightning Rod",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 60,
       "attack": 90,
@@ -1002,16 +722,6 @@
     "weight_kg": 12,
     "types": [
       "Ground"
-    ],
-    "abilities": [
-      {
-        "name": "Sand Veil",
-        "is_hidden": false
-      },
-      {
-        "name": "Sand Rush",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 50,
@@ -1040,16 +750,6 @@
     "types": [
       "Ground"
     ],
-    "abilities": [
-      {
-        "name": "Sand Veil",
-        "is_hidden": false
-      },
-      {
-        "name": "Sand Rush",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 75,
       "attack": 100,
@@ -1077,20 +777,6 @@
     "types": [
       "Poison"
     ],
-    "abilities": [
-      {
-        "name": "Poison Point",
-        "is_hidden": false
-      },
-      {
-        "name": "Rivalry",
-        "is_hidden": false
-      },
-      {
-        "name": "Hustle",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 55,
       "attack": 47,
@@ -1117,20 +803,6 @@
     "weight_kg": 20,
     "types": [
       "Poison"
-    ],
-    "abilities": [
-      {
-        "name": "Poison Point",
-        "is_hidden": false
-      },
-      {
-        "name": "Rivalry",
-        "is_hidden": false
-      },
-      {
-        "name": "Hustle",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 70,
@@ -1160,20 +832,6 @@
       "Poison",
       "Ground"
     ],
-    "abilities": [
-      {
-        "name": "Poison Point",
-        "is_hidden": false
-      },
-      {
-        "name": "Rivalry",
-        "is_hidden": false
-      },
-      {
-        "name": "Sheer Force",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 90,
       "attack": 92,
@@ -1201,20 +859,6 @@
     "types": [
       "Poison"
     ],
-    "abilities": [
-      {
-        "name": "Poison Point",
-        "is_hidden": false
-      },
-      {
-        "name": "Rivalry",
-        "is_hidden": false
-      },
-      {
-        "name": "Hustle",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 46,
       "attack": 57,
@@ -1241,20 +885,6 @@
     "weight_kg": 19.5,
     "types": [
       "Poison"
-    ],
-    "abilities": [
-      {
-        "name": "Poison Point",
-        "is_hidden": false
-      },
-      {
-        "name": "Rivalry",
-        "is_hidden": false
-      },
-      {
-        "name": "Hustle",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 61,
@@ -1284,20 +914,6 @@
       "Poison",
       "Ground"
     ],
-    "abilities": [
-      {
-        "name": "Poison Point",
-        "is_hidden": false
-      },
-      {
-        "name": "Rivalry",
-        "is_hidden": false
-      },
-      {
-        "name": "Sheer Force",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 81,
       "attack": 102,
@@ -1324,20 +940,6 @@
     "weight_kg": 7.5,
     "types": [
       "Fairy"
-    ],
-    "abilities": [
-      {
-        "name": "Cute Charm",
-        "is_hidden": false
-      },
-      {
-        "name": "Magic Guard",
-        "is_hidden": false
-      },
-      {
-        "name": "Friend Guard",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 70,
@@ -1366,20 +968,6 @@
     "types": [
       "Fairy"
     ],
-    "abilities": [
-      {
-        "name": "Cute Charm",
-        "is_hidden": false
-      },
-      {
-        "name": "Magic Guard",
-        "is_hidden": false
-      },
-      {
-        "name": "Unaware",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 95,
       "attack": 70,
@@ -1407,16 +995,6 @@
     "types": [
       "Fire"
     ],
-    "abilities": [
-      {
-        "name": "Flash Fire",
-        "is_hidden": false
-      },
-      {
-        "name": "Drought",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 38,
       "attack": 41,
@@ -1443,16 +1021,6 @@
     "weight_kg": 19.9,
     "types": [
       "Fire"
-    ],
-    "abilities": [
-      {
-        "name": "Flash Fire",
-        "is_hidden": false
-      },
-      {
-        "name": "Drought",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 73,
@@ -1482,20 +1050,6 @@
       "Normal",
       "Fairy"
     ],
-    "abilities": [
-      {
-        "name": "Cute Charm",
-        "is_hidden": false
-      },
-      {
-        "name": "Competitive",
-        "is_hidden": false
-      },
-      {
-        "name": "Friend Guard",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 115,
       "attack": 45,
@@ -1523,20 +1077,6 @@
     "types": [
       "Normal",
       "Fairy"
-    ],
-    "abilities": [
-      {
-        "name": "Cute Charm",
-        "is_hidden": false
-      },
-      {
-        "name": "Competitive",
-        "is_hidden": false
-      },
-      {
-        "name": "Frisk",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 140,
@@ -1566,16 +1106,6 @@
       "Poison",
       "Flying"
     ],
-    "abilities": [
-      {
-        "name": "Inner Focus",
-        "is_hidden": false
-      },
-      {
-        "name": "Infiltrator",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 40,
       "attack": 45,
@@ -1603,16 +1133,6 @@
     "types": [
       "Poison",
       "Flying"
-    ],
-    "abilities": [
-      {
-        "name": "Inner Focus",
-        "is_hidden": false
-      },
-      {
-        "name": "Infiltrator",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 75,
@@ -1642,16 +1162,6 @@
       "Grass",
       "Poison"
     ],
-    "abilities": [
-      {
-        "name": "Chlorophyll",
-        "is_hidden": false
-      },
-      {
-        "name": "Run Away",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 45,
       "attack": 50,
@@ -1679,16 +1189,6 @@
     "types": [
       "Grass",
       "Poison"
-    ],
-    "abilities": [
-      {
-        "name": "Chlorophyll",
-        "is_hidden": false
-      },
-      {
-        "name": "Stench",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 60,
@@ -1718,16 +1218,6 @@
       "Grass",
       "Poison"
     ],
-    "abilities": [
-      {
-        "name": "Chlorophyll",
-        "is_hidden": false
-      },
-      {
-        "name": "Effect Spore",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 75,
       "attack": 80,
@@ -1755,20 +1245,6 @@
     "types": [
       "Bug",
       "Grass"
-    ],
-    "abilities": [
-      {
-        "name": "Effect Spore",
-        "is_hidden": false
-      },
-      {
-        "name": "Dry Skin",
-        "is_hidden": false
-      },
-      {
-        "name": "Damp",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 35,
@@ -1798,20 +1274,6 @@
       "Bug",
       "Grass"
     ],
-    "abilities": [
-      {
-        "name": "Effect Spore",
-        "is_hidden": false
-      },
-      {
-        "name": "Dry Skin",
-        "is_hidden": false
-      },
-      {
-        "name": "Damp",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 60,
       "attack": 95,
@@ -1839,20 +1301,6 @@
     "types": [
       "Bug",
       "Poison"
-    ],
-    "abilities": [
-      {
-        "name": "Compound Eyes",
-        "is_hidden": false
-      },
-      {
-        "name": "Tinted Lens",
-        "is_hidden": false
-      },
-      {
-        "name": "Run Away",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 60,
@@ -1882,20 +1330,6 @@
       "Bug",
       "Poison"
     ],
-    "abilities": [
-      {
-        "name": "Shield Dust",
-        "is_hidden": false
-      },
-      {
-        "name": "Tinted Lens",
-        "is_hidden": false
-      },
-      {
-        "name": "Wonder Skin",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 70,
       "attack": 65,
@@ -1922,20 +1356,6 @@
     "weight_kg": 0.8,
     "types": [
       "Ground"
-    ],
-    "abilities": [
-      {
-        "name": "Sand Veil",
-        "is_hidden": false
-      },
-      {
-        "name": "Arena Trap",
-        "is_hidden": false
-      },
-      {
-        "name": "Sand Force",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 10,
@@ -1964,20 +1384,6 @@
     "types": [
       "Ground"
     ],
-    "abilities": [
-      {
-        "name": "Sand Veil",
-        "is_hidden": false
-      },
-      {
-        "name": "Arena Trap",
-        "is_hidden": false
-      },
-      {
-        "name": "Sand Force",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 35,
       "attack": 100,
@@ -2004,20 +1410,6 @@
     "weight_kg": 4.2,
     "types": [
       "Normal"
-    ],
-    "abilities": [
-      {
-        "name": "Pickup",
-        "is_hidden": false
-      },
-      {
-        "name": "Technician",
-        "is_hidden": false
-      },
-      {
-        "name": "Unnerve",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 40,
@@ -2046,20 +1438,6 @@
     "types": [
       "Normal"
     ],
-    "abilities": [
-      {
-        "name": "Limber",
-        "is_hidden": false
-      },
-      {
-        "name": "Technician",
-        "is_hidden": false
-      },
-      {
-        "name": "Unnerve",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 65,
       "attack": 70,
@@ -2086,20 +1464,6 @@
     "weight_kg": 19.6,
     "types": [
       "Water"
-    ],
-    "abilities": [
-      {
-        "name": "Damp",
-        "is_hidden": false
-      },
-      {
-        "name": "Cloud Nine",
-        "is_hidden": false
-      },
-      {
-        "name": "Swift Swim",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 50,
@@ -2128,20 +1492,6 @@
     "types": [
       "Water"
     ],
-    "abilities": [
-      {
-        "name": "Damp",
-        "is_hidden": false
-      },
-      {
-        "name": "Cloud Nine",
-        "is_hidden": false
-      },
-      {
-        "name": "Swift Swim",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 80,
       "attack": 82,
@@ -2168,20 +1518,6 @@
     "weight_kg": 28,
     "types": [
       "Fighting"
-    ],
-    "abilities": [
-      {
-        "name": "Vital Spirit",
-        "is_hidden": false
-      },
-      {
-        "name": "Anger Point",
-        "is_hidden": false
-      },
-      {
-        "name": "Defiant",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 40,
@@ -2210,20 +1546,6 @@
     "types": [
       "Fighting"
     ],
-    "abilities": [
-      {
-        "name": "Vital Spirit",
-        "is_hidden": false
-      },
-      {
-        "name": "Anger Point",
-        "is_hidden": false
-      },
-      {
-        "name": "Defiant",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 65,
       "attack": 105,
@@ -2250,20 +1572,6 @@
     "weight_kg": 19,
     "types": [
       "Fire"
-    ],
-    "abilities": [
-      {
-        "name": "Intimidate",
-        "is_hidden": false
-      },
-      {
-        "name": "Flash Fire",
-        "is_hidden": false
-      },
-      {
-        "name": "Justified",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 55,
@@ -2292,20 +1600,6 @@
     "types": [
       "Fire"
     ],
-    "abilities": [
-      {
-        "name": "Intimidate",
-        "is_hidden": false
-      },
-      {
-        "name": "Flash Fire",
-        "is_hidden": false
-      },
-      {
-        "name": "Justified",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 90,
       "attack": 110,
@@ -2333,20 +1627,6 @@
     "types": [
       "Water"
     ],
-    "abilities": [
-      {
-        "name": "Water Absorb",
-        "is_hidden": false
-      },
-      {
-        "name": "Damp",
-        "is_hidden": false
-      },
-      {
-        "name": "Swift Swim",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 40,
       "attack": 50,
@@ -2373,20 +1653,6 @@
     "weight_kg": 20,
     "types": [
       "Water"
-    ],
-    "abilities": [
-      {
-        "name": "Water Absorb",
-        "is_hidden": false
-      },
-      {
-        "name": "Damp",
-        "is_hidden": false
-      },
-      {
-        "name": "Swift Swim",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 65,
@@ -2416,20 +1682,6 @@
       "Water",
       "Fighting"
     ],
-    "abilities": [
-      {
-        "name": "Water Absorb",
-        "is_hidden": false
-      },
-      {
-        "name": "Damp",
-        "is_hidden": false
-      },
-      {
-        "name": "Swift Swim",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 90,
       "attack": 95,
@@ -2456,20 +1708,6 @@
     "weight_kg": 19.5,
     "types": [
       "Psychic"
-    ],
-    "abilities": [
-      {
-        "name": "Synchronize",
-        "is_hidden": false
-      },
-      {
-        "name": "Inner Focus",
-        "is_hidden": false
-      },
-      {
-        "name": "Magic Guard",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 25,
@@ -2498,20 +1736,6 @@
     "types": [
       "Psychic"
     ],
-    "abilities": [
-      {
-        "name": "Synchronize",
-        "is_hidden": false
-      },
-      {
-        "name": "Inner Focus",
-        "is_hidden": false
-      },
-      {
-        "name": "Magic Guard",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 40,
       "attack": 35,
@@ -2538,20 +1762,6 @@
     "weight_kg": 48,
     "types": [
       "Psychic"
-    ],
-    "abilities": [
-      {
-        "name": "Synchronize",
-        "is_hidden": false
-      },
-      {
-        "name": "Inner Focus",
-        "is_hidden": false
-      },
-      {
-        "name": "Magic Guard",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 55,
@@ -2580,20 +1790,6 @@
     "types": [
       "Fighting"
     ],
-    "abilities": [
-      {
-        "name": "Guts",
-        "is_hidden": false
-      },
-      {
-        "name": "No Guard",
-        "is_hidden": false
-      },
-      {
-        "name": "Steadfast",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 70,
       "attack": 80,
@@ -2621,20 +1817,6 @@
     "types": [
       "Fighting"
     ],
-    "abilities": [
-      {
-        "name": "Guts",
-        "is_hidden": false
-      },
-      {
-        "name": "No Guard",
-        "is_hidden": false
-      },
-      {
-        "name": "Steadfast",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 80,
       "attack": 100,
@@ -2661,20 +1843,6 @@
     "weight_kg": 130,
     "types": [
       "Fighting"
-    ],
-    "abilities": [
-      {
-        "name": "Guts",
-        "is_hidden": false
-      },
-      {
-        "name": "No Guard",
-        "is_hidden": false
-      },
-      {
-        "name": "Steadfast",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 90,
@@ -2704,16 +1872,6 @@
       "Grass",
       "Poison"
     ],
-    "abilities": [
-      {
-        "name": "Chlorophyll",
-        "is_hidden": false
-      },
-      {
-        "name": "Gluttony",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 50,
       "attack": 75,
@@ -2741,16 +1899,6 @@
     "types": [
       "Grass",
       "Poison"
-    ],
-    "abilities": [
-      {
-        "name": "Chlorophyll",
-        "is_hidden": false
-      },
-      {
-        "name": "Gluttony",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 65,
@@ -2780,16 +1928,6 @@
       "Grass",
       "Poison"
     ],
-    "abilities": [
-      {
-        "name": "Chlorophyll",
-        "is_hidden": false
-      },
-      {
-        "name": "Gluttony",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 80,
       "attack": 105,
@@ -2817,20 +1955,6 @@
     "types": [
       "Water",
       "Poison"
-    ],
-    "abilities": [
-      {
-        "name": "Clear Body",
-        "is_hidden": false
-      },
-      {
-        "name": "Liquid Ooze",
-        "is_hidden": false
-      },
-      {
-        "name": "Rain Dish",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 40,
@@ -2860,20 +1984,6 @@
       "Water",
       "Poison"
     ],
-    "abilities": [
-      {
-        "name": "Clear Body",
-        "is_hidden": false
-      },
-      {
-        "name": "Liquid Ooze",
-        "is_hidden": false
-      },
-      {
-        "name": "Rain Dish",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 80,
       "attack": 70,
@@ -2901,20 +2011,6 @@
     "types": [
       "Rock",
       "Ground"
-    ],
-    "abilities": [
-      {
-        "name": "Rock Head",
-        "is_hidden": false
-      },
-      {
-        "name": "Sturdy",
-        "is_hidden": false
-      },
-      {
-        "name": "Sand Veil",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 40,
@@ -2944,20 +2040,6 @@
       "Rock",
       "Ground"
     ],
-    "abilities": [
-      {
-        "name": "Rock Head",
-        "is_hidden": false
-      },
-      {
-        "name": "Sturdy",
-        "is_hidden": false
-      },
-      {
-        "name": "Sand Veil",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 55,
       "attack": 95,
@@ -2986,20 +2068,6 @@
       "Rock",
       "Ground"
     ],
-    "abilities": [
-      {
-        "name": "Rock Head",
-        "is_hidden": false
-      },
-      {
-        "name": "Sturdy",
-        "is_hidden": false
-      },
-      {
-        "name": "Sand Veil",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 80,
       "attack": 120,
@@ -3027,20 +2095,6 @@
     "types": [
       "Fire"
     ],
-    "abilities": [
-      {
-        "name": "Run Away",
-        "is_hidden": false
-      },
-      {
-        "name": "Flash Fire",
-        "is_hidden": false
-      },
-      {
-        "name": "Flame Body",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 50,
       "attack": 85,
@@ -3067,20 +2121,6 @@
     "weight_kg": 95,
     "types": [
       "Fire"
-    ],
-    "abilities": [
-      {
-        "name": "Run Away",
-        "is_hidden": false
-      },
-      {
-        "name": "Flash Fire",
-        "is_hidden": false
-      },
-      {
-        "name": "Flame Body",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 65,
@@ -3110,20 +2150,6 @@
       "Water",
       "Psychic"
     ],
-    "abilities": [
-      {
-        "name": "Oblivious",
-        "is_hidden": false
-      },
-      {
-        "name": "Own Tempo",
-        "is_hidden": false
-      },
-      {
-        "name": "Regenerator",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 90,
       "attack": 65,
@@ -3151,20 +2177,6 @@
     "types": [
       "Water",
       "Psychic"
-    ],
-    "abilities": [
-      {
-        "name": "Oblivious",
-        "is_hidden": false
-      },
-      {
-        "name": "Own Tempo",
-        "is_hidden": false
-      },
-      {
-        "name": "Regenerator",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 95,
@@ -3194,20 +2206,6 @@
       "Electric",
       "Steel"
     ],
-    "abilities": [
-      {
-        "name": "Magnet Pull",
-        "is_hidden": false
-      },
-      {
-        "name": "Sturdy",
-        "is_hidden": false
-      },
-      {
-        "name": "Analytic",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 25,
       "attack": 35,
@@ -3235,20 +2233,6 @@
     "types": [
       "Electric",
       "Steel"
-    ],
-    "abilities": [
-      {
-        "name": "Magnet Pull",
-        "is_hidden": false
-      },
-      {
-        "name": "Sturdy",
-        "is_hidden": false
-      },
-      {
-        "name": "Analytic",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 50,
@@ -3278,20 +2262,6 @@
       "Normal",
       "Flying"
     ],
-    "abilities": [
-      {
-        "name": "Keen Eye",
-        "is_hidden": false
-      },
-      {
-        "name": "Inner Focus",
-        "is_hidden": false
-      },
-      {
-        "name": "Defiant",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 52,
       "attack": 90,
@@ -3319,20 +2289,6 @@
     "types": [
       "Normal",
       "Flying"
-    ],
-    "abilities": [
-      {
-        "name": "Run Away",
-        "is_hidden": false
-      },
-      {
-        "name": "Early Bird",
-        "is_hidden": false
-      },
-      {
-        "name": "Tangled Feet",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 35,
@@ -3362,20 +2318,6 @@
       "Normal",
       "Flying"
     ],
-    "abilities": [
-      {
-        "name": "Run Away",
-        "is_hidden": false
-      },
-      {
-        "name": "Early Bird",
-        "is_hidden": false
-      },
-      {
-        "name": "Tangled Feet",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 60,
       "attack": 110,
@@ -3402,20 +2344,6 @@
     "weight_kg": 90,
     "types": [
       "Water"
-    ],
-    "abilities": [
-      {
-        "name": "Thick Fat",
-        "is_hidden": false
-      },
-      {
-        "name": "Hydration",
-        "is_hidden": false
-      },
-      {
-        "name": "Ice Body",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 65,
@@ -3445,20 +2373,6 @@
       "Water",
       "Ice"
     ],
-    "abilities": [
-      {
-        "name": "Thick Fat",
-        "is_hidden": false
-      },
-      {
-        "name": "Hydration",
-        "is_hidden": false
-      },
-      {
-        "name": "Ice Body",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 90,
       "attack": 70,
@@ -3485,20 +2399,6 @@
     "weight_kg": 30,
     "types": [
       "Poison"
-    ],
-    "abilities": [
-      {
-        "name": "Stench",
-        "is_hidden": false
-      },
-      {
-        "name": "Sticky Hold",
-        "is_hidden": false
-      },
-      {
-        "name": "Poison Touch",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 80,
@@ -3527,20 +2427,6 @@
     "types": [
       "Poison"
     ],
-    "abilities": [
-      {
-        "name": "Stench",
-        "is_hidden": false
-      },
-      {
-        "name": "Sticky Hold",
-        "is_hidden": false
-      },
-      {
-        "name": "Poison Touch",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 105,
       "attack": 105,
@@ -3567,20 +2453,6 @@
     "weight_kg": 4,
     "types": [
       "Water"
-    ],
-    "abilities": [
-      {
-        "name": "Shell Armor",
-        "is_hidden": false
-      },
-      {
-        "name": "Skill Link",
-        "is_hidden": false
-      },
-      {
-        "name": "Overcoat",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 30,
@@ -3610,20 +2482,6 @@
       "Water",
       "Ice"
     ],
-    "abilities": [
-      {
-        "name": "Shell Armor",
-        "is_hidden": false
-      },
-      {
-        "name": "Skill Link",
-        "is_hidden": false
-      },
-      {
-        "name": "Overcoat",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 50,
       "attack": 95,
@@ -3651,12 +2509,6 @@
     "types": [
       "Ghost",
       "Poison"
-    ],
-    "abilities": [
-      {
-        "name": "Levitate",
-        "is_hidden": false
-      }
     ],
     "stats": {
       "hp": 30,
@@ -3686,12 +2538,6 @@
       "Ghost",
       "Poison"
     ],
-    "abilities": [
-      {
-        "name": "Levitate",
-        "is_hidden": false
-      }
-    ],
     "stats": {
       "hp": 45,
       "attack": 50,
@@ -3719,12 +2565,6 @@
     "types": [
       "Ghost",
       "Poison"
-    ],
-    "abilities": [
-      {
-        "name": "Cursed Body",
-        "is_hidden": false
-      }
     ],
     "stats": {
       "hp": 60,
@@ -3754,20 +2594,6 @@
       "Rock",
       "Ground"
     ],
-    "abilities": [
-      {
-        "name": "Rock Head",
-        "is_hidden": false
-      },
-      {
-        "name": "Sturdy",
-        "is_hidden": false
-      },
-      {
-        "name": "Weak Armor",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 35,
       "attack": 45,
@@ -3794,20 +2620,6 @@
     "weight_kg": 32.4,
     "types": [
       "Psychic"
-    ],
-    "abilities": [
-      {
-        "name": "Insomnia",
-        "is_hidden": false
-      },
-      {
-        "name": "Forewarn",
-        "is_hidden": false
-      },
-      {
-        "name": "Inner Focus",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 60,
@@ -3836,20 +2648,6 @@
     "types": [
       "Psychic"
     ],
-    "abilities": [
-      {
-        "name": "Insomnia",
-        "is_hidden": false
-      },
-      {
-        "name": "Forewarn",
-        "is_hidden": false
-      },
-      {
-        "name": "Inner Focus",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 85,
       "attack": 73,
@@ -3876,20 +2674,6 @@
     "weight_kg": 6.5,
     "types": [
       "Water"
-    ],
-    "abilities": [
-      {
-        "name": "Hyper Cutter",
-        "is_hidden": false
-      },
-      {
-        "name": "Shell Armor",
-        "is_hidden": false
-      },
-      {
-        "name": "Sheer Force",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 30,
@@ -3918,20 +2702,6 @@
     "types": [
       "Water"
     ],
-    "abilities": [
-      {
-        "name": "Hyper Cutter",
-        "is_hidden": false
-      },
-      {
-        "name": "Shell Armor",
-        "is_hidden": false
-      },
-      {
-        "name": "Sheer Force",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 55,
       "attack": 130,
@@ -3959,20 +2729,6 @@
     "types": [
       "Electric"
     ],
-    "abilities": [
-      {
-        "name": "Soundproof",
-        "is_hidden": false
-      },
-      {
-        "name": "Static",
-        "is_hidden": false
-      },
-      {
-        "name": "Aftermath",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 40,
       "attack": 30,
@@ -3999,20 +2755,6 @@
     "weight_kg": 66.6,
     "types": [
       "Electric"
-    ],
-    "abilities": [
-      {
-        "name": "Soundproof",
-        "is_hidden": false
-      },
-      {
-        "name": "Static",
-        "is_hidden": false
-      },
-      {
-        "name": "Aftermath",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 60,
@@ -4042,16 +2784,6 @@
       "Grass",
       "Psychic"
     ],
-    "abilities": [
-      {
-        "name": "Chlorophyll",
-        "is_hidden": false
-      },
-      {
-        "name": "Harvest",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 60,
       "attack": 40,
@@ -4080,16 +2812,6 @@
       "Grass",
       "Psychic"
     ],
-    "abilities": [
-      {
-        "name": "Chlorophyll",
-        "is_hidden": false
-      },
-      {
-        "name": "Harvest",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 95,
       "attack": 95,
@@ -4116,20 +2838,6 @@
     "weight_kg": 6.5,
     "types": [
       "Ground"
-    ],
-    "abilities": [
-      {
-        "name": "Rock Head",
-        "is_hidden": false
-      },
-      {
-        "name": "Lightning Rod",
-        "is_hidden": false
-      },
-      {
-        "name": "Battle Armor",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 50,
@@ -4158,20 +2866,6 @@
     "types": [
       "Ground"
     ],
-    "abilities": [
-      {
-        "name": "Rock Head",
-        "is_hidden": false
-      },
-      {
-        "name": "Lightning Rod",
-        "is_hidden": false
-      },
-      {
-        "name": "Battle Armor",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 60,
       "attack": 80,
@@ -4198,20 +2892,6 @@
     "weight_kg": 49.8,
     "types": [
       "Fighting"
-    ],
-    "abilities": [
-      {
-        "name": "Limber",
-        "is_hidden": false
-      },
-      {
-        "name": "Reckless",
-        "is_hidden": false
-      },
-      {
-        "name": "Unburden",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 50,
@@ -4240,20 +2920,6 @@
     "types": [
       "Fighting"
     ],
-    "abilities": [
-      {
-        "name": "Keen Eye",
-        "is_hidden": false
-      },
-      {
-        "name": "Iron Fist",
-        "is_hidden": false
-      },
-      {
-        "name": "Inner Focus",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 50,
       "attack": 105,
@@ -4280,20 +2946,6 @@
     "weight_kg": 65.5,
     "types": [
       "Normal"
-    ],
-    "abilities": [
-      {
-        "name": "Own Tempo",
-        "is_hidden": false
-      },
-      {
-        "name": "Oblivious",
-        "is_hidden": false
-      },
-      {
-        "name": "Cloud Nine",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 90,
@@ -4322,20 +2974,6 @@
     "types": [
       "Poison"
     ],
-    "abilities": [
-      {
-        "name": "Levitate",
-        "is_hidden": false
-      },
-      {
-        "name": "Neutralizing Gas",
-        "is_hidden": false
-      },
-      {
-        "name": "Stench",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 40,
       "attack": 65,
@@ -4362,20 +3000,6 @@
     "weight_kg": 9.5,
     "types": [
       "Poison"
-    ],
-    "abilities": [
-      {
-        "name": "Levitate",
-        "is_hidden": false
-      },
-      {
-        "name": "Neutralizing Gas",
-        "is_hidden": false
-      },
-      {
-        "name": "Stench",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 65,
@@ -4405,20 +3029,6 @@
       "Ground",
       "Rock"
     ],
-    "abilities": [
-      {
-        "name": "Lightning Rod",
-        "is_hidden": false
-      },
-      {
-        "name": "Rock Head",
-        "is_hidden": false
-      },
-      {
-        "name": "Reckless",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 80,
       "attack": 85,
@@ -4447,20 +3057,6 @@
       "Ground",
       "Rock"
     ],
-    "abilities": [
-      {
-        "name": "Lightning Rod",
-        "is_hidden": false
-      },
-      {
-        "name": "Rock Head",
-        "is_hidden": false
-      },
-      {
-        "name": "Reckless",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 105,
       "attack": 130,
@@ -4487,20 +3083,6 @@
     "weight_kg": 34.6,
     "types": [
       "Normal"
-    ],
-    "abilities": [
-      {
-        "name": "Natural Cure",
-        "is_hidden": false
-      },
-      {
-        "name": "Serene Grace",
-        "is_hidden": false
-      },
-      {
-        "name": "Healer",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 250,
@@ -4529,20 +3111,6 @@
     "types": [
       "Grass"
     ],
-    "abilities": [
-      {
-        "name": "Chlorophyll",
-        "is_hidden": false
-      },
-      {
-        "name": "Leaf Guard",
-        "is_hidden": false
-      },
-      {
-        "name": "Regenerator",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 65,
       "attack": 55,
@@ -4569,20 +3137,6 @@
     "weight_kg": 80,
     "types": [
       "Normal"
-    ],
-    "abilities": [
-      {
-        "name": "Early Bird",
-        "is_hidden": false
-      },
-      {
-        "name": "Scrappy",
-        "is_hidden": false
-      },
-      {
-        "name": "Inner Focus",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 105,
@@ -4611,20 +3165,6 @@
     "types": [
       "Water"
     ],
-    "abilities": [
-      {
-        "name": "Swift Swim",
-        "is_hidden": false
-      },
-      {
-        "name": "Sniper",
-        "is_hidden": false
-      },
-      {
-        "name": "Damp",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 30,
       "attack": 40,
@@ -4651,20 +3191,6 @@
     "weight_kg": 25,
     "types": [
       "Water"
-    ],
-    "abilities": [
-      {
-        "name": "Poison Point",
-        "is_hidden": false
-      },
-      {
-        "name": "Sniper",
-        "is_hidden": false
-      },
-      {
-        "name": "Damp",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 55,
@@ -4693,20 +3219,6 @@
     "types": [
       "Water"
     ],
-    "abilities": [
-      {
-        "name": "Swift Swim",
-        "is_hidden": false
-      },
-      {
-        "name": "Water Veil",
-        "is_hidden": false
-      },
-      {
-        "name": "Lightning Rod",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 45,
       "attack": 67,
@@ -4734,20 +3246,6 @@
     "types": [
       "Water"
     ],
-    "abilities": [
-      {
-        "name": "Swift Swim",
-        "is_hidden": false
-      },
-      {
-        "name": "Water Veil",
-        "is_hidden": false
-      },
-      {
-        "name": "Lightning Rod",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 80,
       "attack": 92,
@@ -4774,20 +3272,6 @@
     "weight_kg": 34.5,
     "types": [
       "Water"
-    ],
-    "abilities": [
-      {
-        "name": "Illuminate",
-        "is_hidden": false
-      },
-      {
-        "name": "Natural Cure",
-        "is_hidden": false
-      },
-      {
-        "name": "Analytic",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 30,
@@ -4817,20 +3301,6 @@
       "Water",
       "Psychic"
     ],
-    "abilities": [
-      {
-        "name": "Illuminate",
-        "is_hidden": false
-      },
-      {
-        "name": "Natural Cure",
-        "is_hidden": false
-      },
-      {
-        "name": "Analytic",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 60,
       "attack": 75,
@@ -4858,20 +3328,6 @@
     "types": [
       "Psychic",
       "Fairy"
-    ],
-    "abilities": [
-      {
-        "name": "Soundproof",
-        "is_hidden": false
-      },
-      {
-        "name": "Filter",
-        "is_hidden": false
-      },
-      {
-        "name": "Technician",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 40,
@@ -4901,20 +3357,6 @@
       "Bug",
       "Flying"
     ],
-    "abilities": [
-      {
-        "name": "Swarm",
-        "is_hidden": false
-      },
-      {
-        "name": "Technician",
-        "is_hidden": false
-      },
-      {
-        "name": "Steadfast",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 70,
       "attack": 110,
@@ -4943,20 +3385,6 @@
       "Ice",
       "Psychic"
     ],
-    "abilities": [
-      {
-        "name": "Oblivious",
-        "is_hidden": false
-      },
-      {
-        "name": "Forewarn",
-        "is_hidden": false
-      },
-      {
-        "name": "Dry Skin",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 65,
       "attack": 50,
@@ -4983,16 +3411,6 @@
     "weight_kg": 30,
     "types": [
       "Electric"
-    ],
-    "abilities": [
-      {
-        "name": "Static",
-        "is_hidden": false
-      },
-      {
-        "name": "Vital Spirit",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 65,
@@ -5021,16 +3439,6 @@
     "types": [
       "Fire"
     ],
-    "abilities": [
-      {
-        "name": "Flame Body",
-        "is_hidden": false
-      },
-      {
-        "name": "Vital Spirit",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 65,
       "attack": 95,
@@ -5057,20 +3465,6 @@
     "weight_kg": 55,
     "types": [
       "Bug"
-    ],
-    "abilities": [
-      {
-        "name": "Hyper Cutter",
-        "is_hidden": false
-      },
-      {
-        "name": "Mold Breaker",
-        "is_hidden": false
-      },
-      {
-        "name": "Moxie",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 65,
@@ -5099,20 +3493,6 @@
     "types": [
       "Normal"
     ],
-    "abilities": [
-      {
-        "name": "Intimidate",
-        "is_hidden": false
-      },
-      {
-        "name": "Anger Point",
-        "is_hidden": false
-      },
-      {
-        "name": "Sheer Force",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 75,
       "attack": 100,
@@ -5139,16 +3519,6 @@
     "weight_kg": 10,
     "types": [
       "Water"
-    ],
-    "abilities": [
-      {
-        "name": "Swift Swim",
-        "is_hidden": false
-      },
-      {
-        "name": "Rattled",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 20,
@@ -5178,16 +3548,6 @@
       "Water",
       "Flying"
     ],
-    "abilities": [
-      {
-        "name": "Intimidate",
-        "is_hidden": false
-      },
-      {
-        "name": "Moxie",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 95,
       "attack": 125,
@@ -5216,20 +3576,6 @@
       "Water",
       "Ice"
     ],
-    "abilities": [
-      {
-        "name": "Water Absorb",
-        "is_hidden": false
-      },
-      {
-        "name": "Shell Armor",
-        "is_hidden": false
-      },
-      {
-        "name": "Hydration",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 130,
       "attack": 85,
@@ -5256,16 +3602,6 @@
     "weight_kg": 4,
     "types": [
       "Normal"
-    ],
-    "abilities": [
-      {
-        "name": "Limber",
-        "is_hidden": false
-      },
-      {
-        "name": "Imposter",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 48,
@@ -5294,20 +3630,6 @@
     "types": [
       "Normal"
     ],
-    "abilities": [
-      {
-        "name": "Run Away",
-        "is_hidden": false
-      },
-      {
-        "name": "Adaptability",
-        "is_hidden": false
-      },
-      {
-        "name": "Anticipation",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 55,
       "attack": 55,
@@ -5334,16 +3656,6 @@
     "weight_kg": 29,
     "types": [
       "Water"
-    ],
-    "abilities": [
-      {
-        "name": "Water Absorb",
-        "is_hidden": false
-      },
-      {
-        "name": "Hydration",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 130,
@@ -5372,16 +3684,6 @@
     "types": [
       "Electric"
     ],
-    "abilities": [
-      {
-        "name": "Volt Absorb",
-        "is_hidden": false
-      },
-      {
-        "name": "Quick Feet",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 65,
       "attack": 65,
@@ -5409,16 +3711,6 @@
     "types": [
       "Fire"
     ],
-    "abilities": [
-      {
-        "name": "Flash Fire",
-        "is_hidden": false
-      },
-      {
-        "name": "Guts",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 65,
       "attack": 130,
@@ -5445,20 +3737,6 @@
     "weight_kg": 36.5,
     "types": [
       "Normal"
-    ],
-    "abilities": [
-      {
-        "name": "Trace",
-        "is_hidden": false
-      },
-      {
-        "name": "Download",
-        "is_hidden": false
-      },
-      {
-        "name": "Analytic",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 65,
@@ -5488,20 +3766,6 @@
       "Rock",
       "Water"
     ],
-    "abilities": [
-      {
-        "name": "Swift Swim",
-        "is_hidden": false
-      },
-      {
-        "name": "Shell Armor",
-        "is_hidden": false
-      },
-      {
-        "name": "Weak Armor",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 35,
       "attack": 40,
@@ -5529,20 +3793,6 @@
     "types": [
       "Rock",
       "Water"
-    ],
-    "abilities": [
-      {
-        "name": "Swift Swim",
-        "is_hidden": false
-      },
-      {
-        "name": "Shell Armor",
-        "is_hidden": false
-      },
-      {
-        "name": "Weak Armor",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 70,
@@ -5572,20 +3822,6 @@
       "Rock",
       "Water"
     ],
-    "abilities": [
-      {
-        "name": "Swift Swim",
-        "is_hidden": false
-      },
-      {
-        "name": "Battle Armor",
-        "is_hidden": false
-      },
-      {
-        "name": "Weak Armor",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 30,
       "attack": 80,
@@ -5613,20 +3849,6 @@
     "types": [
       "Rock",
       "Water"
-    ],
-    "abilities": [
-      {
-        "name": "Swift Swim",
-        "is_hidden": false
-      },
-      {
-        "name": "Battle Armor",
-        "is_hidden": false
-      },
-      {
-        "name": "Weak Armor",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 60,
@@ -5656,20 +3878,6 @@
       "Rock",
       "Flying"
     ],
-    "abilities": [
-      {
-        "name": "Rock Head",
-        "is_hidden": false
-      },
-      {
-        "name": "Pressure",
-        "is_hidden": false
-      },
-      {
-        "name": "Unnerve",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 80,
       "attack": 105,
@@ -5696,20 +3904,6 @@
     "weight_kg": 460,
     "types": [
       "Normal"
-    ],
-    "abilities": [
-      {
-        "name": "Immunity",
-        "is_hidden": false
-      },
-      {
-        "name": "Thick Fat",
-        "is_hidden": false
-      },
-      {
-        "name": "Gluttony",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 160,
@@ -5739,16 +3933,6 @@
       "Ice",
       "Flying"
     ],
-    "abilities": [
-      {
-        "name": "Pressure",
-        "is_hidden": false
-      },
-      {
-        "name": "Snow Cloak",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 90,
       "attack": 85,
@@ -5776,16 +3960,6 @@
     "types": [
       "Electric",
       "Flying"
-    ],
-    "abilities": [
-      {
-        "name": "Pressure",
-        "is_hidden": false
-      },
-      {
-        "name": "Static",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 90,
@@ -5815,16 +3989,6 @@
       "Fire",
       "Flying"
     ],
-    "abilities": [
-      {
-        "name": "Pressure",
-        "is_hidden": false
-      },
-      {
-        "name": "Flame Body",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 90,
       "attack": 100,
@@ -5852,16 +4016,6 @@
     "types": [
       "Dragon"
     ],
-    "abilities": [
-      {
-        "name": "Shed Skin",
-        "is_hidden": false
-      },
-      {
-        "name": "Marvel Scale",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 41,
       "attack": 64,
@@ -5888,16 +4042,6 @@
     "weight_kg": 16.5,
     "types": [
       "Dragon"
-    ],
-    "abilities": [
-      {
-        "name": "Shed Skin",
-        "is_hidden": false
-      },
-      {
-        "name": "Marvel Scale",
-        "is_hidden": true
-      }
     ],
     "stats": {
       "hp": 61,
@@ -5927,16 +4071,6 @@
       "Dragon",
       "Flying"
     ],
-    "abilities": [
-      {
-        "name": "Inner Focus",
-        "is_hidden": false
-      },
-      {
-        "name": "Multiscale",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 91,
       "attack": 134,
@@ -5964,16 +4098,6 @@
     "types": [
       "Psychic"
     ],
-    "abilities": [
-      {
-        "name": "Pressure",
-        "is_hidden": false
-      },
-      {
-        "name": "Unnerve",
-        "is_hidden": true
-      }
-    ],
     "stats": {
       "hp": 106,
       "attack": 110,
@@ -6000,12 +4124,6 @@
     "weight_kg": 4,
     "types": [
       "Psychic"
-    ],
-    "abilities": [
-      {
-        "name": "Synchronize",
-        "is_hidden": false
-      }
     ],
     "stats": {
       "hp": 100,
