@@ -7,27 +7,19 @@ vitals, and the main LCD on the right shows base stats and the dex entry.
 
 ## Controls
 
-The right screen has two modes, swapped with the white key.
-
-**Entry mode** — base stats and the Pokédex text:
-
 | Control | Does |
 | --- | --- |
 | D-pad ← → | Step one Pokémon |
 | D-pad ↑ ↓ | Jump ten |
+| White key | Swap the right screen between the entry and the name list |
+| Black button | Narrate the entry |
+| Yellow button | Random Pokémon |
+| Arrow keys / space | Mirror the D-pad and the black button |
 
-**List mode** — a selectable list of all names:
-
-| Control | Does |
-| --- | --- |
-| D-pad ↑ ↓ | Move one row |
-| D-pad ← → | Jump ten |
-| Click a row | Select it |
-
-Either mode wraps at both ends, so the D-pad never dead-ends. The black
-button narrates the entry, the yellow button jumps to a random Pokémon,
-and the arrow keys and space mirror the hardware. Search and the type
-filter narrow whatever the D-pad steps through.
+The D-pad means the same thing in both screen modes, and wraps at both
+ends so it never dead-ends. In list mode you can also click a row
+directly. Search and the type filter narrow whatever the D-pad steps
+through.
 
 ## Data source
 

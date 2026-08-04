@@ -70,12 +70,8 @@ async function init() {
   });
 }
 
-// In a list the vertical axis steps one row; reading an entry, the
-// horizontal axis is the natural page-turn. The other axis jumps ten.
+// Same in both modes so the D-pad never changes meaning underfoot.
 function deltaFor(dir) {
-  if (listMode) {
-    return { up: -1, down: 1, left: -PAGE, right: PAGE }[dir];
-  }
   return { left: -1, right: 1, up: -PAGE, down: PAGE }[dir];
 }
 
@@ -270,9 +266,10 @@ function keepSelectedRowVisible() {
 }
 
 function renderHint() {
+  const nav = `D-pad: <kbd>←</kbd> <kbd>→</kbd> step · <kbd>↑</kbd> <kbd>↓</kbd> jump ten`;
   hint.innerHTML = listMode
-    ? `D-pad: <kbd>↑</kbd> <kbd>↓</kbd> move · <kbd>←</kbd> <kbd>→</kbd> jump ten · white key returns to the entry`
-    : `D-pad: <kbd>←</kbd> <kbd>→</kbd> step · <kbd>↑</kbd> <kbd>↓</kbd> jump ten · white key opens the list · black button narrates`;
+    ? `${nav} · white key returns to the entry`
+    : `${nav} · white key opens the list · black button narrates`;
 }
 
 init();
