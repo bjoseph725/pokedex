@@ -1,7 +1,12 @@
 # Pokédex — Kanto (#1–151)
 
-A static, dependency-free Pokédex covering the original 151 Pokémon, with
-accurate base stats, types, and Pokédex flavor text.
+A static, dependency-free Pokédex covering the original 151 Pokémon, styled
+as a physical handheld device: a color screen on the left shows the
+Pokémon's artwork and name, and a monochrome LCD on the right shows its
+dex readout (genus, height/weight, base stats, and flavor text). Search,
+filter by type, or step through with Prev/Next (also works with the
+arrow keys) — the filmstrip at the bottom tracks whatever's currently
+selected.
 
 ## Data source
 
@@ -31,6 +36,13 @@ npm run serve
 
 Or open `index.html` directly, or serve the folder with any static file
 server.
+
+## Design note
+
+The device chrome (screens, stat bars, flavor text) commits to a single
+dark studio-photography look rather than adapting to light/dark system
+theme — the red plastic reads best against a dark, neutral backdrop
+regardless of the viewer's OS setting.
 
 ## What's included per Pokémon
 

@@ -1,38 +1,51 @@
-const TYPE_COLOR_VAR = (type) => `var(--type-${type.toLowerCase()})`;
-const MAX_STAT_SCALE = 180; // ~ highest reasonable base stat for bar scaling
+const STAT_LABELS = [
+  ["hp", "HP"],
+  ["attack", "ATTACK"],
+  ["defense", "DEFENSE"],
+  ["special_attack", "SP.ATK"],
+  ["special_defense", "SP.DEF"],
+  ["speed", "SPEED"],
+];
+const MAX_STAT = 180;
 
-const grid = document.getElementById("grid");
 const searchInput = document.getElementById("search");
 const typeFilter = document.getElementById("type-filter");
-const sortBy = document.getElementById("sort-by");
 const resultCount = document.getElementById("result-count");
-const modalBackdrop = document.getElementById("modal-backdrop");
-const modalContent = document.getElementById("modal-content");
-const modalClose = document.getElementById("modal-close");
+const filmstrip = document.getElementById("filmstrip");
+const btnPrev = document.getElementById("btn-prev");
+const btnNext = document.getElementById("btn-next");
 
-let pokemonList = [];
+let allPokemon = [];
+let filtered = [];
+let currentId = null;
 
 async function init() {
   const res = await fetch("data/pokemon.json");
-  pokemonList = await res.json();
-  populateTypeFilter();
-  render();
+  allPokemon = await res.json();
+  currentId = allPokemon[0].id;
 
-  searchInput.addEventListener("input", render);
-  typeFilter.addEventListener("change", render);
-  sortBy.addEventListener("change", render);
-  modalClose.addEventListener("click", closeModal);
-  modalBackdrop.addEventListener("click", (e) => {
-    if (e.target === modalBackdrop) closeModal();
-  });
+  populateTypeFilter();
+  applyFilters();
+
+  searchInput.addEventListener("input", () => applyFilters());
+  typeFilter.addEventListener("change", () => applyFilters());
+  btnPrev.addEventListener("click", () => step(-1));
+  btnNext.addEventListener("click", () => step(1));
+
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeModal();
+    const tag = document.activeElement?.tagName;
+    if (tag === "INPUT" || tag === "SELECT") {
+      if (e.key === "Enter" && tag === "INPUT") jumpToFirstMatch();
+      return;
+    }
+    if (e.key === "ArrowLeft") step(-1);
+    if (e.key === "ArrowRight") step(1);
   });
 }
 
 function populateTypeFilter() {
   const types = new Set();
-  pokemonList.forEach((p) => p.types.forEach((t) => types.add(t)));
+  allPokemon.forEach((p) => p.types.forEach((t) => types.add(t)));
   [...types].sort().forEach((t) => {
     const opt = document.createElement("option");
     opt.value = t;
@@ -41,11 +54,11 @@ function populateTypeFilter() {
   });
 }
 
-function getFiltered() {
+function applyFilters() {
   const query = searchInput.value.trim().toLowerCase();
   const type = typeFilter.value;
 
-  let list = pokemonList.filter((p) => {
+  filtered = allPokemon.filter((p) => {
     const matchesQuery =
       !query ||
       p.name.toLowerCase().includes(query) ||
@@ -55,124 +68,115 @@ function getFiltered() {
     return matchesQuery && matchesType;
   });
 
-  switch (sortBy.value) {
-    case "name":
-      list = list.sort((a, b) => a.name.localeCompare(b.name));
-      break;
-    case "total-desc":
-      list = list.sort((a, b) => b.stats.total - a.stats.total);
-      break;
-    case "hp-desc":
-      list = list.sort((a, b) => b.stats.hp - a.stats.hp);
-      break;
-    case "attack-desc":
-      list = list.sort((a, b) => b.stats.attack - a.stats.attack);
-      break;
-    case "speed-desc":
-      list = list.sort((a, b) => b.stats.speed - a.stats.speed);
-      break;
-    default:
-      list = list.sort((a, b) => a.id - b.id);
+  if (!filtered.some((p) => p.id === currentId) && filtered.length) {
+    currentId = filtered[0].id;
   }
-  return list;
+
+  buildFilmstrip();
+  updateResultCount();
+  renderDevice();
 }
 
-function render() {
-  const list = getFiltered();
-  resultCount.textContent = `${list.length} of ${pokemonList.length} Pokémon`;
-  grid.innerHTML = "";
+function jumpToFirstMatch() {
+  if (filtered.length) {
+    currentId = filtered[0].id;
+    renderDevice();
+    highlightFilmstrip();
+    scrollCurrentIntoView();
+  }
+}
 
-  if (list.length === 0) {
-    grid.innerHTML = `<p class="no-results">No Pokémon match your search.</p>`;
+function step(delta) {
+  if (!filtered.length) return;
+  const idx = filtered.findIndex((p) => p.id === currentId);
+  const nextIdx = idx === -1 ? 0 : (idx + delta + filtered.length) % filtered.length;
+  currentId = filtered[nextIdx].id;
+  renderDevice();
+  highlightFilmstrip();
+  scrollCurrentIntoView();
+}
+
+function updateResultCount() {
+  resultCount.textContent = `${filtered.length} of ${allPokemon.length} Pokémon`;
+}
+
+function buildFilmstrip() {
+  if (!filtered.length) {
+    filmstrip.innerHTML = `<p class="no-results">No Pokémon match your search.</p>`;
     return;
   }
-
-  const fragment = document.createDocumentFragment();
-  for (const p of list) {
-    fragment.appendChild(renderCard(p));
-  }
-  grid.appendChild(fragment);
-}
-
-function renderCard(p) {
-  const card = document.createElement("div");
-  card.className = "card";
-  card.setAttribute("role", "listitem");
-  card.tabIndex = 0;
-  card.innerHTML = `
-    <div class="dex-num">#${String(p.id).padStart(3, "0")}</div>
-    <img src="${p.sprites.official_artwork}" alt="${p.name}" loading="lazy" />
-    <div class="name">${p.name}</div>
-    <div class="type-badges">${typeBadges(p.types)}</div>
-  `;
-  const open = () => openModal(p);
-  card.addEventListener("click", open);
-  card.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      open();
-    }
-  });
-  return card;
-}
-
-function typeBadges(types) {
-  return types
+  filmstrip.innerHTML = filtered
     .map(
-      (t) =>
-        `<span class="type-badge" style="background:${TYPE_COLOR_VAR(t)}">${t}</span>`
+      (p) => `
+      <button type="button" role="listitem" data-id="${p.id}" aria-current="${p.id === currentId}" title="#${String(p.id).padStart(3, "0")} ${p.name}">
+        <img src="${p.sprites.official_artwork}" alt="${p.name}" loading="lazy" />
+      </button>
+    `
     )
     .join("");
+
+  filmstrip.querySelectorAll("button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      currentId = Number(btn.dataset.id);
+      renderDevice();
+      highlightFilmstrip();
+    });
+  });
 }
 
-function statRow(label, value, isTotal = false) {
-  const pct = Math.min(100, Math.round((value / MAX_STAT_SCALE) * 100));
-  return `
-    <div class="stat-row${isTotal ? " total" : ""}">
-      <span class="stat-label">${label}</span>
-      <span class="stat-value">${value}</span>
-      <div class="stat-bar-track"><div class="stat-bar-fill" style="width:${pct}%"></div></div>
-    </div>
-  `;
+function highlightFilmstrip() {
+  filmstrip.querySelectorAll("button").forEach((btn) => {
+    btn.setAttribute("aria-current", String(Number(btn.dataset.id) === currentId));
+  });
 }
 
-function openModal(p) {
-  const s = p.stats;
-  modalContent.innerHTML = `
-    <div class="modal-header">
-      <img src="${p.sprites.official_artwork}" alt="${p.name}" />
-      <div>
-        <div class="dex-num">#${String(p.id).padStart(3, "0")}</div>
-        <h2 id="modal-name">${p.name}</h2>
-        <div class="genus">${p.genus ?? ""}</div>
-        <div class="type-badges">${typeBadges(p.types)}</div>
-      </div>
-    </div>
-
-    ${p.flavor_text ? `<p class="flavor-text">"${p.flavor_text}"</p>` : ""}
-
-    <dl class="info-grid">
-      <dt>Height</dt><dd>${p.height_m} m</dd>
-      <dt>Weight</dt><dd>${p.weight_kg} kg</dd>
-      <dt>Capture Rate</dt><dd>${p.capture_rate ?? "—"}</dd>
-    </dl>
-
-    <div class="stats-title">Base Stats</div>
-    ${statRow("HP", s.hp)}
-    ${statRow("Attack", s.attack)}
-    ${statRow("Defense", s.defense)}
-    ${statRow("Sp. Atk", s.special_attack)}
-    ${statRow("Sp. Def", s.special_defense)}
-    ${statRow("Speed", s.speed)}
-    ${statRow("Total", s.total, true)}
-  `;
-  modalBackdrop.hidden = false;
-  modalClose.focus();
+function scrollCurrentIntoView() {
+  const btn = filmstrip.querySelector(`button[data-id="${currentId}"]`);
+  btn?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
 }
 
-function closeModal() {
-  modalBackdrop.hidden = true;
-  modalContent.innerHTML = "";
+function bar(value) {
+  const width = 16;
+  const filledCount = Math.max(1, Math.round((value / MAX_STAT) * width));
+  return "█".repeat(Math.min(width, filledCount)) + "░".repeat(Math.max(0, width - filledCount));
+}
+
+function renderDevice() {
+  const p = allPokemon.find((x) => x.id === currentId);
+  if (!p) return;
+
+  document.getElementById("mon-image").src = p.sprites.official_artwork;
+  document.getElementById("mon-image").alt = p.name;
+  document.getElementById("mon-dexno").textContent = "No." + String(p.id).padStart(3, "0");
+  document.getElementById("mon-name").textContent = p.name.toUpperCase();
+  document.getElementById("mon-types").innerHTML = p.types
+    .map((t) => `<span class="type-chip">${t}</span>`)
+    .join("");
+
+  const lines = [];
+  lines.push(`<div class="info-heading">Genus</div>`);
+  lines.push(`<div class="info-line">${p.genus}</div>`);
+
+  lines.push(`<div class="info-heading">Height / Weight</div>`);
+  lines.push(
+    `<div class="info-line">${p.height_m.toFixed(1)} m   /   ${p.weight_kg.toFixed(1)} kg</div>`
+  );
+
+  lines.push(`<div class="info-heading">Base Stats</div>`);
+  for (const [key, label] of STAT_LABELS) {
+    const val = p.stats[key];
+    lines.push(
+      `<div class="stat-line"><span>${label}</span><span class="stat-bar">${bar(val)}</span><span class="stat-val">${val}</span></div>`
+    );
+  }
+  lines.push(
+    `<div class="stat-line"><span>TOTAL</span><span></span><span class="stat-val">${p.stats.total}</span></div>`
+  );
+
+  lines.push(`<div class="info-heading">Pokédex Data</div>`);
+  lines.push(`<div class="flavor">${p.flavor_text}<span class="cursor"></span></div>`);
+
+  document.getElementById("info-screen").innerHTML = lines.join("");
 }
 
 init();

@@ -7,43 +7,78 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <h1><span class="pokeball" aria-hidden="true"></span>Pokédex <span class="subtitle">Kanto · #001–151</span></h1>
-    <div class="controls">
-      <input id="search" type="search" placeholder="Search by name or #..." aria-label="Search Pokémon" />
-      <select id="type-filter" aria-label="Filter by type">
-        <option value="">All types</option>
-      </select>
-      <select id="sort-by" aria-label="Sort by">
-        <option value="id">Sort: # (low-high)</option>
-        <option value="name">Sort: Name (A-Z)</option>
-        <option value="total-desc">Sort: Total stats (high-low)</option>
-        <option value="hp-desc">Sort: HP (high-low)</option>
-        <option value="attack-desc">Sort: Attack (high-low)</option>
-        <option value="speed-desc">Sort: Speed (high-low)</option>
-      </select>
-    </div>
-  </header>
+  <div class="page">
+    <header class="top">
+      <h1>Pokédex <span class="subtitle">Kanto · #001–151</span></h1>
+      <div class="controls">
+        <input id="search" type="search" placeholder="Search by name or #..." aria-label="Search Pokémon" />
+        <select id="type-filter" aria-label="Filter by type">
+          <option value="">All types</option>
+        </select>
+      </div>
+    </header>
 
-  <main>
-    <p id="result-count" class="result-count"></p>
-    <div id="grid" class="grid" role="list"></div>
-  </main>
+    <main>
+      <div class="device">
+        <div class="topbar">
+          <div class="lens"></div>
+          <div class="leds">
+            <span class="led green"></span>
+            <span class="led amber"></span>
+          </div>
+          <span class="topbar-label">POKÉDEX</span>
+        </div>
 
-  <div id="modal-backdrop" class="modal-backdrop" hidden>
-    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-name">
-      <button id="modal-close" class="modal-close" aria-label="Close">&times;</button>
-      <div id="modal-content"></div>
-    </div>
+        <div class="screens">
+          <div class="panel left">
+            <div class="color-screen">
+              <img class="mon-sprite" id="mon-image" src="" alt="" />
+            </div>
+            <div class="nameplate">
+              <div class="dex-no" id="mon-dexno">No.001</div>
+              <div class="mon-name" id="mon-name">BULBASAUR</div>
+            </div>
+            <div class="type-row" id="mon-types"></div>
+            <div class="spacer"></div>
+            <div class="left-controls">
+              <span class="shutter-btn"></span>
+              <div class="grille">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hinge"></div>
+
+          <div class="panel right">
+            <div class="info-screen" id="info-screen"></div>
+            <div class="controls-row">
+              <div class="dpad">
+                <span class="bar h"></span><span class="bar v"></span>
+              </div>
+              <div class="spacer"></div>
+              <div class="round-btn-group">
+                <button type="button" class="round-btn white" id="btn-prev" aria-label="Previous Pokémon">‹</button>
+                <button type="button" class="round-btn amber" id="btn-next" aria-label="Next Pokémon">›</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p id="result-count" class="result-count"></p>
+
+      <div class="filmstrip" id="filmstrip" role="list" aria-label="Choose a Pokémon"></div>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Stats, species data, and sprites sourced from the
+        <a href="https://github.com/PokeAPI/pokeapi" target="_blank" rel="noopener">PokéAPI</a>
+        project (Pokémon and Pokémon character names are trademarks of Nintendo).
+      </p>
+    </footer>
   </div>
-
-  <footer class="site-footer">
-    <p>
-      Stats, species data, and sprites sourced from the
-      <a href="https://github.com/PokeAPI/pokeapi" target="_blank" rel="noopener">PokéAPI</a>
-      project (Pokémon and Pokémon character names are trademarks of Nintendo).
-    </p>
-  </footer>
 
   <script src="app.js"></script>
 </body>
