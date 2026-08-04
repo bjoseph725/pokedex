@@ -7,20 +7,23 @@ const STAT_LABELS = [
   ["speed", "SPEED"],
 ];
 const MAX_STAT = 180;
-const JUMP = 10;
+const PAGE = 10;
 
 const searchInput = document.getElementById("search");
 const typeFilter = document.getElementById("type-filter");
 const resultCount = document.getElementById("result-count");
-const filmstrip = document.getElementById("filmstrip");
+const infoScreen = document.getElementById("info-screen");
+const hint = document.getElementById("hint");
 const btnPlay = document.getElementById("btn-play");
 const btnRandom = document.getElementById("btn-random");
+const btnMode = document.getElementById("btn-mode");
 const dpad = document.querySelector(".dpad");
 
 let allPokemon = [];
 let filtered = [];
 let currentId = null;
 let audio = null;
+let listMode = false;
 
 async function init() {
   const res = await fetch("data/pokemon.json");
@@ -34,12 +37,11 @@ async function init() {
   typeFilter.addEventListener("change", () => applyFilters());
   btnPlay.addEventListener("click", playEntry);
   btnRandom.addEventListener("click", pickRandom);
+  btnMode.addEventListener("click", toggleMode);
 
   dpad.addEventListener("click", (e) => {
     const arm = e.target.closest(".dpad-arm");
-    if (!arm) return;
-    const moves = { left: -1, right: 1, up: -JUMP, down: JUMP };
-    step(moves[arm.dataset.dir]);
+    if (arm) step(deltaFor(arm.dataset.dir));
   });
 
   document.addEventListener("keydown", (e) => {
@@ -48,19 +50,32 @@ async function init() {
       if (e.key === "Enter" && tag === "INPUT") jumpToFirstMatch();
       return;
     }
-    // Let Enter/Space activate whichever control is focused.
-    if (document.activeElement?.tagName === "BUTTON" && (e.key === "Enter" || e.key === " ")) {
-      return;
-    }
-    const moves = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -JUMP, ArrowDown: JUMP };
-    if (e.key in moves) {
+    // Let Enter/Space work normally on whichever control has focus.
+    if (tag === "BUTTON" && (e.key === "Enter" || e.key === " ")) return;
+
+    const dirs = {
+      ArrowLeft: "left",
+      ArrowRight: "right",
+      ArrowUp: "up",
+      ArrowDown: "down",
+    };
+    if (e.key in dirs) {
       e.preventDefault();
-      step(moves[e.key]);
+      step(deltaFor(dirs[e.key]));
     } else if (e.key === " ") {
       e.preventDefault();
       playEntry();
     }
   });
+}
+
+// In a list the vertical axis steps one row; reading an entry, the
+// horizontal axis is the natural page-turn. The other axis jumps ten.
+function deltaFor(dir) {
+  if (listMode) {
+    return { up: -1, down: 1, left: -PAGE, right: PAGE }[dir];
+  }
+  return { left: -1, right: 1, up: -PAGE, down: PAGE }[dir];
 }
 
 function populateTypeFilter() {
@@ -92,29 +107,24 @@ function applyFilters() {
     currentId = filtered[0].id;
   }
 
-  buildFilmstrip();
-  updateResultCount();
-  renderDevice();
+  resultCount.textContent = `${filtered.length} of ${allPokemon.length} Pokémon`;
+  render();
 }
 
 function jumpToFirstMatch() {
   if (!filtered.length) return;
   currentId = filtered[0].id;
-  renderDevice();
-  highlightFilmstrip();
-  scrollCurrentIntoView();
+  render();
 }
 
 function step(delta) {
-  if (!filtered.length) return;
+  if (!filtered.length || !delta) return;
   const idx = filtered.findIndex((p) => p.id === currentId);
   const from = idx === -1 ? 0 : idx;
-  // Wrap around at both ends so the D-pad never dead-ends.
-  const nextIdx = (((from + delta) % filtered.length) + filtered.length) % filtered.length;
-  currentId = filtered[nextIdx].id;
-  renderDevice();
-  highlightFilmstrip();
-  scrollCurrentIntoView();
+  // Wrap at both ends so the D-pad never dead-ends.
+  const next = (((from + delta) % filtered.length) + filtered.length) % filtered.length;
+  currentId = filtered[next].id;
+  render();
 }
 
 function pickRandom() {
@@ -124,48 +134,13 @@ function pickRandom() {
     next = filtered[Math.floor(Math.random() * filtered.length)].id;
   }
   currentId = next;
-  renderDevice();
-  highlightFilmstrip();
-  scrollCurrentIntoView();
+  render();
 }
 
-function updateResultCount() {
-  resultCount.textContent = `${filtered.length} of ${allPokemon.length} Pokémon`;
-}
-
-function buildFilmstrip() {
-  if (!filtered.length) {
-    filmstrip.innerHTML = `<p class="no-results">No Pokémon match your search.</p>`;
-    return;
-  }
-  filmstrip.innerHTML = filtered
-    .map(
-      (p) => `
-      <button type="button" role="listitem" data-id="${p.id}" aria-current="${p.id === currentId}" title="#${String(p.id).padStart(3, "0")} ${p.name}">
-        <img src="${p.sprites.official_artwork}" alt="${p.name}" loading="lazy" />
-      </button>
-    `
-    )
-    .join("");
-
-  filmstrip.querySelectorAll("button").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      currentId = Number(btn.dataset.id);
-      renderDevice();
-      highlightFilmstrip();
-    });
-  });
-}
-
-function highlightFilmstrip() {
-  filmstrip.querySelectorAll("button").forEach((btn) => {
-    btn.setAttribute("aria-current", String(Number(btn.dataset.id) === currentId));
-  });
-}
-
-function scrollCurrentIntoView() {
-  const btn = filmstrip.querySelector(`button[data-id="${currentId}"]`);
-  btn?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+function toggleMode() {
+  listMode = !listMode;
+  btnMode.textContent = listMode ? "Entry" : "List";
+  render();
 }
 
 function stopAudio() {
@@ -196,37 +171,40 @@ function bar(value) {
   return "█".repeat(Math.min(width, filledCount)) + "░".repeat(Math.max(0, width - filledCount));
 }
 
-function renderDevice() {
+function render() {
   const p = allPokemon.find((x) => x.id === currentId);
   if (!p) return;
 
   stopAudio();
+  renderLid(p);
+  if (listMode) renderList();
+  else renderEntry(p);
+  renderHint();
+}
 
+function renderLid(p) {
   document.getElementById("mon-image").src = p.sprites.official_artwork;
   document.getElementById("mon-image").alt = p.name;
   document.getElementById("mon-name").textContent = p.name;
   document.getElementById("mon-genus").textContent = p.genus;
   document.getElementById("type-plate").textContent = p.types.join(" / ");
+  document.getElementById("dex-plate").textContent =
+    `No.${String(p.id).padStart(3, "0")}`;
 
-  // Small green readout beside the D-pad.
   document.getElementById("mini-lcd").innerHTML = [
-    `No.${String(p.id).padStart(3, "0")}`,
+    `No.${String(p.id).padStart(3, "0")}  ${p.name.toUpperCase()}`,
     `HT ${p.height_m.toFixed(1)}m  WT ${p.weight_kg.toFixed(1)}kg`,
     `CATCH RATE ${p.capture_rate}`,
     `TOTAL ${p.stats.total}`,
   ]
     .map((line) => `<div>${line}</div>`)
     .join("");
+}
 
+// Genus and height/weight live on the lid screen and the green readout,
+// so this screen carries only what those can't fit.
+function renderEntry(p) {
   const lines = [];
-  lines.push(`<div class="info-heading">Genus</div>`);
-  lines.push(`<div class="info-line">${p.genus}</div>`);
-
-  lines.push(`<div class="info-heading">Height / Weight</div>`);
-  lines.push(
-    `<div class="info-line">${p.height_m.toFixed(1)} m   /   ${p.weight_kg.toFixed(1)} kg</div>`
-  );
-
   lines.push(`<div class="info-heading">Base Stats</div>`);
   for (const [key, label] of STAT_LABELS) {
     const val = p.stats[key];
@@ -241,7 +219,57 @@ function renderDevice() {
   lines.push(`<div class="info-heading">Pokédex Data</div>`);
   lines.push(`<div class="flavor">${p.flavor_text}<span class="cursor"></span></div>`);
 
-  document.getElementById("info-screen").innerHTML = lines.join("");
+  infoScreen.innerHTML = lines.join("");
+  infoScreen.scrollTop = 0;
+}
+
+function renderList() {
+  if (!filtered.length) {
+    infoScreen.innerHTML = `<p class="list-empty">No Pokémon match your search.</p>`;
+    return;
+  }
+
+  infoScreen.innerHTML =
+    `<div class="dex-list">` +
+    filtered
+      .map(
+        (p) => `
+        <button type="button" class="dex-row" data-id="${p.id}" aria-current="${p.id === currentId}">
+          <span class="num">${String(p.id).padStart(3, "0")}</span>
+          <span>${p.name.toUpperCase()}</span>
+        </button>`
+      )
+      .join("") +
+    `</div>`;
+
+  infoScreen.querySelectorAll(".dex-row").forEach((row) => {
+    row.addEventListener("click", () => {
+      currentId = Number(row.dataset.id);
+      render();
+    });
+  });
+
+  keepSelectedRowVisible();
+}
+
+// Scroll the screen itself rather than calling scrollIntoView, which
+// walks up and scrolls ancestors (and on mobile, the page with it).
+function keepSelectedRowVisible() {
+  const row = infoScreen.querySelector('.dex-row[aria-current="true"]');
+  if (!row) return;
+  const top = row.offsetTop;
+  const bottom = top + row.offsetHeight;
+  const viewTop = infoScreen.scrollTop;
+  const viewBottom = viewTop + infoScreen.clientHeight;
+
+  if (top < viewTop) infoScreen.scrollTop = top;
+  else if (bottom > viewBottom) infoScreen.scrollTop = bottom - infoScreen.clientHeight;
+}
+
+function renderHint() {
+  hint.innerHTML = listMode
+    ? `D-pad: <kbd>↑</kbd> <kbd>↓</kbd> move · <kbd>←</kbd> <kbd>→</kbd> jump ten · white key returns to the entry`
+    : `D-pad: <kbd>←</kbd> <kbd>→</kbd> step · <kbd>↑</kbd> <kbd>↓</kbd> jump ten · white key opens the list · black button narrates`;
 }
 
 init();

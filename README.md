@@ -2,22 +2,32 @@
 
 A static, dependency-free Pokédex covering the original 151 Pokémon, styled
 as a physical handheld device: a color screen on the left shows the
-Pokémon's artwork and name, a small green readout carries its vitals,
-and a monochrome LCD on the right shows the dex entry (genus,
-height/weight, base stats, and flavor text).
+Pokémon's artwork, name, and genus, a green readout below it carries the
+vitals, and the main LCD on the right shows base stats and the dex entry.
 
 ## Controls
 
+The right screen has two modes, swapped with the white key.
+
+**Entry mode** — base stats and the Pokédex text:
+
 | Control | Does |
 | --- | --- |
-| D-pad ← → | Step one Pokémon (wraps at both ends) |
+| D-pad ← → | Step one Pokémon |
 | D-pad ↑ ↓ | Jump ten |
-| Red button | Narrate the entry |
-| Yellow button | Random Pokémon |
-| Arrow keys / space | Same as the D-pad and red button |
 
-Search and the type filter narrow what the D-pad steps through, and the
-filmstrip along the bottom tracks whatever's currently selected.
+**List mode** — a selectable list of all names:
+
+| Control | Does |
+| --- | --- |
+| D-pad ↑ ↓ | Move one row |
+| D-pad ← → | Jump ten |
+| Click a row | Select it |
+
+Either mode wraps at both ends, so the D-pad never dead-ends. The black
+button narrates the entry, the yellow button jumps to a random Pokémon,
+and the arrow keys and space mirror the hardware. Search and the type
+filter narrow whatever the D-pad steps through.
 
 ## Data source
 
@@ -75,7 +85,12 @@ setting.
 
 Both screens are fixed height so the device never changes size as you
 page through, and each screen scrolls internally if content ever
-outgrows it.
+outgrows it. Screen heights are set from the tallest content measured
+across all 151 at each breakpoint.
+
+Moving the selection scrolls the screen's own `scrollTop` rather than
+calling `scrollIntoView`, which walks up the tree and drags the page
+with it on mobile.
 
 ## What's included per Pokémon
 

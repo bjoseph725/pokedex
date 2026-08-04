@@ -23,9 +23,7 @@
         <!-- Left half -->
         <div class="half left">
           <div class="lid-top">
-            <div class="lens">
-              <span class="lens-glint"></span>
-            </div>
+            <div class="lens"><span class="lens-glint"></span></div>
             <div class="leds">
               <span class="led red"></span>
               <span class="led amber"></span>
@@ -34,44 +32,47 @@
           </div>
 
           <div class="screen-frame">
-            <div class="frame-dots">
-              <span></span><span></span><span></span>
+            <div class="frame-lights" aria-hidden="true">
+              <span></span><span></span>
             </div>
+
             <div class="color-screen">
               <div class="screen-title" id="mon-name">BULBASAUR</div>
               <img class="mon-sprite" id="mon-image" src="" alt="" />
               <div class="screen-caption" id="mon-genus">Seed Pokémon</div>
             </div>
-            <div class="frame-base">
-              <span class="frame-dot"></span>
-              <span class="frame-dot"></span>
+
+            <div class="frame-bottom" aria-hidden="true">
+              <span class="frame-led"></span>
+              <div class="frame-grille">
+                <span></span><span></span><span></span><span></span>
+              </div>
             </div>
           </div>
 
           <div class="under-screen">
             <button type="button" class="shutter-btn" id="btn-play" aria-label="Play Pokédex entry"></button>
-            <div class="grille" aria-hidden="true">
-              <span></span><span></span><span></span><span></span><span></span><span></span>
+            <div class="dashes" aria-hidden="true">
+              <span></span><span></span>
             </div>
           </div>
 
           <div class="lower-left">
-            <div class="mini-lcd" id="mini-lcd" aria-hidden="true"></div>
+            <div class="mini-lcd" id="mini-lcd"></div>
 
             <div class="dpad" role="group" aria-label="Navigate Pokémon">
-              <button type="button" class="dpad-arm up" data-dir="up" aria-label="Back ten"></button>
-              <button type="button" class="dpad-arm left" data-dir="left" aria-label="Previous Pokémon"></button>
-              <button type="button" class="dpad-arm right" data-dir="right" aria-label="Next Pokémon"></button>
-              <button type="button" class="dpad-arm down" data-dir="down" aria-label="Forward ten"></button>
-              <span class="dpad-center" aria-hidden="true"></span>
+              <span class="dpad-plate" aria-hidden="true"></span>
+              <button type="button" class="dpad-arm up" data-dir="up"></button>
+              <button type="button" class="dpad-arm left" data-dir="left"></button>
+              <button type="button" class="dpad-arm right" data-dir="right"></button>
+              <button type="button" class="dpad-arm down" data-dir="down"></button>
             </div>
           </div>
         </div>
 
         <div class="hinge" aria-hidden="true">
-          <span class="pin"></span>
-          <span class="pin"></span>
-          <span class="pin"></span>
+          <span class="barrel-cap top"></span>
+          <span class="barrel-cap bottom"></span>
         </div>
 
         <!-- Right half -->
@@ -84,26 +85,23 @@
           </div>
 
           <div class="button-bank">
-            <span class="wide-key" aria-hidden="true"></span>
-            <span class="wide-key" aria-hidden="true"></span>
-            <span class="chip red" aria-hidden="true"></span>
-            <span class="chip green" aria-hidden="true"></span>
-            <div class="bank-spacer"></div>
-            <button type="button" class="yellow-btn" id="btn-random" aria-label="Random Pokémon"></button>
+            <button type="button" class="wide-key" id="btn-mode">List</button>
+            <span class="wide-key static" aria-hidden="true"></span>
+            <div class="bank-dashes" aria-hidden="true">
+              <span></span><span></span>
+            </div>
           </div>
 
-          <div class="type-plate" id="type-plate"></div>
+          <div class="bottom-bank">
+            <div class="dark-bar" id="type-plate"></div>
+            <div class="dark-bar" id="dex-plate"></div>
+            <button type="button" class="yellow-btn" id="btn-random" aria-label="Random Pokémon"></button>
+          </div>
         </div>
       </div>
 
-      <p class="hint">
-        D-pad: <kbd>←</kbd> <kbd>→</kbd> step · <kbd>↑</kbd> <kbd>↓</kbd> jump ten ·
-        red button narrates · yellow button is random
-      </p>
-
+      <p class="hint" id="hint"></p>
       <p id="result-count" class="result-count"></p>
-
-      <div class="filmstrip" id="filmstrip" role="list" aria-label="Choose a Pokémon"></div>
     </main>
 
     <footer class="site-footer">
