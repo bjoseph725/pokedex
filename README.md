@@ -25,6 +25,24 @@ is self-contained and doesn't depend on hotlinking to GitHub at runtime.
 Run `npm run build-data` to regenerate `data/pokemon.json` from the latest
 upstream CSVs, and `npm run download-sprites` to re-download artwork.
 
+## Narrated entries
+
+Pressing the red button on the device narrates the current Pokémon's
+entry — its name, then its Pokédex text. The clips live in
+`assets/audio/{id}.mp3` and were generated with text-to-speech.
+
+To regenerate them you need your own ElevenLabs API key, passed through
+the environment (never commit a key):
+
+```
+ELEVENLABS_API_KEY=your_key npm run generate-audio
+```
+
+Optional overrides: `ELEVENLABS_VOICE_ID` to change the narrator, and
+`ELEVENLABS_MODEL_ID` to change the model. The script skips any file
+that already exists, so an interrupted run resumes without re-spending
+credits.
+
 ## Running locally
 
 This is a static site with no build step:
@@ -52,6 +70,7 @@ regardless of the viewer's OS setting.
 - Height, weight, capture rate
 - Official artwork
 - Pokédex flavor text (from Pokémon Red)
+- A narrated audio clip of the entry
 
 ## Attribution
 

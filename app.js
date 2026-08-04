@@ -14,10 +14,12 @@ const resultCount = document.getElementById("result-count");
 const filmstrip = document.getElementById("filmstrip");
 const btnPrev = document.getElementById("btn-prev");
 const btnNext = document.getElementById("btn-next");
+const btnPlay = document.getElementById("btn-play");
 
 let allPokemon = [];
 let filtered = [];
 let currentId = null;
+let audio = null;
 
 async function init() {
   const res = await fetch("data/pokemon.json");
@@ -31,6 +33,7 @@ async function init() {
   typeFilter.addEventListener("change", () => applyFilters());
   btnPrev.addEventListener("click", () => step(-1));
   btnNext.addEventListener("click", () => step(1));
+  btnPlay.addEventListener("click", playEntry);
 
   document.addEventListener("keydown", (e) => {
     const tag = document.activeElement?.tagName;
@@ -40,7 +43,33 @@ async function init() {
     }
     if (e.key === "ArrowLeft") step(-1);
     if (e.key === "ArrowRight") step(1);
+    if (e.key === " " || e.key === "Enter") {
+      e.preventDefault();
+      playEntry();
+    }
   });
+}
+
+function stopAudio() {
+  if (audio) {
+    audio.pause();
+    audio = null;
+  }
+  btnPlay.classList.remove("playing");
+}
+
+function playEntry() {
+  // A second press while playing stops it rather than overlapping.
+  if (audio && !audio.paused) {
+    stopAudio();
+    return;
+  }
+  stopAudio();
+  audio = new Audio(`assets/audio/${currentId}.mp3`);
+  btnPlay.classList.add("playing");
+  audio.addEventListener("ended", stopAudio);
+  audio.addEventListener("error", stopAudio);
+  audio.play().catch(stopAudio);
 }
 
 function populateTypeFilter() {
@@ -144,6 +173,8 @@ function bar(value) {
 function renderDevice() {
   const p = allPokemon.find((x) => x.id === currentId);
   if (!p) return;
+
+  stopAudio();
 
   document.getElementById("mon-image").src = p.sprites.official_artwork;
   document.getElementById("mon-image").alt = p.name;

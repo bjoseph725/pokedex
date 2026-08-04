@@ -7,6 +7,7 @@
   "scripts": {
     "build-data": "node scripts/build-data.mjs",
     "download-sprites": "node scripts/download-sprites.mjs",
+    "generate-audio": "node scripts/generate-audio.mjs",
     "serve": "python3 -m http.server 8080"
   }
 }
