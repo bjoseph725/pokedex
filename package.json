@@ -1,0 +1,12 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Pokédex for the first 151 Pokémon with accurate base stats from PokéAPI.",
+  "type": "module",
+  "scripts": {
+    "build-data": "node scripts/build-data.mjs",
+    "download-sprites": "node scripts/download-sprites.mjs",
+    "serve": "python3 -m http.server 8080"
+  }
+}

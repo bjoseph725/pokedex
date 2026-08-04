@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokédex — Kanto #001–151</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1><span class="pokeball" aria-hidden="true"></span>Pokédex <span class="subtitle">Kanto · #001–151</span></h1>
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search by name or #..." aria-label="Search Pokémon" />
+      <select id="type-filter" aria-label="Filter by type">
+        <option value="">All types</option>
+      </select>
+      <select id="sort-by" aria-label="Sort by">
+        <option value="id">Sort: # (low-high)</option>
+        <option value="name">Sort: Name (A-Z)</option>
+        <option value="total-desc">Sort: Total stats (high-low)</option>
+        <option value="hp-desc">Sort: HP (high-low)</option>
+        <option value="attack-desc">Sort: Attack (high-low)</option>
+        <option value="speed-desc">Sort: Speed (high-low)</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <p id="result-count" class="result-count"></p>
+    <div id="grid" class="grid" role="list"></div>
+  </main>
+
+  <div id="modal-backdrop" class="modal-backdrop" hidden>
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+      <button id="modal-close" class="modal-close" aria-label="Close">&times;</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>
+      Stats, species data, and sprites sourced from the
+      <a href="https://github.com/PokeAPI/pokeapi" target="_blank" rel="noopener">PokéAPI</a>
+      project (Pokémon and Pokémon character names are trademarks of Nintendo).
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
