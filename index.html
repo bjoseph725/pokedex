@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pokédex — Kanto #001–151</title>
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Bump ?v= when styles or scripts change so GitHub Pages' CDN and
+       phone browsers can't serve a stale copy. -->
+  <link rel="stylesheet" href="styles.css?v=2" />
 </head>
 <body>
   <div class="page">
@@ -43,7 +45,7 @@
             </div>
 
             <div class="frame-bottom" aria-hidden="true">
-              <span class="frame-led"></span>
+              <span class="frame-led" id="lamp"></span>
               <div class="frame-grille">
                 <span></span><span></span><span></span><span></span>
               </div>
@@ -113,6 +115,6 @@
     </footer>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=2"></script>
 </body>
 </html>

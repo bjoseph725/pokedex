@@ -17,6 +17,7 @@ const hint = document.getElementById("hint");
 const btnPlay = document.getElementById("btn-play");
 const btnRandom = document.getElementById("btn-random");
 const btnMode = document.getElementById("btn-mode");
+const lamp = document.getElementById("lamp");
 const dpad = document.querySelector(".dpad");
 
 let allPokemon = [];
@@ -149,6 +150,7 @@ function stopAudio() {
     audio = null;
   }
   btnPlay.classList.remove("playing");
+  lamp.classList.remove("lit");
 }
 
 function playEntry() {
@@ -160,6 +162,7 @@ function playEntry() {
   stopAudio();
   audio = new Audio(`assets/audio/${currentId}.mp3`);
   btnPlay.classList.add("playing");
+  lamp.classList.add("lit");
   audio.addEventListener("ended", stopAudio);
   audio.addEventListener("error", stopAudio);
   audio.play().catch(stopAudio);
