@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Pokédex">
+  <defs>
+    <linearGradient id="shell" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#ea3b45"/>
+      <stop offset="0.45" stop-color="#cf1d28"/>
+      <stop offset="1" stop-color="#8d0f18"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#d8f2ff"/>
+      <stop offset="0.45" stop-color="#3d9ed8"/>
+      <stop offset="1" stop-color="#14568c"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e7f6f9"/>
+      <stop offset="1" stop-color="#a3ccd9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- casing -->
+  <rect x="3" y="2" width="58" height="60" rx="11" fill="url(#shell)"/>
+  <rect x="3" y="2" width="58" height="60" rx="11" fill="none"
+        stroke="#3d0509" stroke-width="2.5"/>
+
+  <!-- lens -->
+  <circle cx="21" cy="19" r="10.5" fill="#e6e2dc"/>
+  <circle cx="21" cy="19" r="8" fill="url(#glass)"/>
+  <ellipse cx="18" cy="15.5" rx="2.6" ry="1.9" fill="#ffffff" opacity="0.85"/>
+
+  <!-- indicator lamps -->
+  <circle cx="38" cy="14" r="2.6" fill="#e8443f" stroke="#3d0509" stroke-width="1"/>
+  <circle cx="46" cy="14" r="2.6" fill="#f2c33b" stroke="#3d0509" stroke-width="1"/>
+  <circle cx="54" cy="14" r="2.6" fill="#63c257" stroke="#3d0509" stroke-width="1"/>
+
+  <!-- screen in its bezel -->
+  <rect x="9" y="34" width="46" height="22" rx="3" fill="#e6e2dc"
+        stroke="#3d0509" stroke-width="2"/>
+  <rect x="13" y="37.5" width="38" height="15" rx="1.5" fill="url(#screen)"
+        stroke="#3d0509" stroke-width="1.5"/>
+</svg>

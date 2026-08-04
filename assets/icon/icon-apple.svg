@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Pokédex">
+  <defs>
+    <linearGradient id="shell" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#ea3b45"/>
+      <stop offset="0.45" stop-color="#cf1d28"/>
+      <stop offset="1" stop-color="#8d0f18"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#d8f2ff"/>
+      <stop offset="0.45" stop-color="#3d9ed8"/>
+      <stop offset="1" stop-color="#14568c"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e7f6f9"/>
+      <stop offset="1" stop-color="#a3ccd9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Full bleed: iOS masks its own corners, and transparency renders
+       black, so the casing colour fills the whole tile. -->
+  <rect width="180" height="180" fill="url(#shell)"/>
+
+  <!-- Artwork inset far enough to survive the corner mask. -->
+  <circle cx="60" cy="58" r="27" fill="#e6e2dc"/>
+  <circle cx="60" cy="58" r="20.5" fill="url(#glass)"/>
+  <ellipse cx="52" cy="49" rx="6.6" ry="4.8" fill="#ffffff" opacity="0.85"/>
+
+  <circle cx="104" cy="45" r="6.6" fill="#e8443f" stroke="#3d0509" stroke-width="2.5"/>
+  <circle cx="125" cy="45" r="6.6" fill="#f2c33b" stroke="#3d0509" stroke-width="2.5"/>
+  <circle cx="146" cy="45" r="6.6" fill="#63c257" stroke="#3d0509" stroke-width="2.5"/>
+
+  <rect x="30" y="100" width="120" height="52" rx="8" fill="#e6e2dc"
+        stroke="#3d0509" stroke-width="5"/>
+  <rect x="40" y="109" width="100" height="34" rx="4" fill="url(#screen)"
+        stroke="#3d0509" stroke-width="3.5"/>
+</svg>

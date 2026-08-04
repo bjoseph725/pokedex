@@ -46,6 +46,20 @@ is self-contained and doesn't depend on hotlinking to GitHub at runtime.
 Run `npm run build-data` to regenerate `data/pokemon.json` from the latest
 upstream CSVs, and `npm run download-sprites` to re-download artwork.
 
+## Icons
+
+The favicon and home-screen icons are drawn as vectors in
+`assets/icon/` — the casing front-on, with its lens, indicator lamps,
+and screen. `npm run build-icons` rasterises them into every size
+browsers ask for (`favicon.ico`, `apple-touch-icon.png`, and the PNGs
+referenced by `site.webmanifest`) using the local Chromium; set
+`CHROME_PATH` if yours lives somewhere unusual.
+
+There are two sources. `icon.svg` has rounded corners and a transparent
+surround for browser tabs. `icon-apple.svg` is full-bleed with the
+artwork inset, because iOS masks its own corners and renders any
+transparency as black.
+
 ## Narrated entries
 
 Pressing the red button on the device narrates the current Pokémon's
