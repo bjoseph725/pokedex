@@ -7,14 +7,15 @@ const STAT_LABELS = [
   ["speed", "SPEED"],
 ];
 const MAX_STAT = 180;
+const JUMP = 10;
 
 const searchInput = document.getElementById("search");
 const typeFilter = document.getElementById("type-filter");
 const resultCount = document.getElementById("result-count");
 const filmstrip = document.getElementById("filmstrip");
-const btnPrev = document.getElementById("btn-prev");
-const btnNext = document.getElementById("btn-next");
 const btnPlay = document.getElementById("btn-play");
+const btnRandom = document.getElementById("btn-random");
+const dpad = document.querySelector(".dpad");
 
 let allPokemon = [];
 let filtered = [];
@@ -31,9 +32,15 @@ async function init() {
 
   searchInput.addEventListener("input", () => applyFilters());
   typeFilter.addEventListener("change", () => applyFilters());
-  btnPrev.addEventListener("click", () => step(-1));
-  btnNext.addEventListener("click", () => step(1));
   btnPlay.addEventListener("click", playEntry);
+  btnRandom.addEventListener("click", pickRandom);
+
+  dpad.addEventListener("click", (e) => {
+    const arm = e.target.closest(".dpad-arm");
+    if (!arm) return;
+    const moves = { left: -1, right: 1, up: -JUMP, down: JUMP };
+    step(moves[arm.dataset.dir]);
+  });
 
   document.addEventListener("keydown", (e) => {
     const tag = document.activeElement?.tagName;
@@ -41,35 +48,19 @@ async function init() {
       if (e.key === "Enter" && tag === "INPUT") jumpToFirstMatch();
       return;
     }
-    if (e.key === "ArrowLeft") step(-1);
-    if (e.key === "ArrowRight") step(1);
-    if (e.key === " " || e.key === "Enter") {
+    // Let Enter/Space activate whichever control is focused.
+    if (document.activeElement?.tagName === "BUTTON" && (e.key === "Enter" || e.key === " ")) {
+      return;
+    }
+    const moves = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -JUMP, ArrowDown: JUMP };
+    if (e.key in moves) {
+      e.preventDefault();
+      step(moves[e.key]);
+    } else if (e.key === " ") {
       e.preventDefault();
       playEntry();
     }
   });
-}
-
-function stopAudio() {
-  if (audio) {
-    audio.pause();
-    audio = null;
-  }
-  btnPlay.classList.remove("playing");
-}
-
-function playEntry() {
-  // A second press while playing stops it rather than overlapping.
-  if (audio && !audio.paused) {
-    stopAudio();
-    return;
-  }
-  stopAudio();
-  audio = new Audio(`assets/audio/${currentId}.mp3`);
-  btnPlay.classList.add("playing");
-  audio.addEventListener("ended", stopAudio);
-  audio.addEventListener("error", stopAudio);
-  audio.play().catch(stopAudio);
 }
 
 function populateTypeFilter() {
@@ -107,19 +98,32 @@ function applyFilters() {
 }
 
 function jumpToFirstMatch() {
-  if (filtered.length) {
-    currentId = filtered[0].id;
-    renderDevice();
-    highlightFilmstrip();
-    scrollCurrentIntoView();
-  }
+  if (!filtered.length) return;
+  currentId = filtered[0].id;
+  renderDevice();
+  highlightFilmstrip();
+  scrollCurrentIntoView();
 }
 
 function step(delta) {
   if (!filtered.length) return;
   const idx = filtered.findIndex((p) => p.id === currentId);
-  const nextIdx = idx === -1 ? 0 : (idx + delta + filtered.length) % filtered.length;
+  const from = idx === -1 ? 0 : idx;
+  // Wrap around at both ends so the D-pad never dead-ends.
+  const nextIdx = (((from + delta) % filtered.length) + filtered.length) % filtered.length;
   currentId = filtered[nextIdx].id;
+  renderDevice();
+  highlightFilmstrip();
+  scrollCurrentIntoView();
+}
+
+function pickRandom() {
+  if (filtered.length < 2) return;
+  let next = currentId;
+  while (next === currentId) {
+    next = filtered[Math.floor(Math.random() * filtered.length)].id;
+  }
+  currentId = next;
   renderDevice();
   highlightFilmstrip();
   scrollCurrentIntoView();
@@ -164,6 +168,28 @@ function scrollCurrentIntoView() {
   btn?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
 }
 
+function stopAudio() {
+  if (audio) {
+    audio.pause();
+    audio = null;
+  }
+  btnPlay.classList.remove("playing");
+}
+
+function playEntry() {
+  // A second press while playing stops it rather than overlapping.
+  if (audio && !audio.paused) {
+    stopAudio();
+    return;
+  }
+  stopAudio();
+  audio = new Audio(`assets/audio/${currentId}.mp3`);
+  btnPlay.classList.add("playing");
+  audio.addEventListener("ended", stopAudio);
+  audio.addEventListener("error", stopAudio);
+  audio.play().catch(stopAudio);
+}
+
 function bar(value) {
   const width = 16;
   const filledCount = Math.max(1, Math.round((value / MAX_STAT) * width));
@@ -178,10 +204,18 @@ function renderDevice() {
 
   document.getElementById("mon-image").src = p.sprites.official_artwork;
   document.getElementById("mon-image").alt = p.name;
-  document.getElementById("mon-dexno").textContent = "No." + String(p.id).padStart(3, "0");
-  document.getElementById("mon-name").textContent = p.name.toUpperCase();
-  document.getElementById("mon-types").innerHTML = p.types
-    .map((t) => `<span class="type-chip">${t}</span>`)
+  document.getElementById("mon-name").textContent = p.name;
+  document.getElementById("mon-genus").textContent = p.genus;
+  document.getElementById("type-plate").textContent = p.types.join(" / ");
+
+  // Small green readout beside the D-pad.
+  document.getElementById("mini-lcd").innerHTML = [
+    `No.${String(p.id).padStart(3, "0")}`,
+    `HT ${p.height_m.toFixed(1)}m  WT ${p.weight_kg.toFixed(1)}kg`,
+    `CATCH RATE ${p.capture_rate}`,
+    `TOTAL ${p.stats.total}`,
+  ]
+    .map((line) => `<div>${line}</div>`)
     .join("");
 
   const lines = [];

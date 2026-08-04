@@ -2,11 +2,22 @@
 
 A static, dependency-free Pokédex covering the original 151 Pokémon, styled
 as a physical handheld device: a color screen on the left shows the
-Pokémon's artwork and name, and a monochrome LCD on the right shows its
-dex readout (genus, height/weight, base stats, and flavor text). Search,
-filter by type, or step through with Prev/Next (also works with the
-arrow keys) — the filmstrip at the bottom tracks whatever's currently
-selected.
+Pokémon's artwork and name, a small green readout carries its vitals,
+and a monochrome LCD on the right shows the dex entry (genus,
+height/weight, base stats, and flavor text).
+
+## Controls
+
+| Control | Does |
+| --- | --- |
+| D-pad ← → | Step one Pokémon (wraps at both ends) |
+| D-pad ↑ ↓ | Jump ten |
+| Red button | Narrate the entry |
+| Yellow button | Random Pokémon |
+| Arrow keys / space | Same as the D-pad and red button |
+
+Search and the type filter narrow what the D-pad steps through, and the
+filmstrip along the bottom tracks whatever's currently selected.
 
 ## Data source
 
@@ -57,10 +68,14 @@ server.
 
 ## Design note
 
-The device chrome (screens, stat bars, flavor text) commits to a single
-dark studio-photography look rather than adapting to light/dark system
-theme — the red plastic reads best against a dark, neutral backdrop
-regardless of the viewer's OS setting.
+The device chrome commits to a single dark studio-photography look
+rather than adapting to light/dark system theme — the red plastic reads
+best against a dark, neutral backdrop regardless of the viewer's OS
+setting.
+
+Both screens are fixed height so the device never changes size as you
+page through, and each screen scrolls internally if content ever
+outgrows it.
 
 ## What's included per Pokémon
 
