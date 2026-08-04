@@ -18,10 +18,7 @@
       "speed": 45,
       "total": 318
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "A strange seed was planted on its back at birth. The plant sprouts and grows with this POKéMON.",
     "sprites": {
       "official_artwork": "assets/artwork/1.png"
@@ -46,10 +43,7 @@
       "speed": 60,
       "total": 405
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.",
     "sprites": {
       "official_artwork": "assets/artwork/2.png"
@@ -74,10 +68,7 @@
       "speed": 80,
       "total": 525
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "The plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.",
     "sprites": {
       "official_artwork": "assets/artwork/3.png"
@@ -101,10 +92,7 @@
       "speed": 65,
       "total": 309
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail.",
     "sprites": {
       "official_artwork": "assets/artwork/4.png"
@@ -128,10 +116,7 @@
       "speed": 80,
       "total": 405
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "When it swings its burning tail, it elevates the temperature to unbearably high levels.",
     "sprites": {
       "official_artwork": "assets/artwork/5.png"
@@ -156,10 +141,7 @@
       "speed": 100,
       "total": 534
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally.",
     "sprites": {
       "official_artwork": "assets/artwork/6.png"
@@ -183,10 +165,7 @@
       "speed": 43,
       "total": 314
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "After birth, its back swells and hardens into a shell. Powerfully sprays foam from its mouth.",
     "sprites": {
       "official_artwork": "assets/artwork/7.png"
@@ -210,10 +189,7 @@
       "speed": 58,
       "total": 405
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Often hides in water to stalk unwary prey. For swimming fast, it moves its ears to maintain balance.",
     "sprites": {
       "official_artwork": "assets/artwork/8.png"
@@ -237,10 +213,7 @@
       "speed": 78,
       "total": 530
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "A brutal POKéMON with pressurized water jets on its shell. They are used for high speed tackles.",
     "sprites": {
       "official_artwork": "assets/artwork/9.png"
@@ -264,10 +237,7 @@
       "speed": 45,
       "total": 195
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 255,
-    "base_happiness": 70,
     "flavor_text": "Its short feet are tipped with suction pads that enable it to tirelessly climb slopes and walls.",
     "sprites": {
       "official_artwork": "assets/artwork/10.png"
@@ -291,10 +261,7 @@
       "speed": 30,
       "total": 205
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 120,
-    "base_happiness": 70,
     "flavor_text": "This POKéMON is vulnerable to attack while its shell is soft, exposing its weak and tender body.",
     "sprites": {
       "official_artwork": "assets/artwork/11.png"
@@ -319,10 +286,7 @@
       "speed": 70,
       "total": 395
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "In battle, it flaps its wings at high speed to release highly toxic dust into the air.",
     "sprites": {
       "official_artwork": "assets/artwork/12.png"
@@ -347,10 +311,7 @@
       "speed": 50,
       "total": 195
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 255,
-    "base_happiness": 70,
     "flavor_text": "Often found in forests, eating leaves. It has a sharp venomous stinger on its head.",
     "sprites": {
       "official_artwork": "assets/artwork/13.png"
@@ -375,10 +336,7 @@
       "speed": 35,
       "total": 205
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 120,
-    "base_happiness": 70,
     "flavor_text": "Almost incapable of moving, this POKéMON can only harden its shell to protect itself from predators.",
     "sprites": {
       "official_artwork": "assets/artwork/14.png"
@@ -403,10 +361,7 @@
       "speed": 75,
       "total": 395
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Flies at high speed and attacks using its large venomous stingers on its forelegs and tail.",
     "sprites": {
       "official_artwork": "assets/artwork/15.png"
@@ -431,10 +386,7 @@
       "speed": 56,
       "total": 251
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 255,
-    "base_happiness": 70,
     "flavor_text": "A common sight in forests and woods. It flaps its wings at ground level to kick up blinding sand.",
     "sprites": {
       "official_artwork": "assets/artwork/16.png"
@@ -459,10 +411,7 @@
       "speed": 71,
       "total": 349
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 120,
-    "base_happiness": 70,
     "flavor_text": "Very protective of its sprawling territorial area, this POKéMON will fiercely peck at any intruder.",
     "sprites": {
       "official_artwork": "assets/artwork/17.png"
@@ -487,10 +436,7 @@
       "speed": 101,
       "total": 479
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "When hunting, it skims the surface of water at high speed to pick off unwary prey such as MAGIKARP.",
     "sprites": {
       "official_artwork": "assets/artwork/18.png"
@@ -514,10 +460,7 @@
       "speed": 72,
       "total": 253
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 255,
-    "base_happiness": 70,
     "flavor_text": "Bites anything when it attacks. Small and very quick, it is a common sight in many places.",
     "sprites": {
       "official_artwork": "assets/artwork/19.png"
@@ -541,10 +484,7 @@
       "speed": 97,
       "total": 413
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 127,
-    "base_happiness": 70,
     "flavor_text": "It uses its whis­ kers to maintain its balance. It apparently slows down if they are cut off.",
     "sprites": {
       "official_artwork": "assets/artwork/20.png"
@@ -569,10 +509,7 @@
       "speed": 70,
       "total": 262
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 255,
-    "base_happiness": 70,
     "flavor_text": "Eats bugs in grassy areas. It has to flap its short wings at high speed to stay airborne.",
     "sprites": {
       "official_artwork": "assets/artwork/21.png"
@@ -597,10 +534,7 @@
       "speed": 100,
       "total": 442
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 90,
-    "base_happiness": 70,
     "flavor_text": "With its huge and magnificent wings, it can keep aloft without ever having to land for rest.",
     "sprites": {
       "official_artwork": "assets/artwork/22.png"
@@ -624,10 +558,7 @@
       "speed": 55,
       "total": 288
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 255,
-    "base_happiness": 70,
     "flavor_text": "Moves silently and stealthily. Eats the eggs of birds, such as PIDGEY and SPEAROW, whole.",
     "sprites": {
       "official_artwork": "assets/artwork/23.png"
@@ -651,10 +582,7 @@
       "speed": 80,
       "total": 448
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 90,
-    "base_happiness": 70,
     "flavor_text": "It is rumored that the ferocious warning markings on its belly differ from area to area.",
     "sprites": {
       "official_artwork": "assets/artwork/24.png"
@@ -678,10 +606,7 @@
       "speed": 90,
       "total": 320
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "When several of these POKéMON gather, their electricity could build and cause lightning storms.",
     "sprites": {
       "official_artwork": "assets/artwork/25.png"
@@ -705,10 +630,7 @@
       "speed": 110,
       "total": 485
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 75,
-    "base_happiness": 70,
     "flavor_text": "Its long tail serves as a ground to protect itself from its own high voltage power.",
     "sprites": {
       "official_artwork": "assets/artwork/26.png"
@@ -732,10 +654,7 @@
       "speed": 40,
       "total": 300
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 255,
-    "base_happiness": 70,
     "flavor_text": "Burrows deep underground in arid locations far from water. It only emerges to hunt for food.",
     "sprites": {
       "official_artwork": "assets/artwork/27.png"
@@ -759,10 +678,7 @@
       "speed": 65,
       "total": 450
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 90,
-    "base_happiness": 70,
     "flavor_text": "Curls up into a spiny ball when threatened. It can roll while curled up to attack or escape.",
     "sprites": {
       "official_artwork": "assets/artwork/28.png"
@@ -786,10 +702,7 @@
       "speed": 41,
       "total": 275
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 235,
-    "base_happiness": 70,
     "flavor_text": "Although small, its venomous barbs render this POKéMON dangerous. The female has smaller horns.",
     "sprites": {
       "official_artwork": "assets/artwork/29.png"
@@ -813,10 +726,7 @@
       "speed": 56,
       "total": 365
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 120,
-    "base_happiness": 70,
     "flavor_text": "The female's horn develops slowly. Prefers physical attacks such as clawing and biting.",
     "sprites": {
       "official_artwork": "assets/artwork/30.png"
@@ -841,10 +751,7 @@
       "speed": 76,
       "total": 505
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Its hard scales provide strong protection. It uses its hefty bulk to execute powerful moves.",
     "sprites": {
       "official_artwork": "assets/artwork/31.png"
@@ -868,10 +775,7 @@
       "speed": 50,
       "total": 273
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 235,
-    "base_happiness": 70,
     "flavor_text": "Stiffens its ears to sense danger. The larger its horns, the more powerful its secreted venom.",
     "sprites": {
       "official_artwork": "assets/artwork/32.png"
@@ -895,10 +799,7 @@
       "speed": 65,
       "total": 365
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 120,
-    "base_happiness": 70,
     "flavor_text": "An aggressive POKéMON that is quick to attack. The horn on its head secretes a powerful venom.",
     "sprites": {
       "official_artwork": "assets/artwork/33.png"
@@ -923,10 +824,7 @@
       "speed": 85,
       "total": 505
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "It uses its powerful tail in battle to smash, constrict, then break the prey's bones.",
     "sprites": {
       "official_artwork": "assets/artwork/34.png"
@@ -950,10 +848,7 @@
       "speed": 35,
       "total": 323
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 150,
-    "base_happiness": 140,
     "flavor_text": "Its magical and cute appeal has many admirers. It is rare and found only in certain areas.",
     "sprites": {
       "official_artwork": "assets/artwork/35.png"
@@ -977,10 +872,7 @@
       "speed": 60,
       "total": 483
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 25,
-    "base_happiness": 140,
     "flavor_text": "A timid fairy POKéMON that is rarely seen. It will run and hide the moment it senses people.",
     "sprites": {
       "official_artwork": "assets/artwork/36.png"
@@ -1004,10 +896,7 @@
       "speed": 65,
       "total": 299
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "At the time of birth, it has just one tail. The tail splits from its tip as it grows older.",
     "sprites": {
       "official_artwork": "assets/artwork/37.png"
@@ -1031,10 +920,7 @@
       "speed": 100,
       "total": 505
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 75,
-    "base_happiness": 70,
     "flavor_text": "Very smart and very vengeful. Grabbing one of its many tails could result in a 1000-year curse.",
     "sprites": {
       "official_artwork": "assets/artwork/38.png"
@@ -1059,10 +945,7 @@
       "speed": 20,
       "total": 270
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 170,
-    "base_happiness": 70,
     "flavor_text": "When its huge eyes light up, it sings a mysteriously soothing melody that lulls its enemies to sleep.",
     "sprites": {
       "official_artwork": "assets/artwork/39.png"
@@ -1087,10 +970,7 @@
       "speed": 45,
       "total": 435
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 50,
-    "base_happiness": 70,
     "flavor_text": "The body is soft and rubbery. When angered, it will suck in air and inflate itself to an enormous size.",
     "sprites": {
       "official_artwork": "assets/artwork/40.png"
@@ -1115,10 +995,7 @@
       "speed": 55,
       "total": 245
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 255,
-    "base_happiness": 70,
     "flavor_text": "Forms colonies in perpetually dark places. Uses ultrasonic waves to identify and approach targets.",
     "sprites": {
       "official_artwork": "assets/artwork/41.png"
@@ -1143,10 +1020,7 @@
       "speed": 90,
       "total": 455
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 90,
-    "base_happiness": 70,
     "flavor_text": "Once it strikes, it will not stop draining energy from the victim even if it gets too heavy to fly.",
     "sprites": {
       "official_artwork": "assets/artwork/42.png"
@@ -1171,10 +1045,7 @@
       "speed": 30,
       "total": 320
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 255,
-    "base_happiness": 70,
     "flavor_text": "During the day, it keeps its face buried in the ground. At night, it wanders around sowing its seeds.",
     "sprites": {
       "official_artwork": "assets/artwork/43.png"
@@ -1199,10 +1070,7 @@
       "speed": 40,
       "total": 395
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 120,
-    "base_happiness": 70,
     "flavor_text": "The fluid that oozes from its mouth isn't drool. It is a nectar that is used to attract prey.",
     "sprites": {
       "official_artwork": "assets/artwork/44.png"
@@ -1227,10 +1095,7 @@
       "speed": 50,
       "total": 490
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "The larger its petals, the more toxic pollen it contains. Its big head is heavy and hard to hold up.",
     "sprites": {
       "official_artwork": "assets/artwork/45.png"
@@ -1255,10 +1120,7 @@
       "speed": 25,
       "total": 285
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "Burrows to suck tree roots. The mushrooms on its back grow by draw­ ing nutrients from the bug host.",
     "sprites": {
       "official_artwork": "assets/artwork/46.png"
@@ -1283,10 +1145,7 @@
       "speed": 30,
       "total": 405
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 75,
-    "base_happiness": 70,
     "flavor_text": "A host-parasite pair in which the parasite mushroom has taken over the host bug. Prefers damp places.",
     "sprites": {
       "official_artwork": "assets/artwork/47.png"
@@ -1311,10 +1170,7 @@
       "speed": 45,
       "total": 305
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "Lives in the shadows of tall trees where it eats insects. It is attracted by light at night.",
     "sprites": {
       "official_artwork": "assets/artwork/48.png"
@@ -1339,10 +1195,7 @@
       "speed": 90,
       "total": 450
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 75,
-    "base_happiness": 70,
     "flavor_text": "The dust-like scales covering its wings are color coded to indicate the kinds of poison it has.",
     "sprites": {
       "official_artwork": "assets/artwork/49.png"
@@ -1366,10 +1219,7 @@
       "speed": 95,
       "total": 265
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 255,
-    "base_happiness": 70,
     "flavor_text": "Lives about one yard underground where it feeds on plant roots. It sometimes appears above ground.",
     "sprites": {
       "official_artwork": "assets/artwork/50.png"
@@ -1393,10 +1243,7 @@
       "speed": 120,
       "total": 425
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 50,
-    "base_happiness": 70,
     "flavor_text": "A team of DIGLETT triplets. It triggers huge earthquakes by burrowing 60 miles underground.",
     "sprites": {
       "official_artwork": "assets/artwork/51.png"
@@ -1420,10 +1267,7 @@
       "speed": 90,
       "total": 290
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 255,
-    "base_happiness": 70,
     "flavor_text": "Adores circular objects. Wanders the streets on a nightly basis to look for dropped loose change.",
     "sprites": {
       "official_artwork": "assets/artwork/52.png"
@@ -1447,10 +1291,7 @@
       "speed": 115,
       "total": 440
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 90,
-    "base_happiness": 70,
     "flavor_text": "Although its fur has many admirers, it is tough to raise as a pet because of its fickle meanness.",
     "sprites": {
       "official_artwork": "assets/artwork/53.png"
@@ -1474,10 +1315,7 @@
       "speed": 55,
       "total": 320
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "While lulling its enemies with its vacant look, this wily POKéMON will use psychokinetic powers.",
     "sprites": {
       "official_artwork": "assets/artwork/54.png"
@@ -1501,10 +1339,7 @@
       "speed": 85,
       "total": 500
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 75,
-    "base_happiness": 70,
     "flavor_text": "Often seen swim­ ming elegantly by lake shores. It is often mistaken for the Japanese monster, Kappa.",
     "sprites": {
       "official_artwork": "assets/artwork/55.png"
@@ -1528,10 +1363,7 @@
       "speed": 70,
       "total": 305
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "Extremely quick to anger. It could be docile one moment then thrashing away the next instant.",
     "sprites": {
       "official_artwork": "assets/artwork/56.png"
@@ -1555,10 +1387,7 @@
       "speed": 95,
       "total": 455
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 75,
-    "base_happiness": 70,
     "flavor_text": "Always furious and tenacious to boot. It will not abandon chasing its quarry until it is caught.",
     "sprites": {
       "official_artwork": "assets/artwork/57.png"
@@ -1582,10 +1411,7 @@
       "speed": 60,
       "total": 350
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "Very protective of its territory. It will bark and bite to repel intruders from its space.",
     "sprites": {
       "official_artwork": "assets/artwork/58.png"
@@ -1609,10 +1435,7 @@
       "speed": 95,
       "total": 555
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 75,
-    "base_happiness": 70,
     "flavor_text": "A POKéMON that has been admired since the past for its beauty. It runs agilely as if on wings.",
     "sprites": {
       "official_artwork": "assets/artwork/59.png"
@@ -1636,10 +1459,7 @@
       "speed": 90,
       "total": 300
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 255,
-    "base_happiness": 70,
     "flavor_text": "Its newly grown legs prevent it from running. It appears to prefer swimming than trying to stand.",
     "sprites": {
       "official_artwork": "assets/artwork/60.png"
@@ -1663,10 +1483,7 @@
       "speed": 90,
       "total": 385
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 120,
-    "base_happiness": 70,
     "flavor_text": "Capable of living in or out of water. When out of water, it sweats to keep its body slimy.",
     "sprites": {
       "official_artwork": "assets/artwork/61.png"
@@ -1691,10 +1508,7 @@
       "speed": 70,
       "total": 510
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "An adept swimmer at both the front crawl and breast stroke. Easily overtakes the best human swimmers.",
     "sprites": {
       "official_artwork": "assets/artwork/62.png"
@@ -1718,10 +1532,7 @@
       "speed": 90,
       "total": 310
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 200,
-    "base_happiness": 70,
     "flavor_text": "Using its ability to read minds, it will identify impending danger and TELEPORT to safety.",
     "sprites": {
       "official_artwork": "assets/artwork/63.png"
@@ -1745,10 +1556,7 @@
       "speed": 105,
       "total": 400
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 100,
-    "base_happiness": 70,
     "flavor_text": "It emits special alpha waves from its body that induce headaches just by being close by.",
     "sprites": {
       "official_artwork": "assets/artwork/64.png"
@@ -1772,10 +1580,7 @@
       "speed": 120,
       "total": 500
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 50,
-    "base_happiness": 70,
     "flavor_text": "Its brain can out­ perform a super­ computer. Its intelligence quotient is said to be 5,000.",
     "sprites": {
       "official_artwork": "assets/artwork/65.png"
@@ -1799,10 +1604,7 @@
       "speed": 35,
       "total": 305
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 180,
-    "base_happiness": 70,
     "flavor_text": "Loves to build its muscles. It trains in all styles of martial arts to become even stronger.",
     "sprites": {
       "official_artwork": "assets/artwork/66.png"
@@ -1826,10 +1628,7 @@
       "speed": 45,
       "total": 405
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 90,
-    "base_happiness": 70,
     "flavor_text": "Its muscular body is so powerful, it must wear a power save belt to be able to regulate its motions.",
     "sprites": {
       "official_artwork": "assets/artwork/67.png"
@@ -1853,10 +1652,7 @@
       "speed": 55,
       "total": 505
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Using its heavy muscles, it throws powerful punches that can send the victim clear over the horizon.",
     "sprites": {
       "official_artwork": "assets/artwork/68.png"
@@ -1881,10 +1677,7 @@
       "speed": 40,
       "total": 300
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 255,
-    "base_happiness": 70,
     "flavor_text": "A carnivorous POKéMON that traps and eats bugs. It uses its root feet to soak up needed moisture.",
     "sprites": {
       "official_artwork": "assets/artwork/69.png"
@@ -1909,10 +1702,7 @@
       "speed": 55,
       "total": 390
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 120,
-    "base_happiness": 70,
     "flavor_text": "It spits out POISONPOWDER to immobilize the enemy and then finishes it with a spray of ACID.",
     "sprites": {
       "official_artwork": "assets/artwork/70.png"
@@ -1937,10 +1727,7 @@
       "speed": 70,
       "total": 490
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Said to live in huge colonies deep in jungles, although no one has ever returned from there.",
     "sprites": {
       "official_artwork": "assets/artwork/71.png"
@@ -1965,10 +1752,7 @@
       "speed": 70,
       "total": 335
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "Drifts in shallow seas. Anglers who hook them by accident are often punished by its stinging acid.",
     "sprites": {
       "official_artwork": "assets/artwork/72.png"
@@ -1993,10 +1777,7 @@
       "speed": 100,
       "total": 515
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 60,
-    "base_happiness": 70,
     "flavor_text": "The tentacles are normally kept short. On hunts, they are extended to ensnare and immobilize prey.",
     "sprites": {
       "official_artwork": "assets/artwork/73.png"
@@ -2021,10 +1802,7 @@
       "speed": 20,
       "total": 300
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 255,
-    "base_happiness": 70,
     "flavor_text": "Found in fields and mountains. Mistaking them for boulders, people often step or trip on them.",
     "sprites": {
       "official_artwork": "assets/artwork/74.png"
@@ -2049,10 +1827,7 @@
       "speed": 35,
       "total": 390
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 120,
-    "base_happiness": 70,
     "flavor_text": "Rolls down slopes to move. It rolls over any obstacle without slowing or changing its direction.",
     "sprites": {
       "official_artwork": "assets/artwork/75.png"
@@ -2077,10 +1852,7 @@
       "speed": 45,
       "total": 495
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Its boulder-like body is extremely hard. It can easily withstand dynamite blasts without damage.",
     "sprites": {
       "official_artwork": "assets/artwork/76.png"
@@ -2104,10 +1876,7 @@
       "speed": 90,
       "total": 410
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "Its hooves are 10 times harder than diamonds. It can trample anything completely flat in little time.",
     "sprites": {
       "official_artwork": "assets/artwork/77.png"
@@ -2131,10 +1900,7 @@
       "speed": 105,
       "total": 500
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 60,
-    "base_happiness": 70,
     "flavor_text": "Very competitive, this POKéMON will chase anything that moves fast in the hopes of racing it.",
     "sprites": {
       "official_artwork": "assets/artwork/78.png"
@@ -2159,10 +1925,7 @@
       "speed": 15,
       "total": 315
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "Incredibly slow and dopey. It takes 5 seconds for it to feel pain when under attack.",
     "sprites": {
       "official_artwork": "assets/artwork/79.png"
@@ -2187,10 +1950,7 @@
       "speed": 30,
       "total": 490
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 75,
-    "base_happiness": 70,
     "flavor_text": "The SHELLDER that is latched onto SLOWPOKE's tail is said to feed on the host's left over scraps.",
     "sprites": {
       "official_artwork": "assets/artwork/80.png"
@@ -2215,10 +1975,7 @@
       "speed": 45,
       "total": 325
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "Uses anti-gravity to stay suspended. Appears without warning and uses THUNDER WAVE and similar moves.",
     "sprites": {
       "official_artwork": "assets/artwork/81.png"
@@ -2243,10 +2000,7 @@
       "speed": 70,
       "total": 465
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 60,
-    "base_happiness": 70,
     "flavor_text": "Formed by several MAGNEMITEs linked together. They frequently appear when sunspots flare up.",
     "sprites": {
       "official_artwork": "assets/artwork/82.png"
@@ -2271,10 +2025,7 @@
       "speed": 60,
       "total": 377
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "The sprig of green onions it holds is its weapon. It is used much like a metal sword.",
     "sprites": {
       "official_artwork": "assets/artwork/83.png"
@@ -2299,10 +2050,7 @@
       "speed": 75,
       "total": 310
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "A bird that makes up for its poor flying with its fast foot speed. Leaves giant footprints.",
     "sprites": {
       "official_artwork": "assets/artwork/84.png"
@@ -2327,10 +2075,7 @@
       "speed": 110,
       "total": 470
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Uses its three brains to execute complex plans. While two heads sleep, one head stays awake.",
     "sprites": {
       "official_artwork": "assets/artwork/85.png"
@@ -2354,10 +2099,7 @@
       "speed": 45,
       "total": 325
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "The protruding horn on its head is very hard. It is used for bashing through thick ice.",
     "sprites": {
       "official_artwork": "assets/artwork/86.png"
@@ -2382,10 +2124,7 @@
       "speed": 70,
       "total": 475
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 75,
-    "base_happiness": 70,
     "flavor_text": "Stores thermal energy in its body. Swims at a steady 8 knots even in intensely cold waters.",
     "sprites": {
       "official_artwork": "assets/artwork/87.png"
@@ -2409,10 +2148,7 @@
       "speed": 25,
       "total": 325
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "Appears in filthy areas. Thrives by sucking up polluted sludge that is pumped out of factories.",
     "sprites": {
       "official_artwork": "assets/artwork/88.png"
@@ -2436,10 +2172,7 @@
       "speed": 50,
       "total": 500
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 75,
-    "base_happiness": 70,
     "flavor_text": "Thickly covered with a filthy, vile sludge. It is so toxic, even its footprints contain poison.",
     "sprites": {
       "official_artwork": "assets/artwork/89.png"
@@ -2463,10 +2196,7 @@
       "speed": 40,
       "total": 305
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "Its hard shell repels any kind of attack. It is vulnerable only when its shell is open.",
     "sprites": {
       "official_artwork": "assets/artwork/90.png"
@@ -2491,10 +2221,7 @@
       "speed": 70,
       "total": 525
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 60,
-    "base_happiness": 70,
     "flavor_text": "When attacked, it launches its horns in quick volleys. Its innards have never been seen.",
     "sprites": {
       "official_artwork": "assets/artwork/91.png"
@@ -2519,10 +2246,7 @@
       "speed": 80,
       "total": 310
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "Almost invisible, this gaseous POKéMON cloaks the target and puts it to sleep without notice.",
     "sprites": {
       "official_artwork": "assets/artwork/92.png"
@@ -2547,10 +2271,7 @@
       "speed": 95,
       "total": 405
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 90,
-    "base_happiness": 70,
     "flavor_text": "Because of its ability to slip through block walls, it is said to be from an­ other dimension.",
     "sprites": {
       "official_artwork": "assets/artwork/93.png"
@@ -2575,10 +2296,7 @@
       "speed": 110,
       "total": 500
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Under a full moon, this POKéMON likes to mimic the shadows of people and laugh at their fright.",
     "sprites": {
       "official_artwork": "assets/artwork/94.png"
@@ -2603,10 +2321,7 @@
       "speed": 70,
       "total": 385
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "As it grows, the stone portions of its body harden to become similar to a diamond, but colored black.",
     "sprites": {
       "official_artwork": "assets/artwork/95.png"
@@ -2630,10 +2345,7 @@
       "speed": 42,
       "total": 328
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "Puts enemies to sleep then eats their dreams. Occasionally gets sick from eating bad dreams.",
     "sprites": {
       "official_artwork": "assets/artwork/96.png"
@@ -2657,10 +2369,7 @@
       "speed": 67,
       "total": 483
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 75,
-    "base_happiness": 70,
     "flavor_text": "When it locks eyes with an enemy, it will use a mix of PSI moves such as HYPNOSIS and CONFUSION.",
     "sprites": {
       "official_artwork": "assets/artwork/97.png"
@@ -2684,10 +2393,7 @@
       "speed": 50,
       "total": 325
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 225,
-    "base_happiness": 70,
     "flavor_text": "Its pincers are not only powerful weapons, they are used for balance when walking sideways.",
     "sprites": {
       "official_artwork": "assets/artwork/98.png"
@@ -2711,10 +2417,7 @@
       "speed": 75,
       "total": 475
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 60,
-    "base_happiness": 70,
     "flavor_text": "The large pincer has 10000 hp of crushing power. However, its huge size makes it unwieldy to use.",
     "sprites": {
       "official_artwork": "assets/artwork/99.png"
@@ -2738,10 +2441,7 @@
       "speed": 100,
       "total": 330
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "Usually found in power plants. Easily mistaken for a POKé BALL, they have zapped many people.",
     "sprites": {
       "official_artwork": "assets/artwork/100.png"
@@ -2765,10 +2465,7 @@
       "speed": 150,
       "total": 490
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 60,
-    "base_happiness": 70,
     "flavor_text": "It stores electric energy under very high pressure. It often explodes with little or no provocation.",
     "sprites": {
       "official_artwork": "assets/artwork/101.png"
@@ -2793,10 +2490,7 @@
       "speed": 40,
       "total": 325
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 90,
-    "base_happiness": 70,
     "flavor_text": "Often mistaken for eggs. When disturbed, they quickly gather and attack in swarms.",
     "sprites": {
       "official_artwork": "assets/artwork/102.png"
@@ -2821,10 +2515,7 @@
       "speed": 55,
       "total": 530
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Legend has it that on rare occasions, one of its heads will drop off and continue on as an EXEGGCUTE.",
     "sprites": {
       "official_artwork": "assets/artwork/103.png"
@@ -2848,10 +2539,7 @@
       "speed": 35,
       "total": 320
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "Because it never removes its skull helmet, no one has ever seen this POKéMON's real face.",
     "sprites": {
       "official_artwork": "assets/artwork/104.png"
@@ -2875,10 +2563,7 @@
       "speed": 45,
       "total": 425
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 75,
-    "base_happiness": 70,
     "flavor_text": "The bone it holds is its key weapon. It throws the bone skillfully like a boomerang to KO targets.",
     "sprites": {
       "official_artwork": "assets/artwork/105.png"
@@ -2902,10 +2587,7 @@
       "speed": 87,
       "total": 455
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "When in a hurry, its legs lengthen progressively. It runs smoothly with extra long, loping strides.",
     "sprites": {
       "official_artwork": "assets/artwork/106.png"
@@ -2929,10 +2611,7 @@
       "speed": 76,
       "total": 455
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "While apparently doing nothing, it fires punches in lightning fast volleys that are impossible to see.",
     "sprites": {
       "official_artwork": "assets/artwork/107.png"
@@ -2956,10 +2635,7 @@
       "speed": 30,
       "total": 385
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Its tongue can be extended like a chameleon's. It leaves a tingling sensation when it licks enemies.",
     "sprites": {
       "official_artwork": "assets/artwork/108.png"
@@ -2983,10 +2659,7 @@
       "speed": 35,
       "total": 340
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 190,
-    "base_happiness": 70,
     "flavor_text": "Because it stores several kinds of toxic gases in its body, it is prone to exploding without warning.",
     "sprites": {
       "official_artwork": "assets/artwork/109.png"
@@ -3010,10 +2683,7 @@
       "speed": 60,
       "total": 490
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 60,
-    "base_happiness": 70,
     "flavor_text": "Where two kinds of poison gases meet, 2 KOFFINGs can fuse into a WEEZING over many years.",
     "sprites": {
       "official_artwork": "assets/artwork/110.png"
@@ -3038,10 +2708,7 @@
       "speed": 25,
       "total": 345
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 120,
-    "base_happiness": 70,
     "flavor_text": "Its massive bones are 1000 times harder than human bones. It can easily knock a trailer flying.",
     "sprites": {
       "official_artwork": "assets/artwork/111.png"
@@ -3066,10 +2733,7 @@
       "speed": 40,
       "total": 485
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 60,
-    "base_happiness": 70,
     "flavor_text": "Protected by an armor-like hide, it is capable of living in molten lava of 3,600 degrees.",
     "sprites": {
       "official_artwork": "assets/artwork/112.png"
@@ -3093,10 +2757,7 @@
       "speed": 50,
       "total": 450
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 30,
-    "base_happiness": 140,
     "flavor_text": "A rare and elusive POKéMON that is said to bring happiness to those who manage to get it.",
     "sprites": {
       "official_artwork": "assets/artwork/113.png"
@@ -3120,10 +2781,7 @@
       "speed": 60,
       "total": 435
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "The whole body is swathed with wide vines that are similar to sea­ weed. Its vines shake as it walks.",
     "sprites": {
       "official_artwork": "assets/artwork/114.png"
@@ -3147,10 +2805,7 @@
       "speed": 90,
       "total": 490
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "The infant rarely ventures out of its mother's protective pouch until it is 3 years old.",
     "sprites": {
       "official_artwork": "assets/artwork/115.png"
@@ -3174,10 +2829,7 @@
       "speed": 60,
       "total": 295
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 225,
-    "base_happiness": 70,
     "flavor_text": "Known to shoot down flying bugs with precision blasts of ink from the surface of the water.",
     "sprites": {
       "official_artwork": "assets/artwork/116.png"
@@ -3201,10 +2853,7 @@
       "speed": 85,
       "total": 440
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 75,
-    "base_happiness": 70,
     "flavor_text": "Capable of swim­ ming backwards by rapidly flapping its wing-like pectoral fins and stout tail.",
     "sprites": {
       "official_artwork": "assets/artwork/117.png"
@@ -3228,10 +2877,7 @@
       "speed": 63,
       "total": 320
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 225,
-    "base_happiness": 70,
     "flavor_text": "Its tail fin billows like an elegant ballroom dress, giving it the nickname of the Water Queen.",
     "sprites": {
       "official_artwork": "assets/artwork/118.png"
@@ -3255,10 +2901,7 @@
       "speed": 68,
       "total": 450
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 60,
-    "base_happiness": 70,
     "flavor_text": "In the autumn spawning season, they can be seen swimming power­ fully up rivers and creeks.",
     "sprites": {
       "official_artwork": "assets/artwork/119.png"
@@ -3282,10 +2925,7 @@
       "speed": 85,
       "total": 340
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 225,
-    "base_happiness": 70,
     "flavor_text": "An enigmatic POKéMON that can effortlessly regenerate any appendage it loses in battle.",
     "sprites": {
       "official_artwork": "assets/artwork/120.png"
@@ -3310,10 +2950,7 @@
       "speed": 115,
       "total": 520
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 60,
-    "base_happiness": 70,
     "flavor_text": "Its central core glows with the seven colors of the rainbow. Some people value the core as a gem.",
     "sprites": {
       "official_artwork": "assets/artwork/121.png"
@@ -3338,10 +2975,7 @@
       "speed": 90,
       "total": 460
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "If interrupted while it is miming, it will slap around the offender with its broad hands.",
     "sprites": {
       "official_artwork": "assets/artwork/122.png"
@@ -3366,10 +3000,7 @@
       "speed": 105,
       "total": 500
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "With ninja-like agility and speed, it can create the illusion that there is more than one.",
     "sprites": {
       "official_artwork": "assets/artwork/123.png"
@@ -3394,10 +3025,7 @@
       "speed": 95,
       "total": 455
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "It seductively wiggles its hips as it walks. It can cause people to dance in unison with it.",
     "sprites": {
       "official_artwork": "assets/artwork/124.png"
@@ -3421,10 +3049,7 @@
       "speed": 105,
       "total": 490
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Normally found near power plants, they can wander away and cause major blackouts in cities.",
     "sprites": {
       "official_artwork": "assets/artwork/125.png"
@@ -3448,10 +3073,7 @@
       "speed": 93,
       "total": 495
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Its body always burns with an orange glow that enables it to hide perfectly among flames.",
     "sprites": {
       "official_artwork": "assets/artwork/126.png"
@@ -3475,10 +3097,7 @@
       "speed": 85,
       "total": 500
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "If it fails to crush the victim in its pincers, it will swing it around and toss it hard.",
     "sprites": {
       "official_artwork": "assets/artwork/127.png"
@@ -3502,10 +3121,7 @@
       "speed": 110,
       "total": 490
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "When it targets an enemy, it charges furiously while whipping its body with its long tails.",
     "sprites": {
       "official_artwork": "assets/artwork/128.png"
@@ -3529,10 +3145,7 @@
       "speed": 80,
       "total": 200
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 255,
-    "base_happiness": 70,
     "flavor_text": "In the distant past, it was somewhat stronger than the horribly weak descendants that exist today.",
     "sprites": {
       "official_artwork": "assets/artwork/129.png"
@@ -3557,10 +3170,7 @@
       "speed": 81,
       "total": 540
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Rarely seen in the wild. Huge and vicious, it is capable of destroying entire cities in a rage.",
     "sprites": {
       "official_artwork": "assets/artwork/130.png"
@@ -3585,10 +3195,7 @@
       "speed": 60,
       "total": 535
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "A POKéMON that has been over­ hunted almost to extinction. It can ferry people across the water.",
     "sprites": {
       "official_artwork": "assets/artwork/131.png"
@@ -3612,10 +3219,7 @@
       "speed": 48,
       "total": 288
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 35,
-    "base_happiness": 70,
     "flavor_text": "Capable of copying an enemy's genetic code to instantly transform itself into a duplicate of the enemy.",
     "sprites": {
       "official_artwork": "assets/artwork/132.png"
@@ -3639,10 +3243,7 @@
       "speed": 55,
       "total": 325
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Its genetic code is irregular. It may mutate if it is exposed to radiation from element STONEs.",
     "sprites": {
       "official_artwork": "assets/artwork/133.png"
@@ -3666,10 +3267,7 @@
       "speed": 65,
       "total": 525
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Lives close to water. Its long tail is ridged with a fin which is often mistaken for a mermaid's.",
     "sprites": {
       "official_artwork": "assets/artwork/134.png"
@@ -3693,10 +3291,7 @@
       "speed": 130,
       "total": 525
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "It accumulates negative ions in the atmosphere to blast out 10000- volt lightning bolts.",
     "sprites": {
       "official_artwork": "assets/artwork/135.png"
@@ -3720,10 +3315,7 @@
       "speed": 65,
       "total": 525
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "When storing thermal energy in its body, its temperature could soar to over 1600 degrees.",
     "sprites": {
       "official_artwork": "assets/artwork/136.png"
@@ -3747,10 +3339,7 @@
       "speed": 40,
       "total": 395
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "A POKéMON that consists entirely of programming code. Capable of moving freely in cyberspace.",
     "sprites": {
       "official_artwork": "assets/artwork/137.png"
@@ -3775,10 +3364,7 @@
       "speed": 35,
       "total": 355
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Although long extinct, in rare cases, it can be genetically resurrected from fossils.",
     "sprites": {
       "official_artwork": "assets/artwork/138.png"
@@ -3803,10 +3389,7 @@
       "speed": 55,
       "total": 495
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "A prehistoric POKéMON that died out when its heavy shell made it impossible to catch prey.",
     "sprites": {
       "official_artwork": "assets/artwork/139.png"
@@ -3831,10 +3414,7 @@
       "speed": 55,
       "total": 355
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "A POKéMON that was resurrected from a fossil found in what was once the ocean floor eons ago.",
     "sprites": {
       "official_artwork": "assets/artwork/140.png"
@@ -3859,10 +3439,7 @@
       "speed": 80,
       "total": 495
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "Its sleek shape is perfect for swim­ ming. It slashes prey with its claws and drains the body fluids.",
     "sprites": {
       "official_artwork": "assets/artwork/141.png"
@@ -3887,10 +3464,7 @@
       "speed": 130,
       "total": 515
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 70,
     "flavor_text": "A ferocious, pre­ historic POKéMON that goes for the enemy's throat with its serrated saw-like fangs.",
     "sprites": {
       "official_artwork": "assets/artwork/142.png"
@@ -3914,10 +3488,7 @@
       "speed": 30,
       "total": 540
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 25,
-    "base_happiness": 70,
     "flavor_text": "Very lazy. Just eats and sleeps. As its rotund bulk builds, it becomes steadily more slothful.",
     "sprites": {
       "official_artwork": "assets/artwork/143.png"
@@ -3942,10 +3513,7 @@
       "speed": 85,
       "total": 580
     },
-    "is_legendary": true,
-    "is_mythical": false,
     "capture_rate": 3,
-    "base_happiness": 35,
     "flavor_text": "A legendary bird POKéMON that is said to appear to doomed people who are lost in icy mountains.",
     "sprites": {
       "official_artwork": "assets/artwork/144.png"
@@ -3970,10 +3538,7 @@
       "speed": 100,
       "total": 580
     },
-    "is_legendary": true,
-    "is_mythical": false,
     "capture_rate": 3,
-    "base_happiness": 35,
     "flavor_text": "A legendary bird POKéMON that is said to appear from clouds while dropping enormous lightning bolts.",
     "sprites": {
       "official_artwork": "assets/artwork/145.png"
@@ -3998,10 +3563,7 @@
       "speed": 90,
       "total": 580
     },
-    "is_legendary": true,
-    "is_mythical": false,
     "capture_rate": 3,
-    "base_happiness": 35,
     "flavor_text": "Known as the legendary bird of fire. Every flap of its wings creates a dazzling flash of flames.",
     "sprites": {
       "official_artwork": "assets/artwork/146.png"
@@ -4025,10 +3587,7 @@
       "speed": 50,
       "total": 300
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 35,
     "flavor_text": "Long considered a mythical POKéMON until recently when a small colony was found living underwater.",
     "sprites": {
       "official_artwork": "assets/artwork/147.png"
@@ -4052,10 +3611,7 @@
       "speed": 70,
       "total": 420
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 35,
     "flavor_text": "A mystical POKéMON that exudes a gentle aura. Has the ability to change climate conditions.",
     "sprites": {
       "official_artwork": "assets/artwork/148.png"
@@ -4080,10 +3636,7 @@
       "speed": 80,
       "total": 600
     },
-    "is_legendary": false,
-    "is_mythical": false,
     "capture_rate": 45,
-    "base_happiness": 35,
     "flavor_text": "An extremely rarely seen marine POKéMON. Its intelligence is said to match that of humans.",
     "sprites": {
       "official_artwork": "assets/artwork/149.png"
@@ -4107,10 +3660,7 @@
       "speed": 130,
       "total": 680
     },
-    "is_legendary": true,
-    "is_mythical": false,
     "capture_rate": 3,
-    "base_happiness": 0,
     "flavor_text": "It was created by a scientist after years of horrific gene splicing and DNA engineering experiments.",
     "sprites": {
       "official_artwork": "assets/artwork/150.png"
@@ -4134,10 +3684,7 @@
       "speed": 100,
       "total": 600
     },
-    "is_legendary": false,
-    "is_mythical": true,
     "capture_rate": 45,
-    "base_happiness": 100,
     "flavor_text": "So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.",
     "sprites": {
       "official_artwork": "assets/artwork/151.png"

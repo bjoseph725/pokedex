@@ -37,7 +37,7 @@ server.
 - National Dex number, name, and species genus (e.g. "Seed Pokémon")
 - Type(s)
 - Base stats: HP, Attack, Defense, Sp. Atk, Sp. Def, Speed, and total
-- Height, weight, capture rate, legendary/mythical status
+- Height, weight, capture rate
 - Official artwork
 - Pokédex flavor text (from Pokémon Red)
 

@@ -149,11 +149,6 @@ function openModal(p) {
       </div>
     </div>
 
-    <div class="badge-row">
-      ${p.is_legendary ? '<span class="rarity-badge">Legendary</span>' : ""}
-      ${p.is_mythical ? '<span class="rarity-badge">Mythical</span>' : ""}
-    </div>
-
     ${p.flavor_text ? `<p class="flavor-text">"${p.flavor_text}"</p>` : ""}
 
     <dl class="info-grid">

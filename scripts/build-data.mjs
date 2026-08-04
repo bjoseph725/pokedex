@@ -165,10 +165,7 @@ async function main() {
         speed: stats.speed ?? null,
         total,
       },
-      is_legendary: spRow?.is_legendary === "1",
-      is_mythical: spRow?.is_mythical === "1",
       capture_rate: spRow ? Number(spRow.capture_rate) : null,
-      base_happiness: spRow ? Number(spRow.base_happiness) : null,
       flavor_text: flavor
         ? flavor.flavor_text.replace(/\f|\n|\r/g, " ").replace(/\s+/g, " ").trim()
         : null,

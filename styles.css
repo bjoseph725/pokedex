@@ -265,24 +265,6 @@ main {
   margin: 0.2rem 0 0.5rem;
 }
 
-.badge-row {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-  margin: 0.4rem 0;
-}
-
-.rarity-badge {
-  display: inline-block;
-  padding: 0.15rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-}
-
 .flavor-text {
   margin: 1rem 0;
   line-height: 1.5;
