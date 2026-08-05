@@ -81,6 +81,59 @@ function deltaFor(dir) {
    they start instantly. The context is created on first press, which
    is the user gesture browsers require. */
 
+/* iOS puts Web Audio in the "ambient" session, which the ringer switch
+   silences outright — volume makes no difference. Playing a media
+   element moves the page into the "playback" session, where it isn't.
+   A tenth of a second of true silence, looping, is enough.
+
+   Only the controls that exist to produce sound call this. A phone set
+   to silent shouldn't click at you for pressing a D-pad; it's fair game
+   once you've asked for narration or music. */
+const SILENT_WAV =
+  "data:audio/wav;base64,UklGRkQDAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YS" +
+  "ADAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" +
+  "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" +
+  "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" +
+  "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" +
+  "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" +
+  "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" +
+  "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" +
+  "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" +
+  "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" +
+  "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" +
+  "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" +
+  "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" +
+  "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" +
+  "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI" +
+  "CAgICAgA==";
+
+let silentLoop = null;
+
+function allowSoundThroughRinger() {
+  if (silentLoop) return;
+  try {
+    silentLoop = document.createElement("audio");
+    silentLoop.src = SILENT_WAV;
+    silentLoop.loop = true;
+    silentLoop.preload = "auto";
+    // Inline, or iOS may try to take it fullscreen.
+    silentLoop.setAttribute("playsinline", "");
+    // Genuinely silent content, so full volume costs nothing — a muted
+    // or zero-volume element may not move the session at all.
+    silentLoop.volume = 1;
+    // Attached rather than detached: iOS is less reliable about
+    // honouring a media element that isn't in the document.
+    silentLoop.style.display = "none";
+    document.body.appendChild(silentLoop);
+    silentLoop.play().catch(() => {
+      silentLoop.remove();
+      silentLoop = null; // blocked; the rest still works, just quieter
+    });
+  } catch {
+    silentLoop = null;
+  }
+}
+
 let actx = null;
 
 function audioCtx() {
@@ -319,6 +372,7 @@ function playEntry() {
     return;
   }
   stopAudio();
+  allowSoundThroughRinger();
   audio = new Audio(`assets/audio/${currentId}.mp3`);
   btnPlay.classList.add("playing");
   lamp.classList.add("lit");

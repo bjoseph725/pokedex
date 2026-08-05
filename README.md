@@ -57,6 +57,18 @@ The file is fetched at runtime rather than bundled, so swapping the
 tune means swapping that one file. With no file present the control
 simply stays off and the rest of the device is unaffected.
 
+### The iOS ringer switch
+
+iOS puts Web Audio in the "ambient" session, which the hardware mute
+switch silences outright — volume makes no difference. Playing a media
+element moves the page into the "playback" session, where it doesn't,
+so a tenth of a second of true silence loops in the background.
+
+Only narration and music start that loop. Pressing those is an explicit
+request for sound, so overriding the switch is fair; a phone set to
+silent shouldn't click at you for pressing a D-pad. Once either is
+running the session is open, and the button sounds come along with it.
+
 ## Favourites
 
 The ten blue keys are favourite slots. Press **Save**, then a blue key,

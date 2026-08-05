@@ -213,6 +213,9 @@
     // and a fetch would put us the wrong side of that boundary.
     const c = ctx();
     if (!c) return;
+    // Pressing play is an explicit request for sound, so move the page
+    // into a session the iOS ringer switch doesn't silence.
+    if (typeof allowSoundThroughRinger === "function") allowSoundThroughRinger();
     if (!(await load())) return;
     // The await may have suspended us again on a backgrounded tab.
     if (c.state === "suspended") c.resume();
