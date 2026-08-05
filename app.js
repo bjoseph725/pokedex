@@ -16,7 +16,8 @@ const infoScreen = document.getElementById("info-screen");
 const hint = document.getElementById("hint");
 const btnPlay = document.getElementById("btn-play");
 const btnRandom = document.getElementById("btn-random");
-const btnMode = document.getElementById("btn-mode");
+const btnData = document.getElementById("btn-data");
+const btnList = document.getElementById("btn-list");
 const lamp = document.getElementById("lamp");
 const dpad = document.querySelector(".dpad");
 
@@ -38,7 +39,8 @@ async function init() {
   typeFilter.addEventListener("change", () => applyFilters());
   btnPlay.addEventListener("click", playEntry);
   btnRandom.addEventListener("click", pickRandom);
-  btnMode.addEventListener("click", toggleMode);
+  btnData.addEventListener("click", () => setMode(false));
+  btnList.addEventListener("click", () => setMode(true));
 
   dpad.addEventListener("click", (e) => {
     const arm = e.target.closest(".dpad-arm");
@@ -134,9 +136,11 @@ function pickRandom() {
   render();
 }
 
-function toggleMode() {
-  listMode = !listMode;
-  btnMode.textContent = listMode ? "Entry" : "List";
+function setMode(wantList) {
+  if (listMode === wantList) return;
+  listMode = wantList;
+  btnData.setAttribute("aria-pressed", String(!listMode));
+  btnList.setAttribute("aria-pressed", String(listMode));
   render();
 }
 
@@ -266,10 +270,9 @@ function keepSelectedRowVisible() {
 }
 
 function renderHint() {
-  const nav = `D-pad: <kbd>←</kbd> <kbd>→</kbd> step · <kbd>↑</kbd> <kbd>↓</kbd> jump ten`;
-  hint.innerHTML = listMode
-    ? `${nav} · white key returns to the entry`
-    : `${nav} · white key opens the list · black button narrates`;
+  hint.innerHTML =
+    `D-pad: <kbd>←</kbd> <kbd>→</kbd> step · <kbd>↑</kbd> <kbd>↓</kbd> jump ten · ` +
+    `<b>Data</b> / <b>List</b> switch the screen · ▶ narrates · yellow is random`;
 }
 
 init();
