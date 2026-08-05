@@ -1,12 +1,3 @@
-const STAT_LABELS = [
-  ["hp", "HP"],
-  ["attack", "ATTACK"],
-  ["defense", "DEFENSE"],
-  ["special_attack", "SP.ATK"],
-  ["special_defense", "SP.DEF"],
-  ["speed", "SPEED"],
-];
-const MAX_STAT = 180;
 const PAGE = 10;
 
 const searchInput = document.getElementById("search");
@@ -16,7 +7,8 @@ const infoScreen = document.getElementById("info-screen");
 const hint = document.getElementById("hint");
 const btnPlay = document.getElementById("btn-play");
 const btnRandom = document.getElementById("btn-random");
-const btnMode = document.getElementById("btn-mode");
+const btnData = document.getElementById("btn-data");
+const btnList = document.getElementById("btn-list");
 const lamp = document.getElementById("lamp");
 const dpad = document.querySelector(".dpad");
 
@@ -38,7 +30,8 @@ async function init() {
   typeFilter.addEventListener("change", () => applyFilters());
   btnPlay.addEventListener("click", playEntry);
   btnRandom.addEventListener("click", pickRandom);
-  btnMode.addEventListener("click", toggleMode);
+  btnData.addEventListener("click", () => setMode(false));
+  btnList.addEventListener("click", () => setMode(true));
 
   dpad.addEventListener("click", (e) => {
     const arm = e.target.closest(".dpad-arm");
@@ -134,9 +127,11 @@ function pickRandom() {
   render();
 }
 
-function toggleMode() {
-  listMode = !listMode;
-  btnMode.textContent = listMode ? "Entry" : "List";
+function setMode(wantList) {
+  if (listMode === wantList) return;
+  listMode = wantList;
+  btnData.setAttribute("aria-pressed", String(!listMode));
+  btnList.setAttribute("aria-pressed", String(listMode));
   render();
 }
 
@@ -164,12 +159,6 @@ function playEntry() {
   audio.play().catch(stopAudio);
 }
 
-function bar(value) {
-  const width = 16;
-  const filledCount = Math.max(1, Math.round((value / MAX_STAT) * width));
-  return "█".repeat(Math.min(width, filledCount)) + "░".repeat(Math.max(0, width - filledCount));
-}
-
 function render() {
   const p = allPokemon.find((x) => x.id === currentId);
   if (!p) return;
@@ -186,39 +175,37 @@ function renderLid(p) {
   document.getElementById("mon-image").alt = p.name;
   document.getElementById("mon-name").textContent = p.name;
   document.getElementById("mon-genus").textContent = p.genus;
-  document.getElementById("type-plate").textContent = p.types.join(" / ");
-  document.getElementById("dex-plate").textContent =
+  document.getElementById("mon-dexno").textContent =
     `No.${String(p.id).padStart(3, "0")}`;
 
-  document.getElementById("mini-lcd").innerHTML = [
-    `No.${String(p.id).padStart(3, "0")}  ${p.name.toUpperCase()}`,
-    `HT ${p.height_m.toFixed(1)}m  WT ${p.weight_kg.toFixed(1)}kg`,
-    `CATCH RATE ${p.capture_rate}`,
-    `TOTAL ${p.stats.total}`,
-  ]
-    .map((line) => `<div>${line}</div>`)
-    .join("");
+  // One type per box; the second sits dark when there isn't one.
+  const box2 = document.getElementById("type-2");
+  document.getElementById("type-1").textContent = p.types[0] ?? "";
+  box2.textContent = p.types[1] ?? "";
+  box2.classList.toggle("empty", !p.types[1]);
+
+  const s = p.stats;
+  document.getElementById("stats-lcd").innerHTML = `
+    <div class="stat-grid">
+      <span>HP</span><span class="v">${s.hp}</span>
+      <span>SP.ATK</span><span class="v">${s.special_attack}</span>
+      <span>ATTACK</span><span class="v">${s.attack}</span>
+      <span>SP.DEF</span><span class="v">${s.special_defense}</span>
+      <span>DEFENSE</span><span class="v">${s.defense}</span>
+      <span>SPEED</span><span class="v">${s.speed}</span>
+    </div>
+    <div class="stat-total"><span>TOTAL</span><span>${s.total}</span></div>
+  `;
 }
 
-// Genus and height/weight live on the lid screen and the green readout,
-// so this screen carries only what those can't fit.
+// Stats live on the green readout now, so this screen carries the
+// description and the measurements that don't fit there.
 function renderEntry(p) {
-  const lines = [];
-  lines.push(`<div class="info-heading">Base Stats</div>`);
-  for (const [key, label] of STAT_LABELS) {
-    const val = p.stats[key];
-    lines.push(
-      `<div class="stat-line"><span>${label}</span><span class="stat-bar">${bar(val)}</span><span class="stat-val">${val}</span></div>`
-    );
-  }
-  lines.push(
-    `<div class="stat-line"><span>TOTAL</span><span></span><span class="stat-val">${p.stats.total}</span></div>`
-  );
-
-  lines.push(`<div class="info-heading">Pokédex Data</div>`);
-  lines.push(`<div class="flavor">${p.flavor_text}<span class="cursor"></span></div>`);
-
-  infoScreen.innerHTML = lines.join("");
+  infoScreen.innerHTML = `
+    <div class="info-heading">Pokédex Data</div>
+    <div class="flavor">${p.flavor_text}<span class="cursor"></span></div>
+    <div class="info-line meta">HT ${p.height_m.toFixed(1)} m &nbsp; WT ${p.weight_kg.toFixed(1)} kg</div>
+  `;
   infoScreen.scrollTop = 0;
 }
 
@@ -266,10 +253,10 @@ function keepSelectedRowVisible() {
 }
 
 function renderHint() {
-  const nav = `D-pad: <kbd>←</kbd> <kbd>→</kbd> step · <kbd>↑</kbd> <kbd>↓</kbd> jump ten`;
-  hint.innerHTML = listMode
-    ? `${nav} · white key returns to the entry`
-    : `${nav} · white key opens the list · black button narrates`;
+  hint.innerHTML =
+    `D-pad: <kbd>←</kbd> <kbd>→</kbd> step · <kbd>↑</kbd> <kbd>↓</kbd> jump ten · ` +
+    `<b>Data</b> / <b>List</b> switch the screen · ▶ narrates · ` +
+    `yellow is random`;
 }
 
 init();

@@ -7,15 +7,15 @@
   <meta name="description" content="A handheld-style Pokédex for the original 151 Pokémon, with base stats, types, and narrated entries." />
 
   <link rel="icon" href="favicon.ico" sizes="32x32" />
-  <link rel="icon" href="assets/icon/icon.svg?v=2" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2" />
-  <link rel="manifest" href="site.webmanifest?v=2" />
+  <link rel="icon" href="assets/icon/icon.svg?v=3" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=3" />
+  <link rel="manifest" href="site.webmanifest?v=3" />
   <meta name="theme-color" content="#c4141f" />
   <meta name="apple-mobile-web-app-title" content="Pokédex" />
 
   <!-- Bump ?v= when styles or scripts change so GitHub Pages' CDN and
        phone browsers can't serve a stale copy. -->
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <div class="page">
@@ -31,7 +31,7 @@
 
     <main>
       <div class="device">
-        <!-- Left half -->
+        <!-- Left half: lid -->
         <div class="half left">
           <div class="lid-top">
             <div class="lens"><span class="lens-glint"></span></div>
@@ -48,7 +48,10 @@
             </div>
 
             <div class="color-screen">
-              <div class="screen-title" id="mon-name">BULBASAUR</div>
+              <div class="screen-head">
+                <span class="dex-no" id="mon-dexno">No.001</span>
+                <span class="screen-title" id="mon-name">BULBASAUR</span>
+              </div>
               <img class="mon-sprite" id="mon-image" src="" alt="" />
               <div class="screen-caption" id="mon-genus">Seed Pokémon</div>
             </div>
@@ -69,14 +72,14 @@
           </div>
 
           <div class="lower-left">
-            <div class="mini-lcd" id="mini-lcd"></div>
+            <div class="stats-lcd" id="stats-lcd"></div>
 
             <div class="dpad" role="group" aria-label="Navigate Pokémon">
               <span class="dpad-plate" aria-hidden="true"></span>
-              <button type="button" class="dpad-arm up" data-dir="up"></button>
-              <button type="button" class="dpad-arm left" data-dir="left"></button>
-              <button type="button" class="dpad-arm right" data-dir="right"></button>
-              <button type="button" class="dpad-arm down" data-dir="down"></button>
+              <button type="button" class="dpad-arm up" data-dir="up" aria-label="Back ten"></button>
+              <button type="button" class="dpad-arm left" data-dir="left" aria-label="Previous Pokémon"></button>
+              <button type="button" class="dpad-arm right" data-dir="right" aria-label="Next Pokémon"></button>
+              <button type="button" class="dpad-arm down" data-dir="down" aria-label="Forward ten"></button>
             </div>
           </div>
         </div>
@@ -86,7 +89,7 @@
           <span class="barrel-cap bottom"></span>
         </div>
 
-        <!-- Right half -->
+        <!-- Right half: base -->
         <div class="half right">
           <div class="info-screen" id="info-screen"></div>
 
@@ -96,16 +99,16 @@
           </div>
 
           <div class="button-bank">
-            <button type="button" class="wide-key" id="btn-mode">List</button>
-            <span class="wide-key static" aria-hidden="true"></span>
+            <button type="button" class="wide-key" id="btn-data" aria-pressed="true">Data</button>
+            <button type="button" class="wide-key" id="btn-list" aria-pressed="false">List</button>
             <div class="bank-dashes" aria-hidden="true">
               <span></span><span></span>
             </div>
           </div>
 
           <div class="bottom-bank">
-            <div class="dark-bar" id="type-plate"></div>
-            <div class="dark-bar" id="dex-plate"></div>
+            <div class="type-box" id="type-1"></div>
+            <div class="type-box" id="type-2"></div>
             <button type="button" class="yellow-btn" id="btn-random" aria-label="Random Pokémon"></button>
           </div>
         </div>
@@ -124,6 +127,6 @@
     </footer>
   </div>
 
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
