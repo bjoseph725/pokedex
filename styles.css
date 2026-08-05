@@ -138,6 +138,9 @@ main {
 /* It folds shut into one rectangle, so the halves are the same size.
    Stretch keeps them matched however the content settles. */
 .device {
+  /* How far the base sits below the lid's lens strip. The hinge shares
+     it so the barrel never rides above the base's top edge. */
+  --base-drop: 68px;
   display: grid;
   grid-template-columns: 1fr 28px 1fr;
   width: min(940px, 100%);
@@ -169,9 +172,11 @@ main {
 /* The base nests under the lid's lens strip — offset down by roughly
    that strip's height, then stretched so both share a bottom edge. */
 .half.right {
-  margin-top: 68px;
+  margin-top: var(--base-drop);
   /* Content has to clear the notch depth or the screen gets clipped. */
-  padding-top: 58px;
+  padding: 58px 24px 24px;
+  /* Room to breathe between the screen, keys and plates. */
+  gap: 26px;
   clip-path: polygon(0 0, 74% 0, 74% 42px, 100% 42px, 100% 100%, 0 100%);
 }
 
@@ -179,6 +184,7 @@ main {
 
 .hinge {
   position: relative;
+  margin-top: var(--base-drop);
   background: linear-gradient(
     90deg,
     var(--shell-edge) 0%,
@@ -514,7 +520,7 @@ main {
 }
 
 .stats-lcd {
-  flex: 0 1 62%;
+  flex: 0 1 50%;
   height: 66px;
   border: 2px solid var(--outline);
   border-radius: 3px;
@@ -561,6 +567,10 @@ main {
   width: 92px;
   height: 92px;
   flex-shrink: 0;
+  /* Centres it in the space left of the readout instead of leaving a
+     dead strip of casing to its right. */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* One solid cross, with transparent hit targets over each arm. */
@@ -645,9 +655,10 @@ main {
 .info-screen {
   position: relative;
   /* Definite height, or list mode grows the panel to 151 rows instead
-     of scrolling. */
+     of scrolling. Just deep enough for the heading, the longest entry
+     at three lines, and the measurements. */
   flex: none;
-  height: 176px;
+  height: 132px;
   border: 2px solid var(--outline);
   border-radius: 3px;
   background: linear-gradient(180deg, var(--ink), var(--ink-2));
@@ -984,6 +995,11 @@ main {
 
   .half.right {
     margin-top: 0;
+  }
+
+  /* A narrower column wraps the entry onto more lines. */
+  .info-screen {
+    height: 152px;
   }
 
   .top {
