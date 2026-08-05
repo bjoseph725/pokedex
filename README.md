@@ -1,10 +1,9 @@
 # Pokédex — Kanto (#1–151)
 
 A static, dependency-free Pokédex covering the original 151 Pokémon, styled
-as a physical handheld device. The lid holds a color screen showing the
-Pokémon's number, name, artwork, and genus, with a green readout below it
-carrying the base stats. The base — narrower and hanging lower, as on the
-real casing — shows the description, with one type per black plate.
+as a physical handheld device: a color screen on the left shows the
+Pokémon's artwork, name, and genus, a green readout below it carries the
+vitals, and the main LCD on the right shows base stats and the dex entry.
 
 ## Controls
 
@@ -12,11 +11,10 @@ real casing — shows the description, with one type per black plate.
 | --- | --- |
 | D-pad ← → | Step one Pokémon |
 | D-pad ↑ ↓ | Jump ten |
-| Data key | Show the description on the right screen |
-| List key | Show the selectable name list |
-| ▶ button | Narrate the entry |
+| White key | Swap the right screen between the entry and the name list |
+| Black button | Narrate the entry |
 | Yellow button | Random Pokémon |
-| Arrow keys / space | Mirror the D-pad and the ▶ button |
+| Arrow keys / space | Mirror the D-pad and the black button |
 
 The D-pad means the same thing in both screen modes, and wraps at both
 ends so it never dead-ends. In list mode you can also click a row
