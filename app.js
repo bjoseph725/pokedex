@@ -86,7 +86,21 @@ let actx = null;
 function audioCtx() {
   const Ctor = window.AudioContext || window.webkitAudioContext;
   if (!Ctor) return null;
-  if (!actx) actx = new Ctor();
+  if (!actx) {
+    actx = new Ctor();
+    // iOS keeps a context muted until something has actually been
+    // played through it, so start one silent sample to open it up.
+    try {
+      const src = actx.createBufferSource();
+      src.buffer = actx.createBuffer(1, 1, 22050);
+      src.connect(actx.destination);
+      src.start(0);
+    } catch {
+      // Not fatal: the context still works for everything else.
+    }
+  }
+  // Must happen inside the gesture that called us — iOS won't grant
+  // this across an await.
   if (actx.state === "suspended") actx.resume();
   return actx;
 }

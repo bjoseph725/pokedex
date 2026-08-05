@@ -208,9 +208,14 @@
   }
 
   async function start() {
+    // Touch the context before anything async: iOS grants permission to
+    // start audio only for the synchronous part of a gesture handler,
+    // and a fetch would put us the wrong side of that boundary.
     const c = ctx();
     if (!c) return;
     if (!(await load())) return;
+    // The await may have suspended us again on a backgrounded tab.
+    if (c.state === "suspended") c.resume();
 
     master = c.createGain();
     master.gain.value = 1;
@@ -225,6 +230,11 @@
     schedule();
     timer = setInterval(schedule, TICK);
   }
+
+  // Fetch ahead of the first press so the toggle isn't waiting on the
+  // network at the moment it needs to start audio.
+  if (document.readyState === "complete") load();
+  else window.addEventListener("load", () => load(), { once: true });
 
   btn.addEventListener("click", () => {
     if (typeof clickSound === "function") clickSound();
