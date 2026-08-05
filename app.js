@@ -352,13 +352,28 @@ function renderLid(p) {
   `;
 }
 
+/* The source data is metric, since that's how PokeAPI stores it. These
+   convert at display time so the stored values stay canonical. Rounding
+   inches can reach 12, which carries into the next foot. */
+
+function toFeetInches(metres) {
+  const totalInches = Math.round(metres * 39.3701);
+  const feet = Math.floor(totalInches / 12);
+  const inches = totalInches % 12;
+  return `${feet}'${String(inches).padStart(2, "0")}"`;
+}
+
+function toPounds(kg) {
+  return (kg * 2.20462).toFixed(1);
+}
+
 // Stats live on the green readout, so this screen carries the
 // description and the measurements that don't fit there.
 function renderEntry(p) {
   infoScreen.innerHTML = `
     <div class="info-heading">Pokédex Data</div>
     <div class="flavor">${p.flavor_text}<span class="cursor"></span></div>
-    <div class="meta">HT ${p.height_m.toFixed(1)} m &nbsp; WT ${p.weight_kg.toFixed(1)} kg</div>
+    <div class="meta">HT ${toFeetInches(p.height_m)} &nbsp; WT ${toPounds(p.weight_kg)} lbs</div>
   `;
   infoScreen.scrollTop = 0;
 }

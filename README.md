@@ -53,14 +53,9 @@ register that suits the casing. Notes are scheduled a quarter-second
 ahead rather than all at once, which keeps a long track from building
 hundreds of oscillators up front and lets it loop indefinitely.
 
-Nothing is bundled — the file is fetched at runtime, so swapping the
+The file is fetched at runtime rather than bundled, so swapping the
 tune means swapping that one file. With no file present the control
 simply stays off and the rest of the device is unaffected.
-
-`assets/music/*.mid` is gitignored. The player is generic, but a game's
-title theme is a copyrighted composition, and this repo is public;
-publishing one is a decision to make deliberately rather than by
-default. Drop the ignore line once you've made it.
 
 ## Favourites
 
