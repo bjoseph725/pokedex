@@ -163,8 +163,10 @@ main {
 }
 
 /* Square outer top corner — no cutout. Rounded only on the outer
-   edges; the hinge side stays flush. */
+   edges; the hinge side stays flush. Dropped by the lid's step so the
+   two top edges meet at the hinge. */
 .half.right {
+  margin-top: 24px;
   padding-top: 18px;
   border-radius: 4px 20px 20px 4px;
 }
@@ -754,11 +756,15 @@ main {
 
 /* ---------- Right: keypad and lower controls ---------- */
 
-/* Square keys butted together; the shared outline separates them. */
+/* Square keys butted together; the shared outline separates them.
+   Capped in width so squaring them doesn't blow the keys up to fill
+   the panel. */
 .keypad {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 0;
+  width: 100%;
+  max-width: 290px;
   border: 2px solid var(--outline);
   border-radius: 3px;
   overflow: hidden;
