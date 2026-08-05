@@ -91,21 +91,52 @@ function audioCtx() {
   return actx;
 }
 
-// Short pitch-drop blip for anything with a mechanical feel.
+let noiseBuffer = null;
+
+// A real button click is broadband noise, not a tone, so the body of
+// this is a decaying noise burst; the buffer is built once and reused.
+function getNoise(ctx) {
+  if (noiseBuffer && noiseBuffer.sampleRate === ctx.sampleRate) return noiseBuffer;
+  const len = Math.floor(ctx.sampleRate * 0.04);
+  noiseBuffer = ctx.createBuffer(1, len, ctx.sampleRate);
+  const data = noiseBuffer.getChannelData(0);
+  for (let i = 0; i < len; i++) {
+    data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3);
+  }
+  return noiseBuffer;
+}
+
+// Band-passed noise for the tick, over a low sine for the weight. Both
+// ramp in over a few ms — an instant start is what makes a click snap.
 function clickSound() {
   const ctx = audioCtx();
   if (!ctx) return;
   const t = ctx.currentTime;
+
+  const src = ctx.createBufferSource();
+  src.buffer = getNoise(ctx);
+  const band = ctx.createBiquadFilter();
+  band.type = "bandpass";
+  band.frequency.value = 1100;
+  band.Q.value = 0.9;
+  const tick = ctx.createGain();
+  tick.gain.setValueAtTime(0.0001, t);
+  tick.gain.exponentialRampToValueAtTime(0.16, t + 0.003);
+  tick.gain.exponentialRampToValueAtTime(0.0001, t + 0.045);
+  src.connect(band).connect(tick).connect(ctx.destination);
+
   const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  osc.type = "square";
-  osc.frequency.setValueAtTime(900, t);
-  osc.frequency.exponentialRampToValueAtTime(240, t + 0.045);
-  gain.gain.setValueAtTime(0.16, t);
-  gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.075);
-  osc.connect(gain).connect(ctx.destination);
+  const body = ctx.createGain();
+  osc.type = "sine";
+  osc.frequency.setValueAtTime(200, t);
+  body.gain.setValueAtTime(0.0001, t);
+  body.gain.exponentialRampToValueAtTime(0.09, t + 0.004);
+  body.gain.exponentialRampToValueAtTime(0.0001, t + 0.05);
+  osc.connect(body).connect(ctx.destination);
+
+  src.start(t);
   osc.start(t);
-  osc.stop(t + 0.09);
+  osc.stop(t + 0.06);
 }
 
 // Rising three-note arpeggio for a favourite being stored.
@@ -239,6 +270,7 @@ function step(delta) {
 }
 
 function pickRandom() {
+  clickSound();
   if (allPokemon.length < 2) return;
   let next = currentId;
   while (next === currentId) {
@@ -249,6 +281,7 @@ function pickRandom() {
 }
 
 function setMode(wantList) {
+  clickSound();
   if (listMode === wantList) return;
   listMode = wantList;
   btnData.setAttribute("aria-pressed", String(!listMode));
