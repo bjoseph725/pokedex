@@ -1,2 +1,7 @@
 node_modules/
 .DS_Store
+
+# The player reads whatever .mid sits in assets/music/. The title theme
+# is a copyrighted composition, so it isn't committed — keep it local,
+# or drop this line if you've decided to publish it.
+assets/music/*.mid

@@ -43,6 +43,12 @@
             <!-- Bezel lamp, lit while narrating -->
             <span class="ov lamp" id="lamp" aria-hidden="true"></span>
 
+            <!-- The green indicator toggles the music -->
+            <span class="ov music-led" id="music-led" aria-hidden="true"></span>
+            <button type="button" class="hit hit-music" id="btn-music" aria-pressed="false">
+              <span class="label">Music</span>
+            </button>
+
             <button type="button" class="hit hit-play" id="btn-play">
               <span class="glyph" aria-hidden="true"></span>
               <span class="label">Narrate</span>
@@ -113,5 +119,6 @@
   </div>
 
   <script src="app.js?v=5"></script>
+  <script src="music.js?v=1"></script>
 </body>
 </html>

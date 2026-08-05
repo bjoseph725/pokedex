@@ -44,6 +44,24 @@ The D-pad means the same thing in both screen modes, and wraps at both
 ends so it never dead-ends. In list mode you can also click a row
 directly.
 
+## Music
+
+The green indicator at the top of the lid toggles background music.
+`music.js` is a small MIDI reader and a square-wave voice, so whatever
+`.mid` sits at `assets/music/theme.mid` plays back in a chiptune
+register that suits the casing. Notes are scheduled a quarter-second
+ahead rather than all at once, which keeps a long track from building
+hundreds of oscillators up front and lets it loop indefinitely.
+
+Nothing is bundled — the file is fetched at runtime, so swapping the
+tune means swapping that one file. With no file present the control
+simply stays off and the rest of the device is unaffected.
+
+`assets/music/*.mid` is gitignored. The player is generic, but a game's
+title theme is a copyrighted composition, and this repo is public;
+publishing one is a decision to make deliberately rather than by
+default. Drop the ignore line once you've made it.
+
 ## Favourites
 
 The ten blue keys are favourite slots. Press **Save**, then a blue key,
