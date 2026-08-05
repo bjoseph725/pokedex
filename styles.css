@@ -1,41 +1,20 @@
+/* Overlay coordinates are measured from the artwork's own geometry
+   (viewBox 1448 x 1086) and expressed as percentages, so the screens
+   and controls track the casing at any size. */
 :root {
   --stage-1: #1b1d20;
   --stage-2: #101214;
 
-  --shell-hi: #e8323c;
-  --shell: #d2202b;
-  --shell-mid: #b0151f;
-  --shell-lo: #8a0f18;
-  --shell-edge: #5c080e;
-  --outline: #3d0509;
-
-  --bezel: #e4e2dc;
-  --bezel-dim: #bdbbb4;
-
   --screen-top: #dff2f5;
   --screen-bot: #a6cdd9;
 
-  --ink: #0a0c0d;
-  --ink-2: #131719;
   --phosphor: #f0eee2;
   --phosphor-dim: #8d9186;
+  --ink: #0a0c0d;
 
-  --lcd-green: #79c25e;
-  --lcd-green-dark: #4f9a3c;
   --lcd-ink: #16300f;
 
-  --key-blue: #56b8ee;
-  --key-blue-dark: #2f8ec4;
-
-  --lens-1: #cdeeff;
-  --lens-2: #2f8fd6;
-  --lens-3: #14568c;
-
-  --led-red: #e8443f;
-  --led-amber: #f2c33b;
   --led-green: #63c257;
-
-  --dark-plate: #14312c;
 
   --ui-panel: rgba(255, 255, 255, 0.04);
   --ui-border: rgba(255, 255, 255, 0.1);
@@ -46,7 +25,6 @@
   box-sizing: border-box;
 }
 
-/* Kill the double-tap zoom delay so repeated D-pad taps stay put. */
 button {
   touch-action: manipulation;
 }
@@ -67,7 +45,7 @@ body {
 }
 
 .page {
-  max-width: 1040px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 1.5rem 1.25rem 3rem;
   display: flex;
@@ -88,7 +66,7 @@ body {
 .top h1 {
   margin: 0;
   font: 800 1.3rem/1 -apple-system, "Segoe UI", sans-serif;
-  color: var(--bezel);
+  color: #e4e2dc;
 }
 
 .top .subtitle {
@@ -133,202 +111,84 @@ main {
   gap: 1rem;
 }
 
-/* ---------- Device shell ---------- */
+/* ---------- Device ---------- */
 
 .device {
-  display: grid;
-  grid-template-columns: 1fr 30px 1fr;
-  width: min(940px, 100%);
+  width: 100%;
+  max-width: 1060px;
 }
 
-.half {
+/* cqw units below are relative to this box, so every label scales
+   with the casing instead of drifting out of its screen. */
+.stage {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 16px;
-  background:
-    linear-gradient(158deg, var(--shell-hi) 0%, var(--shell) 30%, var(--shell-mid) 66%, var(--shell-lo) 100%);
-  /* Per-half rather than on .device: a filter on a container whose
-     children are clipped renders unreliably in Safari. */
-  filter: drop-shadow(0 18px 26px rgba(0, 0, 0, 0.55));
+  width: 100%;
+  aspect-ratio: 1448 / 1086;
+  container-type: inline-size;
+  filter: drop-shadow(0 20px 34px rgba(0, 0, 0, 0.55));
 }
 
-/* The lid steps down on its hinge side, as on the real casing.
-   These polygons avoid calc(), which Safari has mishandled inside
-   clip-path; a dropped clip-path would square off the whole shell. */
-.half.left {
-  padding-top: 14px;
-  clip-path: polygon(0 16px, 16px 0, 56% 0, 64% 24px, 100% 24px, 100% 100%, 0 100%);
+.device-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
 }
 
-/* Square outer top corner — no cutout. Rounded only on the outer
-   edges; the hinge side stays flush. Dropped by the lid's step so the
-   two top edges meet at the hinge. */
-.half.right {
-  margin-top: 24px;
-  padding-top: 18px;
-  border-radius: 4px 20px 20px 4px;
-}
-
-/* Hinge barrel */
-
-.hinge {
-  position: relative;
-  background: linear-gradient(
-    90deg,
-    var(--shell-edge) 0%,
-    var(--shell-lo) 22%,
-    var(--shell) 46%,
-    var(--shell-hi) 54%,
-    var(--shell-mid) 74%,
-    var(--shell-edge) 100%
-  );
-  border-radius: 15px;
-  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.5);
-}
-
-.barrel-cap {
+.ov {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 22px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse at 38% 30%, var(--shell-hi), var(--shell-mid) 60%, var(--shell-edge));
-  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.45);
-}
-
-/* Sits inside the barrel so the hinge never rides above the lid's
-   top edge. */
-.barrel-cap.top {
-  top: 0;
-}
-
-.barrel-cap.bottom {
-  bottom: -8px;
-}
-
-/* ---------- Left: lid top ---------- */
-
-.lid-top {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 0 2px;
-  height: 62px;
-  flex-shrink: 0;
-}
-
-.lens {
-  position: relative;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  background: radial-gradient(circle at 36% 30%, var(--lens-1) 0%, var(--lens-2) 46%, var(--lens-3) 100%);
-  border: 5px solid var(--bezel);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 -6px 12px rgba(0, 0, 0, 0.4);
-}
-
-.lens-glint {
-  position: absolute;
-  top: 14%;
-  left: 18%;
-  width: 32%;
-  height: 24%;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  filter: blur(1px);
-}
-
-.leds {
-  display: flex;
-  gap: 11px;
-  align-self: flex-start;
-  margin-top: 12px;
-}
-
-.led {
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  border: 2px solid var(--outline);
-}
-
-.led.red {
-  background: radial-gradient(circle at 35% 28%, #ffc9c9, var(--led-red) 60%, #8c1f1f);
-}
-
-.led.amber {
-  background: radial-gradient(circle at 35% 28%, #fff0c0, var(--led-amber) 60%, #9c7a12);
-}
-
-.led.green {
-  background: radial-gradient(circle at 35% 28%, #d6f5d0, var(--led-green) 60%, #2f7a35);
-}
-
-/* ---------- Left: screen bezel ---------- */
-
-.screen-frame {
-  background: linear-gradient(160deg, var(--bezel), var(--bezel-dim));
-  border: 2px solid var(--outline);
-  border-radius: 8px 8px 22px 8px;
-  padding: 8px 10px 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.6);
-}
-
-.frame-lights {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  padding-bottom: 1px;
-}
-
-.frame-lights span {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #ff8f8f, #c22a2a 65%);
-  border: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-.color-screen {
-  position: relative;
-  aspect-ratio: 4 / 3.1;
-  border: 2px solid var(--outline);
-  background: linear-gradient(180deg, var(--screen-top), var(--screen-bot));
-  box-shadow: inset 0 10px 24px rgba(0, 0, 0, 0.16);
   overflow: hidden;
+}
+
+/* ---------- Main screen (x152 y347.7 w406.8 h288.8) ---------- */
+
+.screen-main {
+  left: 10.497%;
+  top: 32.017%;
+  width: 28.094%;
+  height: 26.593%;
+  background: linear-gradient(180deg, var(--screen-top), var(--screen-bot));
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 7px 10px 5px;
+  padding: 1.1cqw 1.4cqw 0.8cqw;
 }
 
-.color-screen::after {
+.screen-main::after {
   content: "";
   position: absolute;
   inset: 0;
   background: repeating-linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.045) 0px,
-    rgba(0, 0, 0, 0.045) 1px,
+    rgba(0, 0, 0, 0.05) 0px,
+    rgba(0, 0, 0, 0.05) 1px,
     transparent 1px,
     transparent 3px
   );
   pointer-events: none;
 }
 
-.screen-title {
-  font: 700 0.7rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  letter-spacing: 0.22em;
-  color: #2b4450;
-  text-transform: uppercase;
+.screen-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
   flex-shrink: 0;
+  gap: 1cqw;
+}
+
+.screen-head .dex-no {
+  font: 700 1.05cqw/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  color: #5a7683;
+  font-variant-numeric: tabular-nums;
+}
+
+.screen-head .mon-name {
+  font: 700 1.25cqw/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  letter-spacing: 0.12em;
+  color: #24404c;
+  text-transform: uppercase;
 }
 
 .mon-sprite {
@@ -336,363 +196,108 @@ main {
   min-height: 0;
   width: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 0.4cqw 0.6cqw rgba(0, 0, 0, 0.22));
   image-rendering: -webkit-optimize-contrast;
 }
 
-.screen-caption {
-  font: 500 0.6rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+.mon-genus {
+  font: 500 1cqw/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   color: #48606b;
   flex-shrink: 0;
 }
 
-.frame-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1px 2px 0;
-  height: 18px;
-}
+/* ---------- Green readout (x190.6 y818.7 w222.3 h137.3) ---------- */
 
-.frame-led {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #ff8f8f, #b52626 65%);
-  border: 1px solid var(--outline);
-  transition: background 0.15s ease, box-shadow 0.15s ease;
-}
-
-/* Lights while the entry is being narrated. */
-.frame-led.lit {
-  background: radial-gradient(circle at 35% 30%, #fff0f0, #ff3b3b 60%);
-  animation: lamp-pulse 1.1s ease-in-out infinite;
-}
-
-@keyframes lamp-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 5px 1px rgba(255, 70, 70, 0.65);
-  }
-  50% {
-    box-shadow: 0 0 12px 4px rgba(255, 70, 70, 0.95);
-  }
-}
-
-/* Angled speaker slots, as on the reference casing. */
-.frame-grille {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  align-items: flex-end;
-}
-
-.frame-grille span {
-  height: 2px;
-  background: #6f6d66;
-  border-radius: 1px;
-  transform: skewX(-32deg);
-}
-
-.frame-grille span:nth-child(1) { width: 14px; }
-.frame-grille span:nth-child(2) { width: 19px; }
-.frame-grille span:nth-child(3) { width: 24px; }
-.frame-grille span:nth-child(4) { width: 29px; }
-
-/* ---------- Left: black button + dashes ---------- */
-
-.under-screen {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 0 2px;
-}
-
-.shutter-btn {
-  appearance: none;
-  border: 2px solid var(--outline);
-  padding: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  cursor: pointer;
-  background: radial-gradient(circle at 34% 28%, #4a4d52, #17191c 70%);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.1s ease, filter 0.1s ease;
-}
-
-/* Play glyph, so the button reads as pressable before it's pressed. */
-.shutter-btn::before {
-  content: "";
-  width: 0;
-  height: 0;
-  margin-left: 3px;
-  border-left: 12px solid rgba(255, 255, 255, 0.85);
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-}
-
-.shutter-btn:hover {
-  filter: brightness(1.4);
-}
-
-.shutter-btn:active {
-  transform: scale(0.92);
-}
-
-.shutter-btn:focus-visible {
-  outline: 3px solid var(--led-green);
-  outline-offset: 3px;
-}
-
-/* Pressed in while narrating, glyph switching to a stop square. */
-.shutter-btn.playing {
-  background: radial-gradient(circle at 34% 28%, #313438, #0d0f11 70%);
-  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.8);
-}
-
-.shutter-btn.playing::before {
-  width: 12px;
-  height: 12px;
-  margin-left: 0;
-  border: none;
-  border-radius: 1px;
-  background: #ff6b6b;
-}
-
-.dashes {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.dashes span {
-  width: 30px;
-  height: 6px;
-  border-radius: 3px;
-  background: linear-gradient(180deg, #f0eee6, #c6c3ba);
-  border: 1px solid var(--outline);
-}
-
-.dashes span:last-child {
-  width: 22px;
-  background: linear-gradient(180deg, #7fd0f0, #2f8ec4);
-}
-
-/* ---------- Left: green readout + D-pad ---------- */
-
-.lower-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: auto;
-  padding: 0 2px 2px;
-}
-
-.mini-lcd {
-  flex: 1;
-  height: 84px;
-  border: 2px solid var(--outline);
-  border-radius: 3px;
-  padding: 7px 9px;
-  background: linear-gradient(170deg, var(--lcd-green), var(--lcd-green-dark));
-  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.25);
+.screen-stats {
+  left: 13.163%;
+  top: 75.387%;
+  width: 15.352%;
+  height: 12.643%;
+  padding: 0.7cqw 0.9cqw;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 3px;
-  overflow: hidden;
+  gap: 0.45cqw;
 }
 
-.mini-lcd div {
-  font: 600 0.6rem/1.25 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+.stat-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.2cqw 0.6cqw;
+}
+
+.stat-grid span {
+  font: 700 0.82cqw/1.15 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   color: var(--lcd-ink);
   white-space: nowrap;
+}
+
+.stat-grid .v {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.stat-total {
+  border-top: 1px solid rgba(22, 48, 15, 0.5);
+  padding-top: 0.3cqw;
+  display: flex;
+  justify-content: space-between;
+  font: 700 0.86cqw/1.15 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  color: var(--lcd-ink);
   font-variant-numeric: tabular-nums;
 }
 
-.dpad {
-  position: relative;
-  width: 92px;
-  height: 92px;
-  flex-shrink: 0;
-}
+/* ---------- Main LCD (x840 y285.5 w508.9 h131.3) ---------- */
 
-/* One solid cross, with transparent hit targets over each arm. */
-.dpad-plate {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(160deg, #3c4045, #16181b);
-  clip-path: polygon(
-    34% 0, 66% 0, 66% 34%, 100% 34%, 100% 66%,
-    66% 66%, 66% 100%, 34% 100%, 34% 66%, 0 66%, 0 34%, 34% 34%
-  );
-  pointer-events: none;
-}
-
-.dpad::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle at 38% 32%, #4d5156, #202326);
-  pointer-events: none;
-}
-
-.dpad-arm {
-  position: absolute;
-  appearance: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  background: transparent;
-  transition: background 0.12s ease;
-}
-
-.dpad-arm:hover {
-  background: rgba(255, 255, 255, 0.14);
-}
-
-.dpad-arm:active {
-  background: rgba(0, 0, 0, 0.35);
-}
-
-.dpad-arm:focus-visible {
-  outline: 2px solid var(--led-green);
-  outline-offset: -2px;
-  z-index: 3;
-}
-
-.dpad-arm.up {
-  left: 34%;
-  top: 0;
-  width: 32%;
-  height: 34%;
-}
-
-.dpad-arm.down {
-  left: 34%;
-  bottom: 0;
-  width: 32%;
-  height: 34%;
-}
-
-.dpad-arm.left {
-  top: 34%;
-  left: 0;
-  width: 34%;
-  height: 32%;
-}
-
-.dpad-arm.right {
-  top: 34%;
-  right: 0;
-  width: 34%;
-  height: 32%;
-}
-
-/* ---------- Right: main LCD ---------- */
-
-.info-screen {
-  position: relative;
-  flex: none;
-  height: 330px;
-  border: 2px solid var(--outline);
-  border-radius: 3px;
-  background: linear-gradient(180deg, var(--ink), var(--ink-2));
-  box-shadow: inset 0 8px 22px rgba(0, 0, 0, 0.6);
-  padding: 14px 16px 12px;
+.screen-info {
+  left: 58.011%;
+  top: 26.289%;
+  width: 35.145%;
+  height: 12.090%;
+  padding: 0.8cqw 1.1cqw;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.4cqw;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #2f3a2c transparent;
 }
 
-.info-screen::-webkit-scrollbar {
-  width: 6px;
+.screen-info::-webkit-scrollbar {
+  width: 4px;
 }
 
-.info-screen::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.info-screen::-webkit-scrollbar-thumb {
+.screen-info::-webkit-scrollbar-thumb {
   background: #2f3a2c;
-  border-radius: 3px;
-}
-
-.info-screen::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.03) 0px,
-    rgba(255, 255, 255, 0.03) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  pointer-events: none;
+  border-radius: 2px;
 }
 
 .info-heading {
-  font: 700 0.66rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  letter-spacing: 0.2em;
+  font: 700 0.8cqw/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  letter-spacing: 0.18em;
   color: var(--phosphor-dim);
   text-transform: uppercase;
-  margin-top: 2px;
-}
-
-.info-heading:first-child {
-  margin-top: 0;
-}
-
-.info-line {
-  font: 500 0.78rem/1.45 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  color: var(--phosphor);
-}
-
-.stat-line {
-  display: grid;
-  grid-template-columns: 54px 1fr 30px;
-  gap: 8px;
-  align-items: baseline;
-  font: 500 0.74rem/1.5 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  color: var(--phosphor);
-}
-
-.stat-line .stat-bar {
-  color: #9fd48f;
-  letter-spacing: -1px;
-}
-
-.stat-line .stat-val {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
 }
 
 .flavor {
-  font: 500 0.78rem/1.5 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font: 500 0.95cqw/1.45 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   color: var(--phosphor);
+}
+
+.meta {
+  margin-top: auto;
+  font: 500 0.85cqw/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  color: var(--phosphor-dim);
+  font-variant-numeric: tabular-nums;
 }
 
 .cursor {
   display: inline-block;
-  width: 7px;
-  height: 12px;
+  width: 0.5cqw;
+  height: 0.9cqw;
   background: var(--phosphor);
-  vertical-align: -2px;
-  margin-left: 2px;
+  vertical-align: -0.1cqw;
+  margin-left: 0.2cqw;
   animation: blink 1s steps(1) infinite;
 }
 
@@ -707,7 +312,6 @@ main {
 .dex-list {
   display: flex;
   flex-direction: column;
-  gap: 1px;
 }
 
 .dex-row {
@@ -716,25 +320,19 @@ main {
   background: transparent;
   text-align: left;
   cursor: pointer;
-  padding: 3px 6px;
-  font: 500 0.78rem/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  padding: 0.15cqw 0.4cqw;
+  font: 500 0.95cqw/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   color: var(--phosphor);
   display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 10px;
+  grid-template-columns: 3.2cqw 1fr;
+  gap: 0.8cqw;
   font-variant-numeric: tabular-nums;
 }
 
 .dex-row:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
 }
 
-.dex-row:focus-visible {
-  outline: 1px solid var(--phosphor);
-  outline-offset: -1px;
-}
-
-/* Inverted selection, the way a real dot-matrix cursor reads. */
 .dex-row[aria-current="true"] {
   background: var(--phosphor);
   color: var(--ink);
@@ -749,140 +347,206 @@ main {
 }
 
 .list-empty {
-  font: 500 0.78rem ui-monospace, monospace;
+  margin: 0;
+  font: 500 0.95cqw ui-monospace, monospace;
   color: var(--phosphor-dim);
-  padding: 4px 6px;
 }
 
-/* ---------- Right: keypad and lower controls ---------- */
+/* ---------- Type plates ---------- */
 
-/* Square keys butted together; the shared outline separates them.
-   Capped in width so squaring them doesn't blow the keys up to fill
-   the panel. */
-.keypad {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0;
-  width: 100%;
-  max-width: 290px;
-  border: 2px solid var(--outline);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.keypad span {
-  aspect-ratio: 1;
-  border: 1px solid var(--outline);
-  background: linear-gradient(180deg, #a5e0fa 0%, var(--key-blue) 42%, var(--key-blue-dark) 100%);
-  box-shadow:
-    inset 0 3px 0 rgba(255, 255, 255, 0.55),
-    inset 0 -4px 6px rgba(0, 0, 0, 0.28);
-}
-
-.button-bank {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.wide-key {
-  appearance: none;
-  width: 68px;
-  height: 28px;
-  border: 2px solid var(--outline);
-  border-radius: 2px;
-  background: linear-gradient(165deg, #f5f4ee, #cfcdc4);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
-  cursor: pointer;
-  font: 700 0.6rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #2b2b26;
-  padding: 0;
-  transition: transform 0.1s ease, filter 0.1s ease;
-}
-
-.wide-key:hover {
-  filter: brightness(1.06);
-}
-
-.wide-key:active {
-  transform: translateY(1px);
-}
-
-.wide-key:focus-visible {
-  outline: 3px solid var(--led-green);
-  outline-offset: 2px;
-}
-
-/* Whichever mode the screen is showing sits pressed in. */
-.wide-key[aria-pressed="true"] {
-  background: linear-gradient(165deg, #b9b7ad, #d8d6cd);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.45);
-  color: #14140f;
-}
-
-.bank-dashes {
-  display: flex;
-  gap: 8px;
-  margin-left: auto;
-}
-
-.bank-dashes span {
-  width: 26px;
-  height: 5px;
-  border-radius: 3px;
-  background: #4a1015;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.5);
-}
-
-.bottom-bank {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: auto;
-}
-
-.dark-bar {
-  flex: 1;
-  height: 32px;
-  border: 2px solid var(--outline);
-  border-radius: 3px;
-  background: linear-gradient(170deg, #1d453d, var(--dark-plate));
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+.plate {
   display: flex;
   align-items: center;
   justify-content: center;
-  font: 700 0.64rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  letter-spacing: 0.14em;
-  color: #cfe8d8;
+  font: 700 1.15cqw/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  white-space: nowrap;
-  overflow: hidden;
-  padding: 0 8px;
+  color: #d5eede;
 }
 
-.yellow-btn {
-  appearance: none;
-  border: 2px solid var(--outline);
-  padding: 0;
-  width: 26px;
-  height: 26px;
+/* x839.6 y842.5 w216.2 h105.5 */
+.plate-1 {
+  left: 57.983%;
+  top: 77.578%;
+  width: 14.931%;
+  height: 9.714%;
+}
+
+/* x1113.5 y842.6 w236.8 h105.4 */
+.plate-2 {
+  left: 76.899%;
+  top: 77.588%;
+  width: 16.353%;
+  height: 9.705%;
+}
+
+/* ---------- Bezel lamp (x384.4 y303.8 w16.1 h15.8) ---------- */
+
+.lamp {
+  left: 26.547%;
+  top: 27.974%;
+  width: 1.112%;
+  height: 1.455%;
   border-radius: 50%;
-  flex-shrink: 0;
+  pointer-events: none;
+  transition: box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.lamp.lit {
+  background: radial-gradient(circle at 35% 30%, #fff0f0, #ff3b3b 65%);
+  animation: lamp-pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes lamp-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0.5cqw 0.1cqw rgba(255, 70, 70, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 1.2cqw 0.4cqw rgba(255, 70, 70, 0.95);
+  }
+}
+
+/* ---------- Hit areas over the artwork's controls ---------- */
+
+.hit {
+  position: absolute;
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 0;
   cursor: pointer;
-  background: radial-gradient(circle at 34% 28%, #ffe9a8, #edb62f 55%, #9a7415 100%);
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.45);
-  transition: transform 0.1s ease;
+  border-radius: 4px;
+  transition: background 0.12s ease;
 }
 
-.yellow-btn:active {
-  transform: scale(0.9);
+.hit:hover {
+  background: rgba(255, 255, 255, 0.18);
 }
 
-.yellow-btn:focus-visible {
+.hit:active {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.hit:focus-visible {
   outline: 3px solid var(--led-green);
-  outline-offset: 3px;
+  outline-offset: 2px;
+  z-index: 5;
+}
+
+/* Labels are for assistive tech until the layout falls back below. */
+.hit .label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Narration button (x70.6 y764.6 w73.6 h68.8) */
+.hit-play {
+  left: 4.876%;
+  top: 70.405%;
+  width: 5.083%;
+  height: 6.335%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Play glyph, so the button reads as pressable before it is pressed. */
+.hit-play .glyph {
+  width: 0;
+  height: 0;
+  margin-left: 0.35cqw;
+  border-left: 1.3cqw solid rgba(255, 255, 255, 0.9);
+  border-top: 0.85cqw solid transparent;
+  border-bottom: 0.85cqw solid transparent;
+}
+
+.hit-play.playing .glyph {
+  width: 1.2cqw;
+  height: 1.2cqw;
+  margin-left: 0;
+  border: none;
+  border-radius: 1px;
+  background: #ff6b6b;
+}
+
+/* White keys (x840 / x935.3, y696, w92 h69) */
+.hit-data {
+  left: 58.011%;
+  top: 64.098%;
+  width: 6.354%;
+  height: 6.344%;
+}
+
+.hit-list {
+  left: 64.593%;
+  top: 64.079%;
+  width: 6.354%;
+  height: 6.326%;
+}
+
+/* Whichever mode the screen is showing reads as pressed in. */
+.hit-data[aria-pressed="true"],
+.hit-list[aria-pressed="true"] {
+  background: rgba(0, 0, 0, 0.28);
+  box-shadow: inset 0 0.2cqw 0.4cqw rgba(0, 0, 0, 0.45);
+}
+
+/* Yellow key (x1274.5 y698.1 w52.4 h66.1) */
+.hit-random {
+  left: 88.018%;
+  top: 64.282%;
+  width: 3.619%;
+  height: 6.087%;
+  border-radius: 50%;
+}
+
+/* D-pad (x457 y775.5 w180.1 h175.3) */
+.dpad {
+  position: absolute;
+  left: 31.561%;
+  top: 71.409%;
+  width: 12.438%;
+  height: 16.142%;
+}
+
+.arm {
+  position: absolute;
+}
+
+.arm.up {
+  left: 33%;
+  top: 0;
+  width: 34%;
+  height: 35%;
+}
+
+.arm.down {
+  left: 33%;
+  bottom: 0;
+  width: 34%;
+  height: 35%;
+}
+
+.arm.left {
+  top: 33%;
+  left: 0;
+  width: 35%;
+  height: 34%;
+}
+
+.arm.right {
+  top: 33%;
+  right: 0;
+  width: 35%;
+  height: 34%;
 }
 
 /* ---------- Below the device ---------- */
@@ -921,37 +585,184 @@ main {
 
 @media (prefers-reduced-motion: reduce) {
   .cursor,
-  .frame-led.lit {
+  .lamp.lit {
     animation: none;
   }
 }
 
-@media (max-width: 700px) {
-  .device {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .half.left {
-    clip-path: polygon(0 16px, 16px 0, 56% 0, 64% 24px, 100% 24px, 100% 100%, 0 100%);
-  }
-
-  .hinge {
-    height: 18px;
-    border-radius: 9px;
-  }
-
-  .barrel-cap {
+/* ---------- Small screens ----------
+   Scaled down past roughly this width the casing's screens are too
+   small to read, so the artwork steps aside and the same elements
+   stack as plain panels. */
+@media (max-width: 760px) {
+  .device-art {
     display: none;
   }
 
-  /* A narrower column wraps the entry onto more lines. */
-  .info-screen {
-    height: 340px;
+  .stage {
+    position: static;
+    aspect-ratio: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    filter: none;
   }
 
-  .top {
+  .ov,
+  .hit,
+  .dpad,
+  .arm {
+    position: static;
+    left: auto;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    width: auto;
+    height: auto;
+  }
+
+  .ov {
+    border-radius: 10px;
+    border: 1px solid var(--ui-border);
+  }
+
+  .screen-main {
+    padding: 0.75rem;
+    aspect-ratio: 4 / 3;
+    border-radius: 10px;
+  }
+
+  .screen-head .dex-no {
+    font-size: 0.75rem;
+  }
+
+  .screen-head .mon-name {
+    font-size: 0.95rem;
+  }
+
+  .mon-genus {
+    font-size: 0.72rem;
+  }
+
+  .screen-stats,
+  .screen-info {
+    background: #12161a;
+    padding: 0.75rem 0.9rem;
+    min-height: 0;
+  }
+
+  .stat-grid {
+    grid-template-columns: auto 1fr auto 1fr;
+    gap: 0.25rem 1rem;
+  }
+
+  .stat-grid span,
+  .stat-total {
+    font-size: 0.78rem;
+    color: var(--phosphor);
+  }
+
+  .stat-total {
+    border-top-color: var(--ui-border);
+    padding-top: 0.4rem;
+  }
+
+  .info-heading {
+    font-size: 0.68rem;
+  }
+
+  .flavor,
+  .dex-row,
+  .list-empty {
+    font-size: 0.85rem;
+  }
+
+  .dex-row {
+    grid-template-columns: 2.6rem 1fr;
+    gap: 0.6rem;
+    padding: 0.25rem 0.4rem;
+  }
+
+  .meta {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .cursor {
+    width: 6px;
+    height: 12px;
+    vertical-align: -2px;
+    margin-left: 2px;
+  }
+
+  .screen-info {
+    max-height: 15rem;
+  }
+
+  .plate {
+    padding: 0.55rem;
+    font-size: 0.72rem;
+    background: linear-gradient(170deg, #1d453d, #14312c);
+  }
+
+  .lamp {
+    display: none;
+  }
+
+  /* Controls become ordinary labelled buttons. */
+  .dpad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+
+  .hit {
+    border: 1px solid var(--ui-border);
+    background: var(--ui-panel);
+    border-radius: 10px;
+    padding: 0.6rem 0.5rem;
+    color: var(--phosphor);
+    font: 600 0.78rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+
+  .hit .label {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip-path: none;
+  }
+
+  .hit-play {
+    display: flex;
+    gap: 0.5rem;
     justify-content: center;
-    text-align: center;
+  }
+
+  .hit-play .glyph {
+    border-left-width: 10px;
+    border-top-width: 7px;
+    border-bottom-width: 7px;
+    margin-left: 0;
+    align-self: center;
+  }
+
+  .hit-play.playing .glyph {
+    width: 10px;
+    height: 10px;
+  }
+
+  .hit-data[aria-pressed="true"],
+  .hit-list[aria-pressed="true"] {
+    background: var(--phosphor);
+    color: #14140f;
+    box-shadow: none;
+  }
+
+  .mode-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
   }
 }

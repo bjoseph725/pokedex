@@ -1,9 +1,27 @@
 # Pokédex — Kanto (#1–151)
 
-A static, dependency-free Pokédex covering the original 151 Pokémon, styled
-as a physical handheld device: a color screen on the left shows the
-Pokémon's artwork, name, and genus, a green readout below it carries the
-vitals, and the main LCD on the right shows base stats and the dex entry.
+A static, dependency-free Pokédex covering the original 151 Pokémon,
+presented as a physical handheld device.
+
+## How the device is built
+
+The casing is a single vector drawing, `assets/device/pokedex.svg`. The
+screens and controls are HTML positioned on top of it, so the artwork
+carries the look and the DOM carries the behaviour.
+
+Every overlay is placed in percentages taken from the drawing's own
+geometry — each region's bounding box was measured in the browser
+against its `viewBox` of 1448×1086 rather than eyeballed. Because the
+coordinates are relative, the whole device scales as one piece. Text
+inside the screens is sized in `cqw` units against the device
+container, so labels scale with the casing instead of drifting out of
+their screens.
+
+The controls are real `<button>` elements laid over the drawn ones, so
+keyboard focus and screen readers work normally; each carries a
+visually hidden label. Below roughly 760px the casing would render its
+screens too small to read, so the artwork is hidden and the same
+elements stack as plain panels with those labels shown.
 
 ## Controls
 
@@ -11,10 +29,11 @@ vitals, and the main LCD on the right shows base stats and the dex entry.
 | --- | --- |
 | D-pad ← → | Step one Pokémon |
 | D-pad ↑ ↓ | Jump ten |
-| White key | Swap the right screen between the entry and the name list |
-| Black button | Narrate the entry |
+| Data key | Show the description on the right screen |
+| List key | Show the selectable name list |
+| Black ▶ button | Narrate the entry |
 | Yellow button | Random Pokémon |
-| Arrow keys / space | Mirror the D-pad and the black button |
+| Arrow keys / space | Mirror the D-pad and the ▶ button |
 
 The D-pad means the same thing in both screen modes, and wraps at both
 ends so it never dead-ends. In list mode you can also click a row
@@ -89,10 +108,9 @@ rather than adapting to light/dark system theme — the red plastic reads
 best against a dark, neutral backdrop regardless of the viewer's OS
 setting.
 
-Both screens are fixed height so the device never changes size as you
-page through, and each screen scrolls internally if content ever
-outgrows it. Screen heights are set from the tallest content measured
-across all 151 at each breakpoint.
+The screens are fixed regions of the casing, so the device never
+changes size as you page through; a screen scrolls internally if its
+content outgrows it.
 
 Moving the selection scrolls the screen's own `scrollTop` rather than
 calling `scrollIntoView`, which walks up the tree and drags the page

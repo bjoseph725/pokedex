@@ -7,15 +7,15 @@
   <meta name="description" content="A handheld-style Pokédex for the original 151 Pokémon, with base stats, types, and narrated entries." />
 
   <link rel="icon" href="favicon.ico" sizes="32x32" />
-  <link rel="icon" href="assets/icon/icon.svg?v=2" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2" />
-  <link rel="manifest" href="site.webmanifest?v=2" />
+  <link rel="icon" href="assets/icon/icon.svg?v=4" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=4" />
+  <link rel="manifest" href="site.webmanifest?v=4" />
   <meta name="theme-color" content="#c4141f" />
   <meta name="apple-mobile-web-app-title" content="Pokédex" />
 
   <!-- Bump ?v= when styles or scripts change so GitHub Pages' CDN and
        phone browsers can't serve a stale copy. -->
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
   <div class="page">
@@ -31,82 +31,61 @@
 
     <main>
       <div class="device">
-        <!-- Left half -->
-        <div class="half left">
-          <div class="lid-top">
-            <div class="lens"><span class="lens-glint"></span></div>
-            <div class="leds">
-              <span class="led red"></span>
-              <span class="led amber"></span>
-              <span class="led green"></span>
+        <div class="stage">
+          <img class="device-art" src="assets/device/pokedex.svg?v=4" alt="" aria-hidden="true" />
+
+          <!-- Main screen: artwork, number, name, genus -->
+          <div class="ov screen-main">
+            <div class="screen-head">
+              <span class="dex-no" id="mon-dexno">No.001</span>
+              <span class="mon-name" id="mon-name">BULBASAUR</span>
             </div>
+            <img class="mon-sprite" id="mon-image" src="" alt="" />
+            <div class="mon-genus" id="mon-genus">Seed Pokémon</div>
           </div>
 
-          <div class="screen-frame">
-            <div class="frame-lights" aria-hidden="true">
-              <span></span><span></span>
-            </div>
+          <!-- Green readout: base stats -->
+          <div class="ov screen-stats" id="stats-lcd"></div>
 
-            <div class="color-screen">
-              <div class="screen-title" id="mon-name">BULBASAUR</div>
-              <img class="mon-sprite" id="mon-image" src="" alt="" />
-              <div class="screen-caption" id="mon-genus">Seed Pokémon</div>
-            </div>
+          <!-- Main LCD: description or name list -->
+          <div class="ov screen-info" id="info-screen"></div>
 
-            <div class="frame-bottom" aria-hidden="true">
-              <span class="frame-led" id="lamp"></span>
-              <div class="frame-grille">
-                <span></span><span></span><span></span><span></span>
-              </div>
-            </div>
-          </div>
+          <!-- Type plates -->
+          <div class="ov plate plate-1" id="type-1"></div>
+          <div class="ov plate plate-2" id="type-2"></div>
 
-          <div class="under-screen">
-            <button type="button" class="shutter-btn" id="btn-play" aria-label="Play Pokédex entry"></button>
-            <div class="dashes" aria-hidden="true">
-              <span></span><span></span>
-            </div>
-          </div>
+          <!-- Bezel lamp, lit while narrating -->
+          <span class="ov lamp" id="lamp" aria-hidden="true"></span>
 
-          <div class="lower-left">
-            <div class="mini-lcd" id="mini-lcd"></div>
+          <!-- Controls -->
+          <button type="button" class="hit hit-play" id="btn-play">
+            <span class="glyph" aria-hidden="true"></span>
+            <span class="label">Narrate</span>
+          </button>
 
-            <div class="dpad" role="group" aria-label="Navigate Pokémon">
-              <span class="dpad-plate" aria-hidden="true"></span>
-              <button type="button" class="dpad-arm up" data-dir="up"></button>
-              <button type="button" class="dpad-arm left" data-dir="left"></button>
-              <button type="button" class="dpad-arm right" data-dir="right"></button>
-              <button type="button" class="dpad-arm down" data-dir="down"></button>
-            </div>
-          </div>
-        </div>
+          <button type="button" class="hit hit-data" id="btn-data" aria-pressed="true">
+            <span class="label">Data</span>
+          </button>
+          <button type="button" class="hit hit-list" id="btn-list" aria-pressed="false">
+            <span class="label">List</span>
+          </button>
+          <button type="button" class="hit hit-random" id="btn-random">
+            <span class="label">Random</span>
+          </button>
 
-        <div class="hinge" aria-hidden="true">
-          <span class="barrel-cap top"></span>
-          <span class="barrel-cap bottom"></span>
-        </div>
-
-        <!-- Right half -->
-        <div class="half right">
-          <div class="info-screen" id="info-screen"></div>
-
-          <div class="keypad" aria-hidden="true">
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-          </div>
-
-          <div class="button-bank">
-            <button type="button" class="wide-key" id="btn-data" aria-pressed="true">Data</button>
-            <button type="button" class="wide-key" id="btn-list" aria-pressed="false">List</button>
-            <div class="bank-dashes" aria-hidden="true">
-              <span></span><span></span>
-            </div>
-            <button type="button" class="yellow-btn" id="btn-random" aria-label="Random Pokémon"></button>
-          </div>
-
-          <div class="bottom-bank">
-            <div class="dark-bar" id="type-plate"></div>
-            <div class="dark-bar" id="dex-plate"></div>
+          <div class="dpad" role="group" aria-label="Navigate Pokémon">
+            <button type="button" class="hit arm up" data-dir="up">
+              <span class="label">Back ten</span>
+            </button>
+            <button type="button" class="hit arm left" data-dir="left">
+              <span class="label">Previous</span>
+            </button>
+            <button type="button" class="hit arm right" data-dir="right">
+              <span class="label">Next</span>
+            </button>
+            <button type="button" class="hit arm down" data-dir="down">
+              <span class="label">Forward ten</span>
+            </button>
           </div>
         </div>
       </div>
@@ -124,6 +103,6 @@
     </footer>
   </div>
 
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>

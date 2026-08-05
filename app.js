@@ -1,12 +1,3 @@
-const STAT_LABELS = [
-  ["hp", "HP"],
-  ["attack", "ATTACK"],
-  ["defense", "DEFENSE"],
-  ["special_attack", "SP.ATK"],
-  ["special_defense", "SP.DEF"],
-  ["speed", "SPEED"],
-];
-const MAX_STAT = 180;
 const PAGE = 10;
 
 const searchInput = document.getElementById("search");
@@ -43,7 +34,7 @@ async function init() {
   btnList.addEventListener("click", () => setMode(true));
 
   dpad.addEventListener("click", (e) => {
-    const arm = e.target.closest(".dpad-arm");
+    const arm = e.target.closest(".arm");
     if (arm) step(deltaFor(arm.dataset.dir));
   });
 
@@ -168,12 +159,6 @@ function playEntry() {
   audio.play().catch(stopAudio);
 }
 
-function bar(value) {
-  const width = 16;
-  const filledCount = Math.max(1, Math.round((value / MAX_STAT) * width));
-  return "█".repeat(Math.min(width, filledCount)) + "░".repeat(Math.max(0, width - filledCount));
-}
-
 function render() {
   const p = allPokemon.find((x) => x.id === currentId);
   if (!p) return;
@@ -186,43 +171,39 @@ function render() {
 }
 
 function renderLid(p) {
+  const num = `No.${String(p.id).padStart(3, "0")}`;
   document.getElementById("mon-image").src = p.sprites.official_artwork;
   document.getElementById("mon-image").alt = p.name;
   document.getElementById("mon-name").textContent = p.name;
   document.getElementById("mon-genus").textContent = p.genus;
-  document.getElementById("type-plate").textContent = p.types.join(" / ");
-  document.getElementById("dex-plate").textContent =
-    `No.${String(p.id).padStart(3, "0")}`;
+  document.getElementById("mon-dexno").textContent = num;
 
-  document.getElementById("mini-lcd").innerHTML = [
-    `No.${String(p.id).padStart(3, "0")}  ${p.name.toUpperCase()}`,
-    `HT ${p.height_m.toFixed(1)}m  WT ${p.weight_kg.toFixed(1)}kg`,
-    `CATCH RATE ${p.capture_rate}`,
-    `TOTAL ${p.stats.total}`,
-  ]
-    .map((line) => `<div>${line}</div>`)
-    .join("");
+  // One type per plate; the second reads empty when there isn't one.
+  document.getElementById("type-1").textContent = p.types[0] ?? "";
+  document.getElementById("type-2").textContent = p.types[1] ?? "";
+
+  const s = p.stats;
+  document.getElementById("stats-lcd").innerHTML = `
+    <div class="stat-grid">
+      <span>HP</span><span class="v">${s.hp}</span>
+      <span>ATTACK</span><span class="v">${s.attack}</span>
+      <span>DEFENSE</span><span class="v">${s.defense}</span>
+      <span>SP.ATK</span><span class="v">${s.special_attack}</span>
+      <span>SP.DEF</span><span class="v">${s.special_defense}</span>
+      <span>SPEED</span><span class="v">${s.speed}</span>
+    </div>
+    <div class="stat-total"><span>TOTAL</span><span>${s.total}</span></div>
+  `;
 }
 
-// Genus and height/weight live on the lid screen and the green readout,
-// so this screen carries only what those can't fit.
+// Stats live on the green readout, so this screen carries the
+// description and the measurements that don't fit there.
 function renderEntry(p) {
-  const lines = [];
-  lines.push(`<div class="info-heading">Base Stats</div>`);
-  for (const [key, label] of STAT_LABELS) {
-    const val = p.stats[key];
-    lines.push(
-      `<div class="stat-line"><span>${label}</span><span class="stat-bar">${bar(val)}</span><span class="stat-val">${val}</span></div>`
-    );
-  }
-  lines.push(
-    `<div class="stat-line"><span>TOTAL</span><span></span><span class="stat-val">${p.stats.total}</span></div>`
-  );
-
-  lines.push(`<div class="info-heading">Pokédex Data</div>`);
-  lines.push(`<div class="flavor">${p.flavor_text}<span class="cursor"></span></div>`);
-
-  infoScreen.innerHTML = lines.join("");
+  infoScreen.innerHTML = `
+    <div class="info-heading">Pokédex Data</div>
+    <div class="flavor">${p.flavor_text}<span class="cursor"></span></div>
+    <div class="meta">HT ${p.height_m.toFixed(1)} m &nbsp; WT ${p.weight_kg.toFixed(1)} kg</div>
+  `;
   infoScreen.scrollTop = 0;
 }
 
