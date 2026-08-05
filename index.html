@@ -15,24 +15,17 @@
 
   <!-- Bump ?v= when styles or scripts change so GitHub Pages' CDN and
        phone browsers can't serve a stale copy. -->
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body>
   <div class="page">
-    <header class="top">
-      <h1>Pokédex <span class="subtitle">Kanto · #001–151</span></h1>
-      <div class="controls">
-        <input id="search" type="search" placeholder="Search by name or #..." aria-label="Search Pokémon" />
-        <select id="type-filter" aria-label="Filter by type">
-          <option value="">All types</option>
-        </select>
-      </div>
-    </header>
-
     <main>
       <div class="device">
         <div class="stage">
-          <img class="device-art" src="assets/device/pokedex.svg?v=4" alt="" aria-hidden="true" />
+          <!-- The drawing is cropped into two halves that sit flush on
+               wide screens and stack on narrow ones. -->
+          <div class="half lid">
+            <img class="device-art" src="assets/device/pokedex.svg?v=5" alt="" aria-hidden="true" />
 
           <!-- Main screen: artwork, number, name, genus -->
           <div class="ov screen-main">
@@ -40,69 +33,85 @@
               <span class="dex-no" id="mon-dexno">No.001</span>
               <span class="mon-name" id="mon-name">BULBASAUR</span>
             </div>
-            <img class="mon-sprite" id="mon-image" src="" alt="" />
+            <img class="mon-sprite" id="mon-image" alt="" />
             <div class="mon-genus" id="mon-genus">Seed Pokémon</div>
           </div>
 
-          <!-- Green readout: base stats -->
-          <div class="ov screen-stats" id="stats-lcd"></div>
+            <!-- Green readout: base stats -->
+            <div class="ov screen-stats" id="stats-lcd"></div>
 
-          <!-- Main LCD: description or name list -->
-          <div class="ov screen-info" id="info-screen"></div>
+            <!-- Bezel lamp, lit while narrating -->
+            <span class="ov lamp" id="lamp" aria-hidden="true"></span>
 
-          <!-- Type plates -->
-          <div class="ov plate plate-1" id="type-1"></div>
-          <div class="ov plate plate-2" id="type-2"></div>
-
-          <!-- Bezel lamp, lit while narrating -->
-          <span class="ov lamp" id="lamp" aria-hidden="true"></span>
-
-          <!-- Controls -->
-          <button type="button" class="hit hit-play" id="btn-play">
-            <span class="glyph" aria-hidden="true"></span>
-            <span class="label">Narrate</span>
-          </button>
-
-          <button type="button" class="hit hit-data" id="btn-data" aria-pressed="true">
-            <span class="label">Data</span>
-          </button>
-          <button type="button" class="hit hit-list" id="btn-list" aria-pressed="false">
-            <span class="label">List</span>
-          </button>
-          <button type="button" class="hit hit-random" id="btn-random">
-            <span class="label">Random</span>
-          </button>
-
-          <div class="dpad" role="group" aria-label="Navigate Pokémon">
-            <button type="button" class="hit arm up" data-dir="up">
-              <span class="label">Back ten</span>
+            <button type="button" class="hit hit-play" id="btn-play">
+              <span class="glyph" aria-hidden="true"></span>
+              <span class="label">Narrate</span>
             </button>
-            <button type="button" class="hit arm left" data-dir="left">
-              <span class="label">Previous</span>
+
+            <div class="dpad" role="group" aria-label="Navigate Pokémon">
+              <button type="button" class="hit arm up" data-dir="up">
+                <span class="label">Back ten</span>
+              </button>
+              <button type="button" class="hit arm left" data-dir="left">
+                <span class="label">Previous</span>
+              </button>
+              <button type="button" class="hit arm right" data-dir="right">
+                <span class="label">Next</span>
+              </button>
+              <button type="button" class="hit arm down" data-dir="down">
+                <span class="label">Forward ten</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="half base">
+            <img class="device-art" src="assets/device/pokedex.svg?v=5" alt="" aria-hidden="true" />
+
+            <!-- Main LCD: description or name list -->
+            <div class="ov screen-info" id="info-screen"></div>
+
+            <!-- Blue keys double as ten favourite slots -->
+            <div class="favs" id="favs">
+              <button type="button" class="fav" data-slot="0"><span class="label">Favourite 1</span></button>
+              <button type="button" class="fav" data-slot="1"><span class="label">Favourite 2</span></button>
+              <button type="button" class="fav" data-slot="2"><span class="label">Favourite 3</span></button>
+              <button type="button" class="fav" data-slot="3"><span class="label">Favourite 4</span></button>
+              <button type="button" class="fav" data-slot="4"><span class="label">Favourite 5</span></button>
+              <button type="button" class="fav" data-slot="5"><span class="label">Favourite 6</span></button>
+              <button type="button" class="fav" data-slot="6"><span class="label">Favourite 7</span></button>
+              <button type="button" class="fav" data-slot="7"><span class="label">Favourite 8</span></button>
+              <button type="button" class="fav" data-slot="8"><span class="label">Favourite 9</span></button>
+              <button type="button" class="fav" data-slot="9"><span class="label">Favourite 10</span></button>
+            </div>
+
+            <button type="button" class="hit key-bar hit-save" id="btn-save" aria-pressed="false">
+              <span class="bar-label">Save</span>
             </button>
-            <button type="button" class="hit arm right" data-dir="right">
-              <span class="label">Next</span>
+            <button type="button" class="hit key-bar hit-reset" id="btn-reset">
+              <span class="bar-label">Reset</span>
             </button>
-            <button type="button" class="hit arm down" data-dir="down">
-              <span class="label">Forward ten</span>
+
+            <!-- Type plates -->
+            <div class="ov plate plate-1" id="type-1"></div>
+            <div class="ov plate plate-2" id="type-2"></div>
+
+            <button type="button" class="hit hit-data" id="btn-data" aria-pressed="true">
+              <span class="label">Data</span>
+            </button>
+            <button type="button" class="hit hit-list" id="btn-list" aria-pressed="false">
+              <span class="label">List</span>
+            </button>
+            <button type="button" class="hit hit-random" id="btn-random">
+              <span class="label">Random</span>
             </button>
           </div>
         </div>
       </div>
 
       <p class="hint" id="hint"></p>
-      <p id="result-count" class="result-count"></p>
     </main>
-
-    <footer class="site-footer">
-      <p>
-        Stats, species data, and sprites sourced from the
-        <a href="https://github.com/PokeAPI/pokeapi" target="_blank" rel="noopener">PokéAPI</a>
-        project (Pokémon and Pokémon character names are trademarks of Nintendo).
-      </p>
-    </footer>
   </div>
 
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>

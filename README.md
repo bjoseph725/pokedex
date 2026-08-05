@@ -19,9 +19,12 @@ their screens.
 
 The controls are real `<button>` elements laid over the drawn ones, so
 keyboard focus and screen readers work normally; each carries a
-visually hidden label. Below roughly 760px the casing would render its
-screens too small to read, so the artwork is hidden and the same
-elements stack as plain panels with those labels shown.
+visually hidden label.
+
+The drawing is cropped into two halves — split at x=755, either side of
+the hinge — that sit flush on wide screens and stack on narrow ones.
+Each half is its own container with its own overlay coordinates, so
+stacking needs no repositioning: the halves just go full width.
 
 ## Controls
 
@@ -33,12 +36,28 @@ elements stack as plain panels with those labels shown.
 | List key | Show the selectable name list |
 | Black ▶ button | Narrate the entry |
 | Yellow button | Random Pokémon |
+| Save + a blue key | Store the current Pokémon in that slot |
+| Reset | Clear every favourite |
 | Arrow keys / space | Mirror the D-pad and the ▶ button |
 
 The D-pad means the same thing in both screen modes, and wraps at both
 ends so it never dead-ends. In list mode you can also click a row
-directly. Search and the type filter narrow whatever the D-pad steps
-through.
+directly.
+
+## Favourites
+
+The ten blue keys are favourite slots. Press **Save**, then a blue key,
+and the current Pokémon is stored there and shown as its artwork.
+Pressing a filled key jumps straight to it; **Reset** clears them all.
+
+They live in `localStorage`, so they persist per browser with no
+backend and the site stays static. Nothing syncs between devices —
+that would be the point at which a hosted database earned its place.
+
+Presses are answered with synthesised sound rather than audio files:
+a short blip for the D-pad, Save and Reset, and a three-note chime when
+a favourite is stored. They are generated through the Web Audio API on
+first press, so there is nothing to download.
 
 ## Data source
 

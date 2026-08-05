@@ -1,8 +1,5 @@
 const PAGE = 10;
 
-const searchInput = document.getElementById("search");
-const typeFilter = document.getElementById("type-filter");
-const resultCount = document.getElementById("result-count");
 const infoScreen = document.getElementById("info-screen");
 const hint = document.getElementById("hint");
 const btnPlay = document.getElementById("btn-play");
@@ -11,23 +8,36 @@ const btnData = document.getElementById("btn-data");
 const btnList = document.getElementById("btn-list");
 const lamp = document.getElementById("lamp");
 const dpad = document.querySelector(".dpad");
+const favs = document.getElementById("favs");
+const btnSave = document.getElementById("btn-save");
+const btnReset = document.getElementById("btn-reset");
+
+const FAV_SLOTS = 10;
+const FAV_KEY = "pokedex.favourites";
 
 let allPokemon = [];
-let filtered = [];
 let currentId = null;
 let audio = null;
 let listMode = false;
+let favourites = new Array(FAV_SLOTS).fill(null);
+let arming = false;
 
 async function init() {
   const res = await fetch("data/pokemon.json");
   allPokemon = await res.json();
   currentId = allPokemon[0].id;
+  loadFavourites();
+  render();
+  renderFavourites();
 
-  populateTypeFilter();
-  applyFilters();
+  btnSave.addEventListener("click", toggleArming);
+  btnReset.addEventListener("click", clearFavourites);
 
-  searchInput.addEventListener("input", () => applyFilters());
-  typeFilter.addEventListener("change", () => applyFilters());
+  favs.addEventListener("click", (e) => {
+    const slot = e.target.closest(".fav");
+    if (slot) useSlot(Number(slot.dataset.slot));
+  });
+
   btnPlay.addEventListener("click", playEntry);
   btnRandom.addEventListener("click", pickRandom);
   btnData.addEventListener("click", () => setMode(false));
@@ -35,15 +45,13 @@ async function init() {
 
   dpad.addEventListener("click", (e) => {
     const arm = e.target.closest(".arm");
-    if (arm) step(deltaFor(arm.dataset.dir));
+    if (!arm) return;
+    clickSound();
+    step(deltaFor(arm.dataset.dir));
   });
 
   document.addEventListener("keydown", (e) => {
     const tag = document.activeElement?.tagName;
-    if (tag === "INPUT" || tag === "SELECT") {
-      if (e.key === "Enter" && tag === "INPUT") jumpToFirstMatch();
-      return;
-    }
     // Let Enter/Space work normally on whichever control has focus.
     if (tag === "BUTTON" && (e.key === "Enter" || e.key === " ")) return;
 
@@ -68,60 +76,173 @@ function deltaFor(dir) {
   return { left: -1, right: 1, up: -PAGE, down: PAGE }[dir];
 }
 
-function populateTypeFilter() {
-  const types = new Set();
-  allPokemon.forEach((p) => p.types.forEach((t) => types.add(t)));
-  [...types].sort().forEach((t) => {
-    const opt = document.createElement("option");
-    opt.value = t;
-    opt.textContent = t;
-    typeFilter.appendChild(opt);
+/* ---------- Button sounds ----------
+   Synthesised rather than shipped as files: nothing to download, and
+   they start instantly. The context is created on first press, which
+   is the user gesture browsers require. */
+
+let actx = null;
+
+function audioCtx() {
+  const Ctor = window.AudioContext || window.webkitAudioContext;
+  if (!Ctor) return null;
+  if (!actx) actx = new Ctor();
+  if (actx.state === "suspended") actx.resume();
+  return actx;
+}
+
+// Short pitch-drop blip for anything with a mechanical feel.
+function clickSound() {
+  const ctx = audioCtx();
+  if (!ctx) return;
+  const t = ctx.currentTime;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = "square";
+  osc.frequency.setValueAtTime(900, t);
+  osc.frequency.exponentialRampToValueAtTime(240, t + 0.045);
+  gain.gain.setValueAtTime(0.16, t);
+  gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.075);
+  osc.connect(gain).connect(ctx.destination);
+  osc.start(t);
+  osc.stop(t + 0.09);
+}
+
+// Rising three-note arpeggio for a favourite being stored.
+function chimeSound() {
+  const ctx = audioCtx();
+  if (!ctx) return;
+  const t = ctx.currentTime;
+  [784, 988, 1319].forEach((freq, i) => {
+    const at = t + i * 0.075;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = "sine";
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.0001, at);
+    gain.gain.exponentialRampToValueAtTime(0.15, at + 0.012);
+    gain.gain.exponentialRampToValueAtTime(0.0001, at + 0.34);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(at);
+    osc.stop(at + 0.38);
   });
 }
 
-function applyFilters() {
-  const query = searchInput.value.trim().toLowerCase();
-  const type = typeFilter.value;
+/* ---------- Favourites ----------
+   Held in localStorage: per-browser, no backend, and the site stays
+   static. Slots hold a dex number or null. */
 
-  filtered = allPokemon.filter((p) => {
-    const matchesQuery =
-      !query ||
-      p.name.toLowerCase().includes(query) ||
-      String(p.id).padStart(3, "0").includes(query) ||
-      String(p.id) === query;
-    const matchesType = !type || p.types.includes(type);
-    return matchesQuery && matchesType;
-  });
-
-  if (!filtered.some((p) => p.id === currentId) && filtered.length) {
-    currentId = filtered[0].id;
+function loadFavourites() {
+  let stored = null;
+  try {
+    stored = JSON.parse(localStorage.getItem(FAV_KEY) || "null");
+  } catch {
+    stored = null; // corrupt or unavailable; start empty rather than throw
   }
+  favourites = new Array(FAV_SLOTS).fill(null);
+  if (Array.isArray(stored)) {
+    stored.slice(0, FAV_SLOTS).forEach((id, i) => {
+      // Ignore anything that isn't one of the 151.
+      if (allPokemon.some((p) => p.id === id)) favourites[i] = id;
+    });
+  }
+}
 
-  resultCount.textContent = `${filtered.length} of ${allPokemon.length} Pokémon`;
+function saveFavourites() {
+  try {
+    localStorage.setItem(FAV_KEY, JSON.stringify(favourites));
+  } catch {
+    // Private mode or a full quota: keep the in-memory copy working.
+  }
+}
+
+function renderFavourites() {
+  favs.classList.toggle("arming", arming);
+  [...favs.querySelectorAll(".fav")].forEach((slot, i) => {
+    const id = favourites[i];
+    const p = id == null ? null : allPokemon.find((x) => x.id === id);
+    const label = slot.querySelector(".label");
+    const img = slot.querySelector("img");
+
+    if (p) {
+      if (!img) {
+        const el = document.createElement("img");
+        el.alt = "";
+        el.loading = "lazy";
+        el.src = p.sprites.official_artwork;
+        slot.prepend(el);
+      } else if (!img.src.endsWith(p.sprites.official_artwork)) {
+        img.src = p.sprites.official_artwork;
+      }
+      label.textContent = arming
+        ? `Save ${nameOf(currentId)} to slot ${i + 1}, replacing ${p.name}`
+        : `${p.name}, favourite slot ${i + 1}`;
+    } else {
+      img?.remove();
+      label.textContent = arming
+        ? `Save ${nameOf(currentId)} to empty slot ${i + 1}`
+        : `Empty favourite slot ${i + 1}`;
+    }
+  });
+}
+
+function nameOf(id) {
+  return allPokemon.find((p) => p.id === id)?.name ?? "";
+}
+
+function toggleArming() {
+  clickSound();
+  arming = !arming;
+  btnSave.setAttribute("aria-pressed", String(arming));
+  renderFavourites();
+  renderHint();
+}
+
+// Armed, a slot stores the current Pokémon; otherwise it jumps to it.
+function useSlot(i) {
+  if (arming) {
+    favourites[i] = currentId;
+    saveFavourites();
+    arming = false;
+    btnSave.setAttribute("aria-pressed", "false");
+    chimeSound();
+    renderFavourites();
+    renderHint();
+    return;
+  }
+  const id = favourites[i];
+  if (id == null) return; // empty slot: nothing to recall, so no sound
+  clickSound();
+  currentId = id;
   render();
 }
 
-function jumpToFirstMatch() {
-  if (!filtered.length) return;
-  currentId = filtered[0].id;
-  render();
+function clearFavourites() {
+  clickSound();
+  if (favourites.every((f) => f == null)) return;
+  favourites = new Array(FAV_SLOTS).fill(null);
+  saveFavourites();
+  arming = false;
+  btnSave.setAttribute("aria-pressed", "false");
+  renderFavourites();
+  renderHint();
 }
 
 function step(delta) {
-  if (!filtered.length || !delta) return;
-  const idx = filtered.findIndex((p) => p.id === currentId);
+  if (!allPokemon.length || !delta) return;
+  const idx = allPokemon.findIndex((p) => p.id === currentId);
   const from = idx === -1 ? 0 : idx;
   // Wrap at both ends so the D-pad never dead-ends.
-  const next = (((from + delta) % filtered.length) + filtered.length) % filtered.length;
-  currentId = filtered[next].id;
+  const next = (((from + delta) % allPokemon.length) + allPokemon.length) % allPokemon.length;
+  currentId = allPokemon[next].id;
   render();
 }
 
 function pickRandom() {
-  if (filtered.length < 2) return;
+  if (allPokemon.length < 2) return;
   let next = currentId;
   while (next === currentId) {
-    next = filtered[Math.floor(Math.random() * filtered.length)].id;
+    next = allPokemon[Math.floor(Math.random() * allPokemon.length)].id;
   }
   currentId = next;
   render();
@@ -167,6 +288,8 @@ function render() {
   renderLid(p);
   if (listMode) renderList();
   else renderEntry(p);
+  // Slot labels name whichever Pokémon is about to be stored.
+  if (arming) renderFavourites();
   renderHint();
 }
 
@@ -208,14 +331,14 @@ function renderEntry(p) {
 }
 
 function renderList() {
-  if (!filtered.length) {
-    infoScreen.innerHTML = `<p class="list-empty">No Pokémon match your search.</p>`;
+  if (!allPokemon.length) {
+    infoScreen.innerHTML = `<p class="list-empty">No entries.</p>`;
     return;
   }
 
   infoScreen.innerHTML =
     `<div class="dex-list">` +
-    filtered
+    allPokemon
       .map(
         (p) => `
         <button type="button" class="dex-row" data-id="${p.id}" aria-current="${p.id === currentId}">
@@ -251,9 +374,11 @@ function keepSelectedRowVisible() {
 }
 
 function renderHint() {
-  hint.innerHTML =
-    `D-pad: <kbd>←</kbd> <kbd>→</kbd> step · <kbd>↑</kbd> <kbd>↓</kbd> jump ten · ` +
-    `<b>Data</b> / <b>List</b> switch the screen · ▶ narrates · yellow is random`;
+  hint.innerHTML = arming
+    ? `Pick a blue key to save <b>${nameOf(currentId)}</b> — press <b>Save</b> again to cancel`
+    : `D-pad: <kbd>←</kbd> <kbd>→</kbd> step · <kbd>↑</kbd> <kbd>↓</kbd> jump ten · ` +
+      `<b>Data</b> / <b>List</b> switch the screen · ▶ narrates · yellow is random · ` +
+      `<b>Save</b> then a blue key stores a favourite`;
 }
 
 init();
