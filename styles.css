@@ -138,9 +138,10 @@ main {
 /* It folds shut into one rectangle, so the halves are the same size.
    Stretch keeps them matched however the content settles. */
 .device {
-  /* How far the base sits below the lid's lens strip. The hinge shares
-     it so the barrel never rides above the base's top edge. */
-  --base-drop: 68px;
+  /* Closed, it is one rectangle; the base swings out of the bottom
+     four fifths, so its top edge sits a fifth of the way down. The
+     hinge shares this so the barrel never rides above the base. */
+  --base-drop: 104px;
   display: grid;
   grid-template-columns: 1fr 28px 1fr;
   width: min(940px, 100%);
@@ -173,11 +174,12 @@ main {
    that strip's height, then stretched so both share a bottom edge. */
 .half.right {
   margin-top: var(--base-drop);
-  /* Content has to clear the notch depth or the screen gets clipped. */
-  padding: 58px 24px 24px;
+  padding: 46px 24px 24px;
   /* Room to breathe between the screen, keys and plates. */
-  gap: 26px;
-  clip-path: polygon(0 0, 74% 0, 74% 42px, 100% 42px, 100% 100%, 0 100%);
+  gap: 22px;
+  /* The notch is cut from the top LEFT, beside the hinge: that edge
+     sits lower and steps up partway across. */
+  clip-path: polygon(0 30px, 44% 30px, 44% 0, 100% 0, 100% 100%, 0 100%);
 }
 
 /* Hinge barrel */
@@ -434,10 +436,10 @@ main {
 
 .shutter-btn {
   appearance: none;
-  border: 2px solid var(--outline);
+  border: 3px solid var(--outline);
   padding: 0;
-  width: 38px;
-  height: 38px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   flex-shrink: 0;
   cursor: pointer;
@@ -454,10 +456,10 @@ main {
   content: "";
   width: 0;
   height: 0;
-  margin-left: 3px;
-  border-left: 11px solid rgba(255, 255, 255, 0.82);
-  border-top: 7px solid transparent;
-  border-bottom: 7px solid transparent;
+  margin-left: 4px;
+  border-left: 15px solid rgba(255, 255, 255, 0.82);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
 }
 
 .shutter-btn:hover {
@@ -481,12 +483,12 @@ main {
 }
 
 .shutter-btn.playing::before {
-  width: 11px;
-  height: 11px;
+  width: 15px;
+  height: 15px;
   margin-left: 0;
   border: none;
   background: #ff6b6b;
-  border-radius: 1px;
+  border-radius: 2px;
 }
 
 .dashes {
@@ -496,15 +498,16 @@ main {
 }
 
 .dashes span {
-  width: 30px;
-  height: 6px;
-  border-radius: 3px;
+  width: 46px;
+  height: 11px;
+  border-radius: 4px;
   background: linear-gradient(180deg, #f0eee6, #c6c3ba);
-  border: 1px solid var(--outline);
+  border: 2px solid var(--outline);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .dashes span:last-child {
-  width: 22px;
+  width: 34px;
   background: linear-gradient(180deg, #7fd0f0, #2f8ec4);
 }
 
@@ -866,6 +869,7 @@ main {
   display: flex;
   gap: 8px;
   margin-left: auto;
+  margin-right: 6px;
 }
 
 .bank-dashes span {
@@ -915,7 +919,6 @@ main {
   padding: 0;
   width: 24px;
   height: 24px;
-  margin-top: 4px;
   border-radius: 50%;
   flex-shrink: 0;
   cursor: pointer;
