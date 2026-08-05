@@ -135,17 +135,12 @@ main {
 
 /* ---------- Device shell ---------- */
 
-/* The base is narrower than the lid, and sits lower, as on the real
-   casing. align-items:start lets each half take its natural height. */
+/* It folds shut into one rectangle, so the halves are the same size.
+   Stretch keeps them matched however the content settles. */
 .device {
   display: grid;
-  grid-template-columns: 1.06fr 28px 0.94fr;
-  align-items: start;
+  grid-template-columns: 1fr 28px 1fr;
   width: min(940px, 100%);
-}
-
-.hinge {
-  align-self: stretch;
 }
 
 .half {
@@ -171,11 +166,13 @@ main {
 
 /* The base steps down at its top right corner — a square notch, not a
    diagonal slice — and hangs lower than the lid. */
+/* The base nests under the lid's lens strip — offset down by roughly
+   that strip's height, then stretched so both share a bottom edge. */
 .half.right {
-  margin-top: 54px;
+  margin-top: 68px;
   /* Content has to clear the notch depth or the screen gets clipped. */
-  padding-top: 46px;
-  clip-path: polygon(0 0, 78% 0, 78% 30px, 100% 30px, 100% 100%, 0 100%);
+  padding-top: 58px;
+  clip-path: polygon(0 0, 74% 0, 74% 42px, 100% 42px, 100% 100%, 0 100%);
 }
 
 /* Hinge barrel */
@@ -507,12 +504,13 @@ main {
 
 /* ---------- Left: green readout + D-pad ---------- */
 
+/* Both sit on one baseline; centring them left neither edge lining up. */
 .lower-left {
   display: flex;
-  align-items: center;
-  gap: 16px;
+  align-items: flex-end;
+  gap: 18px;
   margin-top: auto;
-  padding: 0 2px 2px;
+  padding: 0 2px;
 }
 
 .stats-lcd {
@@ -646,8 +644,10 @@ main {
 
 .info-screen {
   position: relative;
+  /* Definite height, or list mode grows the panel to 151 rows instead
+     of scrolling. */
   flex: none;
-  height: 224px;
+  height: 176px;
   border: 2px solid var(--outline);
   border-radius: 3px;
   background: linear-gradient(180deg, var(--ink), var(--ink-2));
@@ -787,18 +787,25 @@ main {
 
 /* ---------- Right: keypad and lower controls ---------- */
 
+/* Keys butt against each other; the shared outline separates them. */
 .keypad {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 5px;
+  gap: 0;
+  border: 2px solid var(--outline);
+  border-radius: 3px;
+  overflow: hidden;
 }
 
 .keypad span {
   aspect-ratio: 1;
-  border: 2px solid var(--outline);
-  border-radius: 2px;
-  background: linear-gradient(165deg, #8fd6f7, var(--key-blue) 45%, var(--key-blue-dark));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--outline);
+  background: linear-gradient(180deg, #a5e0fa 0%, var(--key-blue) 42%, var(--key-blue-dark) 100%);
+  /* Domed: light off the top edge, shadow pooling under the bottom. */
+  box-shadow:
+    inset 0 3px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -4px 6px rgba(0, 0, 0, 0.3),
+    inset 3px 0 5px rgba(255, 255, 255, 0.16);
 }
 
 .button-bank {
