@@ -38,6 +38,7 @@ if (!API_KEY) {
    number; only affects narration, never the displayed name. */
 const SAID_AS = {
   116: "Horsey", // otherwise "horss-uh" rather than "horsey"
+  117: "Seedra", // the "ea" misleads it; this gives "see-druh"
 };
 
 function narrationFor(p) {

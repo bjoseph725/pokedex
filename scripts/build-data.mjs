@@ -167,7 +167,14 @@ async function main() {
       },
       capture_rate: spRow ? Number(spRow.capture_rate) : null,
       flavor_text: flavor
-        ? flavor.flavor_text.replace(/\f|\n|\r/g, " ").replace(/\s+/g, " ").trim()
+        ? flavor.flavor_text
+            .replace(/\f|\n|\r/g, " ")
+            // The source hyphenates across line breaks, leaving a soft
+            // hyphen plus a newline mid-word. Both have to go or the
+            // word stays split, which text to speech reads as two.
+            .replace(/\u00AD\s*/g, "")
+            .replace(/\s+/g, " ")
+            .trim()
         : null,
       sprites: {
         official_artwork: `${LOCAL_ARTWORK_PATH}${id}.png`,
