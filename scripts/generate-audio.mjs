@@ -37,6 +37,7 @@ if (!API_KEY) {
    spelling, so respelling the spoken line is the lever. Keyed by dex
    number; only affects narration, never the displayed name. */
 const SAID_AS = {
+  18: "Pidgeyot", // otherwise "pidgit" rather than "pidgey-awt"
   116: "Horsey", // otherwise "horss-uh" rather than "horsey"
   117: "Seedra", // the "ea" misleads it; this gives "see-druh"
 };
