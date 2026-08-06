@@ -33,10 +33,17 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-// The Gen 1 source text spells it "POKéMON"; say it properly instead.
+/* Some names get read the wrong way round — text to speech goes by
+   spelling, so respelling the spoken line is the lever. Keyed by dex
+   number; only affects narration, never the displayed name. */
+const SAID_AS = {
+  116: "Horsey", // otherwise "horss-uh" rather than "horsey"
+};
+
 function narrationFor(p) {
+  // The Gen 1 source text spells it "POKéMON"; say it properly instead.
   const entry = p.flavor_text.replace(/POK[eé]MON/gi, "Pokémon");
-  return `${p.name}. ${entry}`;
+  return `${SAID_AS[p.id] ?? p.name}. ${entry}`;
 }
 
 async function exists(file) {
