@@ -39,6 +39,22 @@ body {
     linear-gradient(180deg, #1b1d20, #101214);
   color: var(--phosphor);
   min-height: 100vh;
+
+  /* It should behave like hardware, not a web page: no text selection,
+     no long-press callout offering to copy or save, and no grey flash
+     on tap. */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Long-pressing artwork otherwise offers to save it, and dragging
+   peels the image off the casing. */
+img {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
 }
 
 .page {
