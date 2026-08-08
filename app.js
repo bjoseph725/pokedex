@@ -27,6 +27,7 @@ async function init() {
   allPokemon = await res.json();
   currentId = allPokemon[0].id;
   loadFavourites();
+  setupHaptics();
   render();
   renderFavourites();
 
@@ -47,6 +48,7 @@ async function init() {
     const arm = e.target.closest(".arm");
     if (!arm) return;
     clickSound();
+    tap();
     step(deltaFor(arm.dataset.dir));
   });
 
@@ -131,6 +133,40 @@ function allowSoundThroughRinger() {
     });
   } catch {
     silentLoop = null;
+  }
+}
+
+/* ---------- Haptics ----------
+   Android exposes the Vibration API. iOS Safari never has, so the only
+   lever there is a side effect: toggling a switch control makes iOS
+   fire its own system haptic. That needs 17.4 or newer, and obeys
+   Settings > Sounds & Haptics, which is the right place for the user
+   to turn it off. */
+
+let hapticSwitch = null;
+
+function setupHaptics() {
+  if (navigator.vibrate) return; // real API available; no trick needed
+  if (!("switch" in HTMLInputElement.prototype)) return; // pre-17.4
+  const el = document.createElement("input");
+  el.type = "checkbox";
+  el.setAttribute("switch", "");
+  el.setAttribute("aria-hidden", "true");
+  el.tabIndex = -1;
+  el.style.cssText =
+    "position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;";
+  document.body.appendChild(el);
+  hapticSwitch = el;
+}
+
+// Called from the press handlers, so it stays inside the user gesture
+// iOS requires.
+function tap(pattern = 8) {
+  try {
+    if (navigator.vibrate) navigator.vibrate(pattern);
+    else hapticSwitch?.click();
+  } catch {
+    // Blocked or unsupported: silence beats a broken button.
   }
 }
 
@@ -290,6 +326,7 @@ function nameOf(id) {
 
 function toggleArming() {
   clickSound();
+  tap();
   arming = !arming;
   btnSave.setAttribute("aria-pressed", String(arming));
   renderFavourites();
@@ -304,6 +341,7 @@ function useSlot(i) {
     arming = false;
     btnSave.setAttribute("aria-pressed", "false");
     chimeSound();
+    tap([12, 40, 18]);
     renderFavourites();
     renderHint();
     return;
@@ -311,12 +349,14 @@ function useSlot(i) {
   const id = favourites[i];
   if (id == null) return; // empty slot: nothing to recall, so no sound
   clickSound();
+  tap();
   currentId = id;
   render();
 }
 
 function clearFavourites() {
   clickSound();
+  tap();
   if (favourites.every((f) => f == null)) return;
   favourites = new Array(FAV_SLOTS).fill(null);
   saveFavourites();
@@ -338,6 +378,7 @@ function step(delta) {
 
 function pickRandom() {
   clickSound();
+  tap();
   if (allPokemon.length < 2) return;
   let next = currentId;
   while (next === currentId) {
@@ -349,6 +390,7 @@ function pickRandom() {
 
 function setMode(wantList) {
   clickSound();
+  tap();
   if (listMode === wantList) return;
   listMode = wantList;
   btnData.setAttribute("aria-pressed", String(!listMode));

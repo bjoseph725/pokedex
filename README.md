@@ -57,6 +57,18 @@ The file is fetched at runtime rather than bundled, so swapping the
 tune means swapping that one file. With no file present the control
 simply stays off and the rest of the device is unaffected.
 
+### Haptics
+
+Presses buzz as well as click. Android exposes the Vibration API
+directly; iOS Safari has never implemented it, so there the only lever
+is a side effect — toggling a hidden switch control makes iOS fire its
+own system haptic. That path needs iOS 17.4 or newer, and obeys
+Settings → Sounds & Haptics, which is the right place to turn it off.
+Where neither is available, presses simply stay silent.
+
+Storing a favourite gets a double pulse so it feels different from a
+step. Pressing an empty slot does nothing, so it buzzes nothing.
+
 ### The iOS ringer switch
 
 iOS puts Web Audio in the "ambient" session, which the hardware mute
